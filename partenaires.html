@@ -1,0 +1,717 @@
+---
+layout: default
+title: "Nos Partenaires | Matthieu Artisan - Plomberie & Chauffage"
+description: "Découvrez les partenaires de confiance de Matthieu Artisan pour la maintenance, le ramonage et le dépannage de vos installations de chauffage."
+nav_active: "partenaires"
+---
+<style>
+/* Palette de couleurs */
+        :root {
+            --primary-blue: #1a67b3;       /* Bleu principal */
+            --action-orange: #f97316;      /* Orange (Action) */
+            --orange-hover: #ea580c;       
+            
+            --accent-red: #fa4222;         
+            --accent-turquoise: #48a1cb;   
+            
+            --bg-light: #f8fafc;
+            --text-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.2rem 1.5rem; /* Padding réduit pour maintenir la hauteur globale */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* --- STYLES LOGO UNIQUE --- */
+        .logo {
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            display: block;
+            height: 80px;       /* Logo plus grand */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px;
+            border-left: 2px solid var(--accent-turquoise);
+            padding-left: 0.8rem;
+            line-height: 1.25;
+        }
+
+        .header-location-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            white-space: nowrap;
+            margin-bottom: 6px;
+        }
+
+        .header-phone-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--action-orange);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .header-phone-link:hover {
+            color: var(--orange-hover);
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active-link {
+            color: var(--accent-turquoise);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Hero / Bannière */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), #114b85);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Section Partenaires */
+        .partners-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .section-intro h2 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-intro h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-red);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .partner-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid var(--accent-turquoise);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Conteneur avec Fond Blanc Pur pour les images telles quelles */
+        .partner-logo-container {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            background-color: #ffffff;
+            border-radius: 6px;
+        }
+
+        .partner-logo {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .partner-header {
+            margin-bottom: 1rem;
+        }
+
+        .partner-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.4rem;
+        }
+
+        .partner-services {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .partner-details {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .partner-details li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .partner-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-partner {
+            flex: 1;
+            min-width: 140px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-phone {
+            background-color: var(--action-orange);
+            color: white;
+            border: 1px solid var(--action-orange);
+        }
+
+        .btn-phone:hover {
+            background-color: var(--orange-hover);
+        }
+
+        .btn-web {
+            background-color: var(--bg-light);
+            color: var(--primary-blue);
+            border: 1px solid #cbd5e1;
+        }
+
+        .btn-web:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        /* Modal (Zone de couverture) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 750px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-top: 5px solid var(--accent-red);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #64748b;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-red);
+        }
+
+        .modal-body {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .modal-body img {
+            width: 320px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+        }
+
+        /* Back To Top */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: transparent;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.visible {
+            display: flex !important;
+        }
+
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #000000;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent-turquoise);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-sector {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .footer-sector strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        footer a {
+            color: #9cdbfb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-turquoise);
+            text-decoration: underline;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 834px) {
+            .header-container {
+                position: relative;
+                padding: 0.2rem 1rem;
+                justify-content: space-between;
+            }
+
+            .brand-group {
+                gap: 0.5rem;
+                max-width: calc(100% - 40px);
+            }
+
+            .logo img {
+                height: 58px;
+            }
+
+            .header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
+
+            .header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
+
+            .header-phone-link {
+                font-size: 0.75rem;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 0.5rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                flex-direction: column-reverse;
+                text-align: left;
+            }
+
+            .modal-body img {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+</style>
+
+    <!-- Banner Hero -->
+    <section class="hero">
+        <h1>Nos Partenaires de Confiance</h1>
+        <p>Afin de vous assurer un service complet et de qualité, nous collaborons avec des professionnels qualifiés pour l'entretien, le ramonage et la maintenance de vos installations de chauffage.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="partners-container">
+        <div class="section-intro">
+            <h2>Réseau Partenaires & Experts Chauffage</h2>
+            <p>Découvrez les entreprises et professionnels de confiance avec lesquels nous collaborons pour la maintenance de vos équipements, le ramonage et la réalisation de vos projets sur mesure.</p>
+        </div>
+
+        <div class="partners-grid">
+            
+            <!-- Partenaire 1 : AXOP -->
+            <article class="partner-card">
+                <div>
+                    <div class="partner-logo-container">
+                        <img src="https://www.axop.fr/images/nicepage-images/axop102.jpg" alt="Axop" class="partner-logo">
+                    </div>
+                    <div class="partner-header">
+                        <h3 class="partner-name">AXOP (Xavier MOUSSET)</h3>
+                        <p class="partner-services">Ramonage fumisterie / Maintenance poêles à granulés / Expertise</p>
+                    </div>
+                    <ul class="partner-details">
+                        <li>📍 69380 LISSIEU</li>
+                    </ul>
+                </div>
+                <div class="partner-actions">
+                    <a href="tel:0750486817" class="btn-partner btn-phone">📞 07 50 48 68 17</a>
+                    <a href="https://www.axop.fr/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
+                </div>
+            </article>
+
+            <!-- Partenaire 2 : GRÉGOIRE GAILLARD ARCHITECTE -->
+            <article class="partner-card">
+                <div>
+                    <div class="partner-logo-container">
+                        <span style="font-size: 2.5rem; color: var(--primary-blue);">📐</span>
+                    </div>
+                    <div class="partner-header">
+                        <h3 class="partner-name">GRÉGOIRE GAILLARD ARCHITECTE D.E.A.</h3>
+                        <p class="partner-services">Architecte / Maisons modulaires, performances BBC, ossature bois privilégiée</p>
+                    </div>
+                    <ul class="partner-details">
+                        <li>📍 69170 TARARE</li>
+                    </ul>
+                </div>
+                <div class="partner-actions">
+                    <a href="tel:0474640907" class="btn-partner btn-phone">📞 04 74 64 09 07</a>
+                    <a href="https://www.architectes-pour-tous.fr/architectes-pour-tous/gaillard-gregoire" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 En savoir plus</a>
+                </div>
+            </article>
+
+            <!-- Partenaire 3 : LOGITHERM -->
+            <article class="partner-card">
+                <div>
+                    <div class="partner-logo-container">
+                        <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=1140x10000:format=png/path/s857b28d6d1176a4b/image/i0ba6f8f03db9ed6a/version/1525268836/image.png" alt="Logitherm" class="partner-logo">
+                    </div>
+                    <div class="partner-header">
+                        <h3 class="partner-name">LOGITHERM</h3>
+                        <p class="partner-services">Maintenance & Dépannage de votre chaudière gaz / fioul / granulés et poêles à granulés AlpenWood (Hoben)</p>
+                    </div>
+                    <ul class="partner-details">
+                        <li>📍 69490 Les Olmes</li>
+                    </ul>
+                </div>
+                <div class="partner-actions">
+                    <a href="tel:0474636116" class="btn-partner btn-phone">📞 04 74 63 61 16</a>
+                    <a href="http://www.logitherm.fr/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
+                </div>
+            </article>
+
+            <!-- Partenaire 4 : CAMILLE LE RAMONEUR -->
+            <article class="partner-card">
+                <div>
+                    <div class="partner-logo-container">
+                        <img src="https://camilleleramoneur.fr/templates/clr/images/Logo-CLR.png" alt="Camille le ramoneur" class="partner-logo">
+                    </div>
+                    <div class="partner-header">
+                        <h3 class="partner-name">Camille le Ramoneur</h3>
+                        <p class="partner-services">Ramonage, Entretiens poêles à granulés, Débistrage, Extraction nids de frelons</p>
+                    </div>
+                    <ul class="partner-details">
+                        <li>📍 69380 CHATILLON D'AZERGUES</li>
+                    </ul>
+                </div>
+                <div class="partner-actions">
+                    <a href="tel:0781857157" class="btn-partner btn-phone">📞 07 81 85 71 57</a>
+                    <a href="https://camilleleramoneur.fr/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
+                </div>
+            </article>
+
+            <!-- Partenaire 5 : ABITIBI TURDINE -->
+            <article class="partner-card">
+                <div>
+                    <div class="partner-logo-container">
+                        <img src="https://abitibi.fr/assets/img/Logos-Abitibi-140623_Abitibi.fr.svg" alt="Abitibi.fr" class="partner-logo">
+                    </div>
+                    <div class="partner-header">
+                        <h3 class="partner-name">ABITIBI TURDINE</h3>
+                        <p class="partner-services">Maintenance & Dépannage de votre pompe à chaleur, chauffe-eau thermodynamique, chaudière gaz / fioul, climatisation</p>
+                    </div>
+                    <ul class="partner-details">
+                        <li>📍 69170 TARARE</li>
+                        <li>✉️ turdine@abitibi.fr</li>
+                    </ul>
+                </div>
+                <div class="partner-actions">
+                    <a href="tel:0474642019" class="btn-partner btn-phone">📞 04 74 64 20 19</a>
+                    <a href="https://abitibi.fr/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
+                </div>
+            </article>
+
+            <!-- Partenaire 6 : CHEVILLON DÉPANNAGE -->
+            <article class="partner-card">
+                <div>
+                    <div class="partner-logo-container">
+                        <img src="http://www.chevillon-depannage.com/assets/logos-chevillon/chevillon-depannage.png" alt="Chevillon Dépannage" class="partner-logo">
+                    </div>
+                    <div class="partner-header">
+                        <h3 class="partner-name">CHEVILLON DÉPANNAGE</h3>
+                        <p class="partner-services">Maintenance & Dépannages chaudières (gaz, fioul, granulés), poêles à granulés, pompes à chaleur, chauffe-eau, climatisation</p>
+                    </div>
+                    <ul class="partner-details">
+                        <li>📍 69430 BEAUJEU</li>
+                    </ul>
+                </div>
+                <div class="partner-actions">
+                    <a href="tel:0474692827" class="btn-partner btn-phone">📞 04 74 69 28 27</a>
+                    <a href="http://www.chevillon-depannage.com/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Modal (Zone de couverture) -->
+    <div id="zoneModal" class="modal" onclick="closeModalOnOuterClick(event)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--primary-blue);">Zone d'intervention globale</h2>
+            <p>Situés à <strong>SAINT JUST d’AVRAY (69)</strong>, nous ne nous limitons pas à la commune et intervenons sur un large secteur :</p>
+            
+            <div class="modal-body">
+                <div>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.5rem;">• <strong>Lamure-sur-Azergues</strong> & la Vallée d’Azergues</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Villefranche-sur-Saône</strong> & les Pierres Dorées</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>L'Arbresle</strong> & l'Ouest Lyonnais</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Tarare</strong></li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Amplepuis</strong> et secteur <strong>Chauffailles</strong></li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; background: #f1f5f9; padding: 0.8rem; border-radius: 6px;">
+                        🔥 <strong>Projets spécifiques :</strong> Nous nous déplaçons bien au-delà (Auvergne, Isère...) pour l'installation de <strong>poêles de masse</strong> et les <strong>missions d’expertises</strong> !
+                    </p>
+                </div>
+                <img src="Zone.intervention.matthieu-artisan.plomberie.gif" alt="Carte zone d'intervention" width="382" height="433">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Modal */
+        function openModal() {
+            document.getElementById('zoneModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('zoneModal').style.display = 'none';
+        }
+
+        function closeModalOnOuterClick(event) {
+            if (event.target.id === 'zoneModal') {
+                closeModal();
+            }
+        }
+    </script>

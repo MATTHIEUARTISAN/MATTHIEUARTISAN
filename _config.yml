@@ -1,0 +1,23 @@
+# Configuration du site Matthieu Artisan (Jekyll / GitHub Pages)
+
+title: "Matthieu Artisan"
+description: "Poêles à bois & granulés, fumisterie et expertise technique — Matthieu Artisan (69)"
+
+# Repo : github.com/MATTHIEUARTISAN/MATTHIEUARTISAN
+# Comme ce repo ne s'appelle pas "MATTHIEUARTISAN.github.io", GitHub Pages le
+# publie comme "project page", à cette adresse :
+url: "https://matthieuartisan.github.io"
+baseurl: "/MATTHIEUARTISAN"
+
+# Le jour où matthieu-artisan.fr pointera sur ce dépôt (voir README.md),
+# remplace les deux lignes ci-dessus par :
+#   url: "https://matthieu-artisan.fr"
+#   baseurl: ""
+# (un domaine personnalisé sert toujours le site à la racine, sans préfixe)
+
+# Pages/dossiers à ne jamais publier
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules

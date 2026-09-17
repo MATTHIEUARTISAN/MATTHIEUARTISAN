@@ -1,0 +1,673 @@
+---
+layout: default
+title: "Mentions Légales & CGV | Matthieu Artisan - Plomberie & Chauffage"
+description: "Informations légales, assurances décennales et Conditions Générales de Vente - MATTHIEU ARTISAN EURL."
+nav_active: "mentions-legales"
+---
+<style>
+:root {
+            --primary-blue: #1a67b3;
+            --action-orange: #f97316;
+            --orange-hover: #ea580c;
+            --accent-red: #fa4222;
+            --accent-turquoise: #48a1cb;
+            --bg-light: #f8fafc;
+            --text-color: #334155;
+            --legal-dark: #1e293b;
+            --legal-border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- EN-TÊTE UNIFIÉ --- */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            display: block;
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px;
+            border-left: 2px solid var(--accent-turquoise);
+            padding-left: 0.8rem;
+            line-height: 1.25;
+        }
+
+        .header-location-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            white-space: nowrap;
+            margin-bottom: 6px;
+        }
+
+        .header-phone-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--action-orange);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .header-phone-link:hover {
+            color: var(--orange-hover);
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active-link {
+            color: var(--accent-turquoise);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), #114b85);
+            color: white;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Conteneur principal */
+        .legal-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- STYLES SYSTÈME D'ONGLETS --- */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            padding: 0.8rem 1.6rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(26, 103, 179, 0.2);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Cartes Mentions Légales */
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .legal-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent-turquoise);
+        }
+
+        .legal-card h2 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .legal-card ul {
+            list-style: none;
+        }
+
+        .legal-card li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .legal-card strong {
+            color: var(--primary-blue);
+        }
+
+        .full-width-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent-red);
+            margin-bottom: 2rem;
+        }
+
+        .full-width-card h2 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* SECTION CGV */
+        .cgv-section-container {
+            background: #ffffff;
+            border: 1px solid var(--legal-border);
+            border-top: 5px solid var(--legal-dark);
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+        }
+
+        .cgv-content {
+            padding: 2rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #1e293b;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            background-color: #fafafa;
+        }
+
+        .cgv-header-note {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #475569;
+            border-bottom: 1px solid var(--legal-border);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .cgv-article {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        .cgv-article:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .cgv-article h3 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--legal-dark);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .cgv-article p {
+            text-align: justify;
+            margin-bottom: 0.5rem;
+        }
+
+        .cgv-article p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cgv-article strong {
+            color: #0f172a;
+        }
+
+        /* --- BACK TO TOP --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: transparent;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.visible {
+            display: flex !important;
+        }
+
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #000000;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent-turquoise);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-sector {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .footer-sector strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        footer a {
+            color: #9cdbfb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-turquoise);
+            text-decoration: underline;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 834px) {
+            .header-container {
+                position: relative;
+                padding: 0.2rem 1rem;
+                justify-content: space-between;
+            }
+
+            .brand-group {
+                gap: 0.5rem;
+                max-width: calc(100% - 40px);
+            }
+
+            .logo img {
+                height: 58px;
+            }
+
+            .header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
+
+            .header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
+
+            .header-phone-link {
+                font-size: 0.75rem;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 0.5rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .tabs-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .tab-btn {
+                width: 100%;
+                border-radius: 6px;
+                text-align: center;
+                padding: 0.7rem 1rem;
+            }
+
+            .cgv-content {
+                padding: 1.2rem 1rem;
+            }
+        }
+</style>
+
+    <!-- Banner Hero -->
+    <section class="hero">
+        <h1>Structure Juridique & Mentions Légales</h1>
+        <p>Transparence, garanties et régulation contractuelle des prestations de MATTHIEU ARTISAN EURL.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="legal-container">
+
+        <!-- Navigation par Onglets -->
+        <div class="tabs-container">
+            <button class="tab-btn active" id="btn-mentions" onclick="switchTab('mentions')">Mentions Légales</button>
+            <button class="tab-btn" id="btn-cgv" onclick="switchTab('cgv')">Conditions Générales de Vente (CGV)</button>
+        </div>
+
+        <!-- ONGLET 1 : Mentions Légales (Gauche) -->
+        <div id="tab-mentions" class="tab-panel active">
+            
+            <div class="legal-grid">
+                <!-- Carte 1 : Identité -->
+                <div class="legal-card">
+                    <h2>Identité Entreprise</h2>
+                    <ul>
+                        <li><strong>Raison Sociale :</strong> MATTHIEU ARTISAN EURL</li>
+                        <li><strong>Statut :</strong> ARTISAN</li>
+                        <li><strong>Forme juridique :</strong> EURL au capital de 5 000 €</li>
+                        <li><strong>Date de création :</strong> Août 2005</li>
+                        <li><strong>Siège social :</strong> 345 Chemin du Crêt de Néry, 69870 SAINT JUST D'AVRAY</li>
+                        <li><strong>Téléphone :</strong> 04 78 470 662</li>
+                        <li><strong>Email :</strong> contact@matthieu-artisan.fr</li>
+                    </ul>
+                </div>
+
+                <!-- Carte 2 : Assurance -->
+                <div class="legal-card">
+                    <h2>Assurances Professionnelles</h2>
+                    <ul>
+                        <li><strong>Assureur :</strong> AXA (63600 AMBERT)</li>
+                        <li><strong>Garantie :</strong> Responsabilité Civile Professionnelle & Décennale</li>
+                        <li><strong>N° de Contrat :</strong> <span>6222947504</span></li>
+                        <li><em>Note : Vos attestations d'assurance vous sont transmises sur simple demande.</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section Médiation -->
+            <div class="full-width-card">
+                <h2>Médiation de la Consommation</h2>
+                <p>Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, notre entreprise a mis en place un dispositif de médiation de la consommation :</p>
+                <p style="margin-top: 0.8rem;">
+                    <strong>Entité retenue :</strong> MÉDIATION CONSOMMATION DÉVELOPPEMENT / MED CONSO DEV<br>
+                    <strong>Adresse postale :</strong> Centre d'Affaires Stéphanois SAS, Immeuble l'Horizon – Esplanade de France, 3 rue J. Constant Milleret – 42000 SAINT-ÉTIENNE<br>
+                    <strong>Site internet :</strong> <a href="https://www.medconsodev.eu" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">www.medconsodev.eu</a>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- ONGLET 2 : CGV (Droite) -->
+        <div id="tab-cgv" class="tab-panel">
+            
+            <div class="cgv-section-container">
+                <div class="cgv-content">
+                    
+                    <p class="cgv-header-note">
+                        Les présentes Conditions Générales de Vente s'appliquent de plein droit à l'ensemble des prestations d'installation, de rénovation, de maintenance et de dépannage fournies par l'entreprise MATTHIEU ARTISAN EURL.
+                    </p>
+                    
+                    <div class="cgv-article">
+                        <h3>Article 1 — Objet</h3>
+                        <p>Les présentes Conditions Générales de Vente régissent l'ensemble des relations contractuelles entre l'entreprise <strong>MATTHIEU ARTISAN EURL</strong> et ses clients dans le cadre de la fourniture de services et travaux de plomberie et de chauffage.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 2 — Devis et Commandes</h3>
+                        <p>Toute prestation fait l’objet d’un devis préalable, détaillant la nature des travaux, les matériaux utilisés et le prix. Le devis doit être expressément accepté et signé par le client avant tout commencement d'exécution des travaux.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 3 — Indivisibilité du devis</h3>
+                        <p>Le devis forme un tout indissociable et indivisible. Il doit être accepté dans son intégralité sans suppression de poste ni de ligne. En cas d’acceptation partielle, l’entreprise se réserve le droit de ne pas donner suite à la commande ou de réviser unilatéralement ses conditions tarifaires et d’intervention.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 4 — Prix</h3>
+                        <p>Les prix figurant sur le devis sont fermes et définitifs, sous réserve de la durée de validité mentionnée sur celui-ci. Ils sont exprimés en euros et hors taxes, sauf mention explicite contraire.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 5 — Modalités de paiement</h3>
+                        <p>Un acompte est exigible à la signature du devis, dont le montant est expressément stipulé sur le document. Le solde est payable à la réception des travaux. Les règlements s’effectuent par chèque bancaire ou par virement bancaire.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 6 — Situations intermédiaires</h3>
+                        <p>Pour tout chantier dont la durée d'exécution excède un mois, l'entreprise établira des factures de situations intermédiaires au prorata de l'avancement des travaux. Tout retard de paiement autorisera l’entreprise, sans mise en demeure préalable ni préavis, à suspendre immédiatement la réalisation des travaux jusqu’au paiement intégral des sommes exigibles.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 7 — Délais de paiement</h3>
+                        <p>Les factures émises par l’entreprise sont payables comptant à réception, sans retenue de garantie et sans escompte pour paiement anticipé.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 8 — Délais d’exécution et pénuries</h3>
+                        <p>Les délais d'exécution communiqués par courrier électronique ou tout autre support le sont à titre purement indicatif. En cas de retard indépendant de la volonté de l'entreprise, le client en sera informé dans les meilleurs délais.</p>
+                        <p>En cas de rupture de stock ou de pénurie rendant indisponible le matériau initialement prévu au devis, l’entreprise pourra proposer un produit équivalent via un avenant contractuel. En cas de refus dudit avenant par le client, ce dernier s’engage à attendre le réapprovisionnement du matériau initial sans pouvoir exercer de recours ni prétendre à de quelconques dommages et intérêts.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 9 — Conditions d’exécution des travaux</h3>
+                        <p>L’entreprise se réserve le droit de refuser la pose de matériaux ou d'équipements fournis directement par le client. Lorsque le support révèle des sujétions imprévues et indécelables lors du chiffrage initial, l’entreprise proposera des travaux complémentaires formalisés par un avenant, dont l'exécution sera conditionnée par la signature préalable du client.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 10 — Clause de réserve de propriété</h3>
+                        <p>En application de la loi n° 80-335 du 12 mai 1980, l’entreprise conserve la propriété exclusive des matériaux, fournitures et ouvrages facturés jusqu’au paiement intégral du prix convenu. Toutefois, les risques de perte, de vol ou de détérioration sont transférés au client dès l’achèvement des travaux.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 11 — Garanties</h3>
+                        <p>Les ouvrages réalisés sont couverts par la garantie décennale légale conformément aux articles 1792 et suivants du Code civil. Toute réclamation au titre des garanties doit faire l’objet d'une notification écrite adressée à l'entreprise.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 12 — Responsabilité</h3>
+                        <p>MATTHIEU ARTISAN EURL s’engage à exécuter ses prestations selon les règles de l’art et les normes en vigueur. La responsabilité de l’entreprise ne saurait être engagée en cas de mauvaise utilisation, de négligence ou de défaut d’entretien imputable au client ou à un tiers.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 13 — Droits sur les photographies</h3>
+                        <p>Le client autorise expressément l’entreprise à réaliser des prises de vue photographiques des travaux accomplis et à les exploiter sur ses supports de communication commerciale, notamment son site internet, à titre d'illustration de son savoir-faire.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 14 — Résiliation</h3>
+                        <p>En cas d’inexécution par le client de l’une de ses obligations (notamment le défaut de paiement des acomptes ou situations), MATTHIEU ARTISAN EURL se réserve le droit de suspendre ou de résilier de plein droit la prestation aux torts du client.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 15 — Réclamations</h3>
+                        <p>Toute contestation ou réclamation relative à l'exécution des prestations doit être transmise par écrit (courrier daté ou courriel) dans un délai maximal d’un an à compter de la réception des travaux.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 16 — Médiation de la consommation</h3>
+                        <p>À défaut de résolution amiable d'un litige suite à une réclamation écrite datée et restée infructueuse (réponse négative ou absence de réponse dans un délai de deux mois), le client consommateur peut saisir gratuitement le médiateur de la consommation désigné ci-après :</p>
+                        <p style="margin-top:0.4rem;"><strong>MÉDIATION CONSOMMATION DÉVELOPPEMENT / MED CONSO DEV</strong><br>
+                        Saisine en ligne : <a href="https://www.medconsodev.eu" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">www.medconsodev.eu</a><br>
+                        Adresse postale : Centre d’Affaires Stéphanois SAS, Immeuble L’Horizon – Esplanade de France, 3 rue J. Constant Milleret – 42000 SAINT-ÉTIENNE.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 17 — Droit applicable et juridiction</h3>
+                        <p>Les présentes Conditions Générales de Vente sont soumises exclusivement au droit français. À défaut d’accord amiable, tout litige sera porté devant les tribunaux compétents du ressort du siège social de l’entreprise.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 18 — Protection des données personnelles (RGPD)</h3>
+                        <p>Les données à caractère personnel collectées sont indispensables à la gestion des commandes, au suivi de la relation client et au respect des obligations légales. Elles sont conservées pendant la durée nécessaire à l'exécution des travaux et des garanties légales afférentes.</p>
+                        <p style="margin-top:0.4rem;">Conformément à la loi n° 78-17 du 6 janvier 1978 modifiée et au Règlement Européen n° 2016/679 (RGPD), le Client bénéficie d’un droit d’accès, de rectification, d’effacement, de portabilité et d’opposition au traitement des données le concernant. Ces droits s'exercent par demande écrite adressée à l'entreprise, accompagnée d'un justificatif d'identité valide. En cas de contestation non résolue, le client dispose du droit d'introduire une réclamation auprès de la CNIL.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        /* Gestion des Onglets */
+        function switchTab(tabId) {
+            document.getElementById('btn-mentions').classList.remove('active');
+            document.getElementById('btn-cgv').classList.remove('active');
+            document.getElementById('tab-mentions').classList.remove('active');
+            document.getElementById('tab-cgv').classList.remove('active');
+
+            if (tabId === 'mentions') {
+                document.getElementById('btn-mentions').classList.add('active');
+                document.getElementById('tab-mentions').classList.add('active');
+            } else {
+                document.getElementById('btn-cgv').classList.add('active');
+                document.getElementById('tab-cgv').classList.add('active');
+            }
+        }
+    </script>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}">
+    {% if site.url %}<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/{{ page.name }}" />{% endif %}
+
+    {% include favicons.html %}
+</head>
+<body>
+{% include header.html %}
+{{ content }}
+{% include footer.html %}
+{% include scripts.html %}
+</body>
+</html>
