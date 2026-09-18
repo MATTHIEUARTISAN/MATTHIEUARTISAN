@@ -3,11 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.description }}">
     {% if site.url %}<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/{{ page.name }}" />{% endif %}
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Matthieu Artisan">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.description }}">
+    {% if site.url %}<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}/{{ page.name }}">
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/matthieu-artisan.specialiste.png">{% endif %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:description" content="{{ page.description }}">
+    {% if site.url %}<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/matthieu-artisan.specialiste.png">{% endif %}
+
     {% include favicons.html %}
+
+    <!-- Données structurées (SEO local / fiche entreprise) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HVACBusiness",
+      "name": "Matthieu Artisan",
+      "legalName": "MATTHIEU ARTISAN EURL",
+      "description": "Entreprise artisanale et familiale spécialisée dans l'installation de poêles à bois et à granulés, la fumisterie (conduits de fumée, tubage, mise en conformité) et l'expertise technique, dans le Rhône.",
+      {% if site.url %}"url": "{{ site.url }}{{ site.baseurl }}/",
+      "image": "{{ site.url }}{{ site.baseurl }}/matthieu-artisan.specialiste.png",{% endif %}
+      "telephone": "+33478470662",
+      "email": "contact@matthieu-artisan.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Saint-Just-d'Avray",
+        "postalCode": "69870",
+        "addressCountry": "FR"
+      },
+      "areaServed": [
+        "Vallée d'Azergues", "Haut Beaujolais", "Beaujolais Vert",
+        "Région des Pierres Dorées", "Val d'Oingt", "Amplepuis", "Tarare",
+        "Valsonne", "Lentilly", "L'Arbresle", "La Tour de Salvagny",
+        "69870", "69380", "69620", "69550", "69170", "69210", "69890"
+      ]
+    }
+    </script>
 </head>
 <body>
 {% include header.html %}

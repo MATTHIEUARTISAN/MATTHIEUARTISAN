@@ -5,15 +5,28 @@ description: "Poêles à bois & granulés, fumisterie et expertise technique —
 
 # Repo : github.com/MATTHIEUARTISAN/MATTHIEUARTISAN
 # Comme ce repo ne s'appelle pas "MATTHIEUARTISAN.github.io", GitHub Pages le
-# publie comme "project page", à cette adresse :
-url: "https://matthieuartisan.github.io"
-baseurl: "/MATTHIEUARTISAN"
+# publie réellement (navigation, images, liens) à cette adresse :
+#   https://matthieuartisan.github.io/MATTHIEUARTISAN/
+# Rien dans le site n'utilise site.url/site.baseurl pour ses liens internes
+# (ils sont tous en chemin relatif), donc changer ces 2 valeurs ne casse rien
+# de la navigation : ça ne change QUE les balises SEO (canonical, Open Graph,
+# JSON-LD, sitemap.xml) ci-dessous.
+#
+# Choix fait pour le SEO : on cible déjà le domaine final matthieu-artisan.fr,
+# même s'il ne pointe pas encore vers ce dépôt (voir "Plus tard" plus bas dans
+# ce fichier). Tant que le domaine ne pointe pas ici, ces balises annoncent
+# une adresse qui ne sert pas encore ce site : ça ne casse rien, mais ça ne
+# sert à rien pour l'indexation tant que le CNAME n'est pas branché. Dès que
+# matthieu-artisan.fr pointera sur ce dépôt (étapes du README), tout est déjà
+# prêt, aucune balise à retoucher.
+url: "https://matthieu-artisan.fr"
+baseurl: ""
 
-# Le jour où matthieu-artisan.fr pointera sur ce dépôt (voir README.md),
-# remplace les deux lignes ci-dessus par :
-#   url: "https://matthieu-artisan.fr"
-#   baseurl: ""
-# (un domaine personnalisé sert toujours le site à la racine, sans préfixe)
+# Si tu préfères repasser temporairement sur l'adresse GitHub Pages (par
+# exemple pour indexer le site sous cette adresse en attendant de brancher le
+# domaine), remets :
+#   url: "https://matthieuartisan.github.io"
+#   baseurl: "/MATTHIEUARTISAN"
 
 # Pages/dossiers à ne jamais publier
 exclude:

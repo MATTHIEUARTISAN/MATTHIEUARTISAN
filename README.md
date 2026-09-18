@@ -20,8 +20,9 @@ de page, tu modifies un seul fichier (`_includes/header.html` ou
 `_includes/footer.html`) au lieu des 5 pages une par une.
 
 Les 3 pages "portail" (`index.html`, `expertise.html`, `expertise2.html`)
-ont un design entièrement différent et indépendant : elles n'ont pas été
-touchées, elles restent telles quelles.
+ont un design entièrement différent et indépendant : leur mise en page et
+leur contenu n'ont pas été touchés (seules les balises SEO de leur `<head>`
+ont été modifiées depuis, voir section **SEO** plus bas).
 
 Tout le contenu, tous les textes, tout le CSS et tout le JavaScript ont été
 vérifiés automatiquement pour être strictement identiques à tes fichiers
@@ -78,8 +79,8 @@ en place (même méthode que pour le reste : upload via l'interface web).
 ## URL du site
 
 Ton repo s'appelle `MATTHIEUARTISAN/MATTHIEUARTISAN`. Comme il ne s'appelle
-pas exactement `MATTHIEUARTISAN.github.io`, GitHub Pages le publie en
-"project page", à cette adresse (déjà configurée dans `_config.yml`) :
+pas exactement `MATTHIEUARTISAN.github.io`, GitHub Pages le publie
+réellement (navigation, images, liens) en "project page", à cette adresse :
 
 ```
 https://matthieuartisan.github.io/MATTHIEUARTISAN/
@@ -87,8 +88,13 @@ https://matthieuartisan.github.io/MATTHIEUARTISAN/
 
 C'est cette URL qui fonctionnera dès que tu auras activé GitHub Pages
 (étape 6 ci-dessus) — aucune configuration DNS n'est nécessaire pour ça,
-tous les liens et images du site s'adaptent automatiquement au préfixe
-`/MATTHIEUARTISAN/`.
+tous les liens et images du site sont en chemin relatif et fonctionnent
+sans rien à changer.
+
+`_config.yml` (`url`/`baseurl`) cible déjà `matthieu-artisan.fr`, mais ça ne
+sert qu'aux balises SEO (voir section suivante) — la navigation réelle du
+site n'en dépend pas, donc rien ne casse tant que le domaine n'est pas
+branché.
 
 ## Plus tard : brancher matthieu-artisan.fr
 
@@ -103,9 +109,50 @@ il faudra :
    contenant uniquement `matthieu-artisan.fr`.
 3. Renseigner ce même domaine dans **Settings → Pages → Custom domain**
    sur GitHub.
-4. Mettre à jour `_config.yml` : `url: "https://matthieu-artisan.fr"` et
-   `baseurl: ""` (un domaine personnalisé sert toujours le site à la
-   racine, sans préfixe `/MATTHIEUARTISAN/`).
 
-Dis-moi quand tu veux passer à cette étape, je t'accompagne pour les DNS
-et je prépare les fichiers.
+(`_config.yml` est déjà prêt pour cette étape, rien d'autre à changer.)
+
+Dis-moi quand tu veux passer à cette étape, je t'accompagne pour les DNS.
+
+## SEO
+
+Sans toucher au contenu visible des pages (textes, images, mise en page),
+voici ce qui a été ajouté/corrigé pour le référencement, sur les 8 pages du
+site :
+
+- **Balises meta par page** : titre et description déjà présents sur
+  chaque page, désormais complétés par `<meta name="robots" content="index, follow">`.
+- **Open Graph & Twitter Card** sur chaque page (aperçu correct quand le
+  lien est partagé sur les réseaux sociaux/WhatsApp/etc.) — absents
+  jusqu'ici sur 6 des 8 pages.
+- **URL canonique** (`<link rel="canonical">`) sur chaque page, pointant
+  vers `matthieu-artisan.fr` — absente jusqu'ici sur 6 des 8 pages, et
+  pointait vers un domaine de test (`mon.projet-tri.org`) sur `index.html`.
+- **Données structurées Schema.org** (`HVACBusiness`) sur chaque page :
+  nom, forme juridique, téléphone, e-mail, secteur (Saint-Just-d'Avray,
+  69870) et zone d'intervention — repris du site actuellement en ligne sur
+  `matthieu-artisan.fr`. Utile pour la fiche d'établissement Google et les
+  résultats enrichis. Avant : un unique bloc sur `index.html`, avec un
+  mauvais type d'activité ("Plumber"), un faux nom d'entreprise et une URL
+  de test (`votre-domaine.fr`).
+- **Favicons cassées corrigées** : `index.html` et `expertise.html`
+  pointaient vers des favicons hébergées sur un ancien domaine de test
+  (`mon.projet-tri.org`) — remplacé par les fichiers réels déjà présents
+  dans le dépôt (`favicon.png`, `favicon_expertise.png`, etc.).
+  `expertise2.html` n'avait carrément pas de favicon, ajoutée par cohérence.
+- **`expertise2.html`** (variante d'affichage de `expertise.html`, même
+  contenu) marquée `noindex` + canonique vers `expertise.html`, pour éviter
+  un problème de contenu dupliqué aux yeux de Google — sans rien changer à
+  la page elle-même, toujours accessible normalement.
+- **Titres de page obsolètes corrigés** : `partenaires.html` et
+  `mentions-legales.html` avaient un `<title>` resté sur "Plomberie &
+  Chauffage" (ancienne activité) au lieu de "Poêles à Bois & Fumisterie" —
+  ça n'apparaît pas dans le texte de la page, seulement dans l'onglet du
+  navigateur et les résultats Google.
+- **`sitemap.xml`** (liste des 7 pages indexables) et **`robots.txt`**
+  ajoutés à la racine, pour aider Google à découvrir et indexer le site.
+
+⚠️ Le téléphone (04 78 47 06 62), l'e-mail et la zone d'intervention
+utilisés dans les données structurées viennent du site actuellement en
+ligne sur `matthieu-artisan.fr` — dis-moi si quelque chose a changé
+entretemps (numéro, adresse, horaires) pour que je corrige.
