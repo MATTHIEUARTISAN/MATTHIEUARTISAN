@@ -17,7 +17,7 @@
 
     
     <style>
-        /* Palette de couleurs */
+/* Palette de couleurs */
         :root {
             --primary-blue: #1a67b3;       /* Bleu principal */
             --action-orange: #f97316;      /* Orange (Action) */
@@ -318,7 +318,6 @@
             transform: translateY(-2px);
         }
 
-
         .btn-call-number {
             font-weight: bold;
             font-size: 1.05rem;
@@ -487,13 +486,47 @@
         }
 
         /* Nouveaux styles pour la carte Google Iframe */
-        .zone-map-iframe {
+        .zone-map-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
             width: 100%;
             max-width: 320px;
+        }
+
+        /* La fenêtre Google My Maps intègre un bandeau (titre + bouton
+           "plein écran") qu'on ne peut pas retirer via l'URL : on masque ce
+           bandeau en le faisant dépasser au-dessus de la zone visible
+           (overflow: hidden sur le cadre + iframe remonté), et on propose un
+           vrai lien "plein écran" à la place du bouton caché. */
+        .zone-map-wrap {
+            width: 100%;
             height: 320px;
             border-radius: 6px;
             border: 1px solid #e2e8f0;
-            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .zone-map-wrap iframe {
+            display: block;
+            width: 100%;
+            height: calc(100% + 85px);
+            margin-top: -85px;
+            border: 0;
+        }
+
+        .zone-map-fullscreen-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .zone-map-fullscreen-link:hover {
+            text-decoration: underline;
         }
 
         .facebook-section {
@@ -550,7 +583,6 @@
             overflow-y: auto;
         }
 
-
         .close-btn {
             position: absolute;
             top: 1rem;
@@ -573,8 +605,11 @@
             align-items: center;
         }
 
-        .modal-body .zone-map-iframe {
+        .modal-body .zone-map-block {
             max-width: 340px;
+        }
+
+        .modal-body .zone-map-wrap {
             height: 340px;
         }
 
@@ -805,11 +840,13 @@
                 text-align: left;
             }
 
-            .zone-map-iframe, .modal-body .zone-map-iframe {
-                width: 100%;
+            .zone-map-block, .modal-body .zone-map-block {
                 max-width: 100%;
-                height: 300px;
                 margin: 0 auto;
+            }
+
+            .zone-map-wrap, .modal-body .zone-map-wrap {
+                height: 300px;
             }
 
             .btn-hero {
@@ -823,11 +860,9 @@
            }
 
         }
-    </style>
+</style>
 </head>
 <body>
-
-    <!-- En-tête -->
     <header>
         <div class="header-container">
             <div class="brand-group">
@@ -850,7 +885,7 @@
             <!-- Navigation -->
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="a-propos-de-nous.html" class="active-link">À propos de nous</a></li>
+                    <li><a href="a-propos-de-nous.html">À propos de nous</a></li>
                     <li><a href="certifications.html">Certifications</a></li>
                     <li><a href="partenaires.html">Partenaires</a></li>
                     <li><a href="mentions-legales.html">Mentions Légales</a></li>
@@ -1015,7 +1050,12 @@
                         </ul>
                     </div>
                     <!-- Remplacement par la carte Google Maps -->
-                    <iframe src="https://www.google.com/maps/d/embed?mid=1rgxS1s6y12xn9jq6JlqKxQK3U4kO9Ik" class="zone-map-iframe" title="Carte Secteurs d'intervention Matthieu Artisan" loading="lazy"></iframe>
+                    <div class="zone-map-block">
+                        <div class="zone-map-wrap">
+                            <iframe src="https://www.google.com/maps/d/embed?mid=1rgxS1s6y12xn9jq6JlqKxQK3U4kO9Ik" title="Carte Secteurs d'intervention Matthieu Artisan" loading="lazy"></iframe>
+                        </div>
+                        <a href="https://www.google.com/maps/d/viewer?mid=1rgxS1s6y12xn9jq6JlqKxQK3U4kO9Ik" target="_blank" rel="noopener noreferrer" class="zone-map-fullscreen-link">Voir la carte en plein écran ↗</a>
+                    </div>
                 </div>
 
                 <p class="zone-note">Pour les <strong class="badge-specialite">poêles de masse MELEZE</strong> et les <strong class="badge-specialite">missions d'expertise</strong> nous pouvons intervenir au-delà de ces secteurs.</p>
@@ -1065,31 +1105,16 @@
                     </p>
                 </div>
                 <!-- Remplacement par la carte Google Maps dans le Pop-up -->
-                <iframe src="https://www.google.com/maps/d/embed?mid=1rgxS1s6y12xn9jq6JlqKxQK3U4kO9Ik" class="zone-map-iframe" title="Carte Pop-up Secteurs d'intervention Matthieu Artisan" loading="lazy"></iframe>
+                <div class="zone-map-block">
+                    <div class="zone-map-wrap">
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1rgxS1s6y12xn9jq6JlqKxQK3U4kO9Ik" title="Carte Pop-up Secteurs d'intervention Matthieu Artisan" loading="lazy"></iframe>
+                    </div>
+                    <a href="https://www.google.com/maps/d/viewer?mid=1rgxS1s6y12xn9jq6JlqKxQK3U4kO9Ik" target="_blank" rel="noopener noreferrer" class="zone-map-fullscreen-link">Voir la carte en plein écran ↗</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Back To Top -->
-    <button id="backToTop" title="Retour en haut">
-        <svg viewBox="0 0 24 24">
-            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-        </svg>
-    </button>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-sector">
-                <strong>📍 Notre secteur d'intervention :</strong>
-                Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
-            </div>
-            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
-            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">À propos de nous</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
     <script>
         /* Pop-Up */
         function openModal() {
@@ -1106,38 +1131,7 @@
             }
         }
 
-        /* Hamburger */
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const navMenu = document.getElementById('nav-menu');
-
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerBtn.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        /* Back to Top */
-        const backToTopBtn = document.getElementById("backToTop");
-
-        window.addEventListener('scroll', function() {
-            if (window.innerWidth <= 834) {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add("visible");
-                } else {
-                    backToTopBtn.classList.remove("visible");
-                }
-            }
-        });
-
-        backToTopBtn.onclick = function() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        };
+        
 
         /* Carrousel d'Avis */
 let currentSlideIndex = 0;
@@ -1179,12 +1173,6 @@ function resetTimer() {
 startTimer();
     </script>
 
-<!-- Gestion du fondu de la vidéo hero : on ne l'affiche QUE pendant l'état "PLAYING".
-     YouTube affiche un gros bouton play/pause au centre dès que le lecteur n'est pas
-     en lecture (mise en mémoire tampon, pause, redémarrage de boucle...), et ce
-     bouton n'est PAS masquable via les paramètres d'URL (controls=0 ne cache que la
-     barre du bas). On masque donc la vidéo à chaque fois que cet état survient,
-     y compris à chaque redémarrage de la boucle (loop=1). -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
     function onYouTubeIframeAPIReady() {
@@ -1202,6 +1190,57 @@ startTimer();
         });
     }
 </script>
+    <!-- Back To Top -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-sector">
+                <strong>📍 Notre secteur d'intervention :</strong>
+                Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
+            </div>
+            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">À propos de nous</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
+        </div>
+    </footer>
+    <script>
+        /* Hamburger */
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        /* Back to Top */
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 834) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
 </body>
 </html>
