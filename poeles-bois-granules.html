@@ -555,6 +555,16 @@
         }
 
         /* Pop-up Modal */
+        .audit-link {
+            cursor: pointer;
+            text-decoration: underline dotted;
+            text-underline-offset: 3px;
+        }
+
+        .audit-link:hover {
+            color: var(--accent-turquoise);
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -885,7 +895,8 @@
             <!-- Navigation -->
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="a-propos-de-nous.html">À propos de nous</a></li>
+                    <li><a href="a-propos-de-nous.html">Qui sommes nous</a></li>
+                    <li><a href="galerie.html">Galerie</a></li>
                     <li><a href="certifications.html">Certifications</a></li>
                     <li><a href="partenaires.html">Partenaires</a></li>
                     <li><a href="mentions-legales.html">Mentions Légales</a></li>
@@ -976,7 +987,7 @@
                         </ul>
                     </li>
                     <li>
-                        AUDIT AVANT-VENTE IMMOBILIÈRE
+                        <span class="audit-link" onclick="openRsdtModal()" role="button" tabindex="0" onkeypress="if(event.key==='Enter')openRsdtModal()">AUDIT AVANT-VENTE IMMOBILIÈRE</span>
                         <ul>
                             <li>Diagnostic technique avant achat ou vente</li>
                         </ul>
@@ -1115,7 +1126,35 @@
         </div>
     </div>
 
+    <!-- Modal RSDT Article 31 -->
+    <div id="rsdtModal" class="modal" onclick="closeRsdtModalOnOuterClick(event)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeRsdtModal()">&times;</span>
+            <h2 style="color: var(--primary-blue);">Audit avant-vente immobilière</h2>
+            <div class="modal-body" style="display: block;">
+                <p style="font-size: 0.9rem; background: #f1f5f9; padding: 1rem; border-radius: 6px; font-style: italic;">
+                    Extrait RSDT, Article 31 : « À l'entrée en jouissance de chaque locataire ou occupant, le propriétaire doit s'assurer du bon état des conduits, appareils de chauffage ou de production d'eau chaude desservant les locaux mis à leur disposition (...). L'examinateur qui procède à ces examens doit remettre à l'utilisateur un certificat établissant l'étanchéité du conduit dans des conditions normales d'utilisation, sa régularité et suffisance de section, sa vacuité, sa continuité et son ramonage. Le résultat d'un examen révélant des défauts rendant dangereuse l'utilisation du conduit doit être communiqué à l'utilisateur et au propriétaire. »
+                </p>
+            </div>
+        </div>
+    </div>
+
     <script>
+        /* Pop-Up RSDT */
+        function openRsdtModal() {
+            document.getElementById('rsdtModal').style.display = 'flex';
+        }
+
+        function closeRsdtModal() {
+            document.getElementById('rsdtModal').style.display = 'none';
+        }
+
+        function closeRsdtModalOnOuterClick(event) {
+            if (event.target.id === 'rsdtModal') {
+                closeRsdtModal();
+            }
+        }
+
         /* Pop-Up */
         function openModal() {
             document.getElementById('zoneModal').style.display = 'flex';
@@ -1179,9 +1218,15 @@ startTimer();
         const iframe = document.getElementById('heroYtVideo');
         new YT.Player('heroYtVideo', {
             events: {
+                onReady: function(event) {
+                    /* Ralentit la vitesse de lecture de la vidéo de fond */
+                    event.target.setPlaybackRate(0.5);
+                },
                 onStateChange: function(event) {
                     if (event.data === YT.PlayerState.PLAYING) {
                         iframe.classList.add('is-playing');
+                        /* Sécurité : réapplique la vitesse réduite à chaque lecture/boucle */
+                        event.target.setPlaybackRate(0.5);
                     } else {
                         iframe.classList.remove('is-playing');
                     }
@@ -1205,7 +1250,8 @@ startTimer();
                 Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
             </div>
             <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
-            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">À propos de nous</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
+            <p style="margin-top: 0.5rem;">Nos devis sont <strong>gratuits</strong> et établis après une <strong>visite technique</strong> et un <strong>calcul de dimensionnement</strong> pour valider nos installations.</p>
+            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
         </div>
     </footer>
     <script>
