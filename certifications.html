@@ -280,6 +280,49 @@ nav_active: "certifications"
             line-height: 1.7;
         }
 
+        /* --- SYSTÈME D'ONGLETS --- */
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            padding: 0.7rem 1.3rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--navy-academic);
+            color: var(--navy-academic);
+        }
+
+        .tab-btn.active {
+            background-color: var(--navy-academic);
+            color: #ffffff;
+            border-color: var(--navy-academic);
+            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
         /* Registre des qualifications */
         .timeline-container {
             position: relative;
@@ -583,6 +626,18 @@ nav_active: "certifications"
             .timeline-card {
                 padding: 1rem 1.1rem;
             }
+
+            .tabs-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .tab-btn {
+                width: 100%;
+                border-radius: 6px;
+                text-align: center;
+                padding: 0.7rem 1rem;
+            }
         }
 </style>
 
@@ -602,8 +657,8 @@ nav_active: "certifications"
 
         <!-- Texte initial inchangé -->
         <div class="banner-content">
-            <h1>Nos Qualifications & Formations Suivies</h1>
-            <p>Du diplôme d'État aux spécialisations en fumisterie et génie climatique : un engagement de formation continue pour garantir la sécurité et la conformité de vos installations.</p>
+            <h1>Nos qualifications et formations</h1>
+            <p>Nous ne sommes pas parfaits mais nous sommes perfectibles ...</p>
         </div>
 
     </div>
@@ -613,10 +668,56 @@ nav_active: "certifications"
     <main class="main-container">
 
         <div class="intro-box">
-            Le respect rigoureux des documents techniques unifiés (DTU 24.1 / 24.2) et la maîtrise de la cadre juridique de la responsabilité professionnelle encadrent l'ensemble des travaux réalisés. Notre entreprise maintient ses qualifications à jour au travers de cycles d'habilitation continue auprès des organismes nationaux agréés (AGECIC, AXOP, Qualit'EnR, Cabinet Tessier Pichot).
+            Notre profession, quand bien même elle n'existe pas car non sanctionnée par un diplôme d'Etat (!) est règlementée par de nombreux textes techniques et législatifs. Soucieux de nous remettre en question et de ne jamais cesser d'apprendre, nous suivons annuellement des formations auprès d'organismes spécialistes et agréés.
         </div>
 
+        <!-- En-tête des Onglets -->
+        <div class="tabs-container">
+            <button class="tab-btn active" id="btn-specialistes" onclick="switchCertifTab('specialistes')">Formations spécialistes</button>
+            <button class="tab-btn" id="btn-fabricants" onclick="switchCertifTab('fabricants')">Formations fabricants (Matthieu)</button>
+            <button class="tab-btn" id="btn-diplomantes" onclick="switchCertifTab('diplomantes')">Formations diplômantes</button>
+            <button class="tab-btn" id="btn-experiences" onclick="switchCertifTab('experiences')">Expériences professionnelles</button>
+        </div>
+
+        <!-- ONGLET 1 : FORMATIONS SPÉCIALISTES -->
+        <div id="tab-specialistes" class="tab-panel active">
         <div class="timeline-container">
+
+            <!-- 0a. AXOP AX10 - Marion (Juin 2026) -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">AXOP — AX10</span>
+                        <span class="badge-date">Juin 2026</span>
+                    </div>
+                    <h3>Savoir expertiser des ouvrages de fumisterie</h3>
+                    <p>Identifier un désordre d'installation, comprendre une pathologie de combustion, en déduire la criticité (incendie, intoxication) et rédiger un rapport d'expertise.</p>
+                    <div class="card-actions">
+                        <button class="btn-doc" onclick="openDocModal('Diplomes/attestation-formation-ax10-expertise-fumisterie-marion-hadi-2026.jpg')">
+                            <svg viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+                            Attestation Marion H.
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 0b. AXOP AX30 - Matthieu (Avril 2026) -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">AXOP — AX30</span>
+                        <span class="badge-date">Avril 2026</span>
+                    </div>
+                    <h3>Entretien et dépannage de poêles à granulés</h3>
+                    <p>Composants, paramètres de combustion, diagnostic de panne, réglage et réparation des poêles à granulés.</p>
+                    <div class="card-actions">
+                        <button class="btn-doc" onclick="openDocModal('Diplomes/attestation-formation-ax30-entretien-depannage-poele-granules-matthieu-hadi-2026.jpg')">
+                            <svg viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+                            Attestation Matthieu H.
+                        </button>
+                    </div>
+                </div>
+            </div>
 
             <!-- 1. AGECIC AG5 (Juin 2025) -->
             <div class="timeline-item highlight">
@@ -793,19 +894,272 @@ nav_active: "certifications"
                 </div>
             </div>
 
-            <!-- 11. CAP / CMA (1993 - 1996) -->
+        </div>
+        </div>
+        <!-- FIN ONGLET 1 -->
+
+        <!-- ONGLET 2 : FORMATIONS FABRICANTS (MATTHIEU) -->
+        <div id="tab-fabricants" class="tab-panel">
+        <div class="timeline-container">
+
+            <!-- 2001 -->
             <div class="timeline-item">
                 <div class="timeline-card">
                     <div class="card-header">
-                        <span class="badge-organism">Éducation Nationale & CMA</span>
-                        <span class="badge-date">1993 – 1996</span>
+                        <span class="badge-organism">WEISHAUPT</span>
+                        <span class="badge-date">2001</span>
                     </div>
-                    <h3>Qualifications Métier Initiales & Immatriculation CMA</h3>
-                    <p>Certificat d'Aptitude Professionnelle (CAP) Sanitaire & Thermique (1993-1996). Immatriculation officielle au Répertoire des Métiers de la Chambre de Métiers et de l'Artisanat du Rhône (N° <span>483</span> <span>812</span> <span>145</span> RM 69).</p>
+                    <h3>Formation brûleurs fioul</h3>
+                </div>
+            </div>
+
+            <!-- 2003 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">VIESSMANN</span>
+                        <span class="badge-date">2003</span>
+                    </div>
+                    <h3>Formation chaudières fioul et gaz</h3>
+                </div>
+            </div>
+
+            <!-- 2006 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">TRYBA SOLAR</span>
+                        <span class="badge-date">2006</span>
+                    </div>
+                    <h3>Formation chaudières granulés de bois</h3>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">SAUNIER DUVAL</span>
+                        <span class="badge-date">2006</span>
+                    </div>
+                    <h3>Formation chaudières gaz</h3>
+                    <p>Fabricant français de chaudières gaz.</p>
+                </div>
+            </div>
+
+            <!-- 2009/2010 -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">PIROUX INDUSTRIE</span>
+                        <span class="badge-date">2009 / 2010</span>
+                    </div>
+                    <h3>Formation puis soutien technique</h3>
+                    <p>1<sup>er</sup> fabricant français de poêles à granulés.</p>
+                </div>
+            </div>
+
+            <!-- 2010 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">HOBEN</span>
+                        <span class="badge-date">2010</span>
+                    </div>
+                    <h3>Formation niveau 1 et niveau 2</h3>
+                </div>
+            </div>
+
+            <!-- 2011 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">CTC</span>
+                        <span class="badge-date">2011</span>
+                    </div>
+                    <h3>Formation chaudières bois</h3>
+                </div>
+            </div>
+
+            <!-- 2014 -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">RGE</span>
+                        <span class="badge-date">2014</span>
+                    </div>
+                    <h3>Formations RGE Qualibois Air, Qualipac & Qualibat</h3>
+                    <p>Formation RGE Qualibois Air, formation RGE Qualipac, formation RGE Qualibat.</p>
+                </div>
+            </div>
+
+            <!-- 2016 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">RGE</span>
+                        <span class="badge-date">2016</span>
+                    </div>
+                    <h3>Formation RGE Qualibois Eau</h3>
+                </div>
+            </div>
+
+            <!-- 2017 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">COGRA — HARMANN</span>
+                        <span class="badge-date">2017</span>
+                    </div>
+                    <h3>Formation COGRA pour la marque HARMANN</h3>
+                    <p>Revendeur exclusif du fabricant américain.</p>
+                </div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">PALAZZETTI</span>
+                        <span class="badge-date">2022</span>
+                    </div>
+                    <h3>Formation poêles à granulés</h3>
+                </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">MELEZE</span>
+                        <span class="badge-date">2024</span>
+                    </div>
+                    <h3>Formation MELEZE</h3>
+                    <p>Fabricant français de poêles de masse.</p>
+                </div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">RGE — KWB</span>
+                        <span class="badge-date">2025</span>
+                    </div>
+                    <h3>Formation RGE Qualisol & échanges techniques KWB</h3>
+                    <p>Formation RGE Qualisol. Échanges techniques avec KWB, fabricant Autrichien de chaudières bois.</p>
+                </div>
+            </div>
+
+            <!-- 2026 -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">TRAINI — HARGASSNER</span>
+                        <span class="badge-date">2026</span>
+                    </div>
+                    <h3>Formation TRAINI & échanges techniques HARGASSNER</h3>
+                    <p>Formation chez TRAINI, revendeur spécialiste des poêles à bois et cuisinières WEKOS et PERTINGER. Échanges techniques avec HARGASSNER, fabricant de chaudières bois.</p>
                 </div>
             </div>
 
         </div>
+        </div>
+        <!-- FIN ONGLET 2 -->
+
+        <!-- ONGLET 3 : FORMATIONS DIPLÔMANTES -->
+        <div id="tab-diplomantes" class="tab-panel">
+        <div class="timeline-container">
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">Matthieu — Académie de Lyon</span>
+                        <span class="badge-date">Juillet 1995</span>
+                    </div>
+                    <h3>CAP Installations Sanitaires (Plomberie)</h3>
+                    <div class="card-actions">
+                        <button class="btn-doc" onclick="openDocModal('Diplomes/diplome-cap-installations-sanitaires-plomberie-matthieu-hadi-1995.jpg')">
+                            <svg viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+                            Voir le diplôme
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">Matthieu — Académie de Lyon</span>
+                        <span class="badge-date">Juillet 1996</span>
+                    </div>
+                    <h3>CAP Installations Thermiques (Chauffage)</h3>
+                    <div class="card-actions">
+                        <button class="btn-doc" onclick="openDocModal('Diplomes/diplome-cap-installations-thermiques-chauffage-matthieu-hadi-1996.jpg')">
+                            <svg viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+                            Voir le diplôme
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">Marion — IUT A Lyon 1</span>
+                        <span class="badge-date">2004 – 2005</span>
+                    </div>
+                    <h3>DUT Gestion des Entreprises et des Administrations</h3>
+                    <p>Option Ressources Humaines.</p>
+                    <div class="card-actions">
+                        <button class="btn-doc" onclick="openDocModal('Diplomes/diplome-dut-gestion-entreprises-administrations-marion-hadi-2005.jpg')">
+                            <svg viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+                            Voir le diplôme
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Immatriculation CMA (info conservée depuis la fiche initiale) -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">Chambre de Métiers et de l'Artisanat du Rhône</span>
+                        <span class="badge-date">1993 – 1996</span>
+                    </div>
+                    <h3>Immatriculation officielle CMA</h3>
+                    <p>Immatriculation officielle au Répertoire des Métiers de la Chambre de Métiers et de l'Artisanat du Rhône (N° <span>483</span> <span>812</span> <span>145</span> RM 69).</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        <!-- FIN ONGLET 3 -->
+
+        <!-- ONGLET 4 : EXPÉRIENCES PROFESSIONNELLES -->
+        <div id="tab-experiences" class="tab-panel">
+        <div class="timeline-container">
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-date">1997 – 1998</span>
+                    </div>
+                    <h3>Plomberie, chauffage particuliers et industriels</h3>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-date">1998 – 2005</span>
+                    </div>
+                    <h3>Maintenance et dépannage chauffage gaz, fioul et bois</h3>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        <!-- FIN ONGLET 4 -->
 
     </main>
 
@@ -816,6 +1170,15 @@ nav_active: "certifications"
     </div>
 
     <script>
+        /* Changement d'onglets */
+        function switchCertifTab(tabId) {
+            document.querySelectorAll('.tabs-container .tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.main-container > .tab-panel').forEach(panel => panel.classList.remove('active'));
+
+            document.getElementById('btn-' + tabId).classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
         /* Lightbox Image Document */
         function openDocModal(url) {
             const modal = document.getElementById('docViewerModal');

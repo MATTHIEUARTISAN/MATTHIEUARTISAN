@@ -897,7 +897,6 @@
                 <ul id="nav-menu">
                     <li><a href="a-propos-de-nous.html">Qui sommes nous</a></li>
                     <li><a href="galerie.html">Galerie</a></li>
-                    <li><a href="certifications.html">Certifications</a></li>
                     <li><a href="partenaires.html">Partenaires</a></li>
                     <li><a href="mentions-legales.html">Mentions Légales</a></li>
                 </ul>
@@ -1081,6 +1080,7 @@
             style="border:none; overflow:hidden; border-radius:6px;" 
             scrolling="no" 
             frameborder="0" 
+            loading="lazy"
             allowfullscreen="true" 
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
     </iframe>
@@ -1219,14 +1219,14 @@ startTimer();
         new YT.Player('heroYtVideo', {
             events: {
                 onReady: function(event) {
-                    /* Ralentit la vitesse de lecture de la vidéo de fond */
-                    event.target.setPlaybackRate(0.5);
+                    /* Ralentit légèrement la vitesse de lecture de la vidéo de fond */
+                    event.target.setPlaybackRate(0.75);
                 },
                 onStateChange: function(event) {
                     if (event.data === YT.PlayerState.PLAYING) {
                         iframe.classList.add('is-playing');
                         /* Sécurité : réapplique la vitesse réduite à chaque lecture/boucle */
-                        event.target.setPlaybackRate(0.5);
+                        event.target.setPlaybackRate(0.75);
                     } else {
                         iframe.classList.remove('is-playing');
                     }
@@ -1251,7 +1251,7 @@ startTimer();
             </div>
             <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
             <p style="margin-top: 0.5rem;">Nos devis sont <strong>gratuits</strong> et établis après une <strong>visite technique</strong> et un <strong>calcul de dimensionnement</strong> pour valider nos installations.</p>
-            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
+            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
         </div>
     </footer>
     <script>
