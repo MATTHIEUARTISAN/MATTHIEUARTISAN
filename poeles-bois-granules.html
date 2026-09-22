@@ -684,6 +684,41 @@
             margin-bottom: 0.4rem;
         }
 
+        .footer-seo-zones {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-seo-zones summary {
+            cursor: pointer;
+            color: #9cdbfb;
+            font-size: 0.8rem;
+            list-style: none;
+        }
+
+        .footer-seo-zones summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .footer-seo-zones summary::after {
+            content: " \25BE";
+        }
+
+        .footer-seo-zones[open] summary::after {
+            content: " \25B4";
+        }
+
+        .footer-seo-zones p {
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
         footer a {
             color: #9cdbfb;
             text-decoration: none;
@@ -927,8 +962,8 @@
         <p class="hero-subtitle">Pose • Mise en conformité • Conseils & Diagnostic</p>
         <p class="location-tag">Vallée d’Azergues & secteurs limitrophes</p>
         <p>MATTHIEU ARTISAN, c’est Matthieu et Marion, un duo complémentaire passionnés de leur métier ! Marion vous accompagne dans l’élaboration des devis tandis que Matthieu intervient sur le terrain pour les visites techniques et les installations.</p>
-        <p>L’un comme l’autre, nous aimons prendre le temps de répondre à vos questions et trouver ensemble le poêle qui conviendra à vos besoins, votre budget et vos goûts esthétiques.</p>
-        <p>N’hésitez pas à nous contacter pour échanger sur votre projet ou sur votre problème technique !</p>
+        <p>L’un comme l’autre, nous aimons prendre le temps de répondre à vos questions et trouver ensemble la solution pour allier vos besoins aux règles de la profession.</p>
+        <p>N’hésitez pas à nous contacter pour échanger sur votre projet ou votre problème technique !</p>
         <div class="hero-buttons">
             <a href="tel:0478470662" class="btn-hero btn-call">
                 <span class="btn-call-title">Appeler nous au</span>
@@ -953,23 +988,23 @@
 
                 <p>Fort de plusieurs décennies d'expérience, nous mettons notre savoir-faire au service de vos projets d'installation de poêles à bois et granulés, ainsi que de la mise en conformité de vos conduits de cheminée.</p>
 
-                <p>Chaque projet étant différent, nous prenons le temps d'échanger avec vous pour comprendre vos besoins, vous conseiller et trouver la solution la plus adaptée à votre situation.</p>
+                <p>Chaque habitation possède ses spécificités : c'est pourquoi nous accordons une importance primordiale au diagnostic initial. De la réflexion sur votre projet jusqu'à sa réalisation, nous vous guidons vers les solutions règlementaires les plus performantes, économiques et adaptées à votre mode de vie.</p>
 
-                <p>Chaque habitation possède ses spécificités : c'est pourquoi nous accordons une importance primordiale au diagnostic initial. De la réflexion sur votre projet jusqu'à la mise en service finale, nous vous guidons vers les solutions les plus performantes, économiques et adaptées à votre mode de vie.</p>
+                <p>Nos devis sont gratuits et établis après une visite technique et un calcul de dimensionnement pour valider nos installations.</p>
                 
                 <ul class="services-list">
                     <li>
                         INSTALLATION DE POÊLES
                         <ul>
                             <li>Poêles à bois & granulés</li>
-                            <li>Pose de <strong class="badge-specialite">Poêles de masse MELÈZE</strong></li>
+                            <li>Pose de Poêles de masse MELÈZE</li>
                         </ul>
                     </li>
                     <li>
-                        CONDUITS & TUBAGE
+                        CONDUITS & TUBAGES
                         <ul>
                             <li>Création de conduits de fumées</li>
-                            <li>Tubage & gainage sécurisé</li>
+                            <li>Tubages flexible des conduits existants</li>
                         </ul>
                     </li>
                     <li>
@@ -1246,12 +1281,15 @@ startTimer();
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-sector">
-                <strong>📍 Notre secteur d'intervention :</strong>
-                Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
-            </div>
             <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
-            <p style="margin-top: 0.5rem;">Nos devis sont <strong>gratuits</strong> et établis après une <strong>visite technique</strong> et un <strong>calcul de dimensionnement</strong> pour valider nos installations.</p>
+
+            <!-- Liste étendue de communes/codes postaux, repliée par défaut : présente dans
+                 le HTML pour le référencement local (SEO), sans alourdir visuellement le pied
+                 de page pour le visiteur. -->
+            <details class="footer-seo-zones">
+                <summary>Zones d'intervention détaillées</summary>
+                <p>69870 Lamure - 69620 Le Bois d'Oingt / Theizé - 69170 Tarare / Valsonne - 69550 Amplepuis / Ronno - 69490 Pontcharra / Sarcey - 69210 L'Arbresle / Lentilly - 69380 Lozanne / Chessy - 69480 Anse / Chazay - 69890 La Tour de Salvagny - 69760 Limonest - 69570 Dardilly - 69400 Villefranche / Gleizé - 42630 Régny - 42470 St Symphorien de Lay</p>
+            </details>
             <p style="margin-top: 0.5rem;"><a href="qui-sommes-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="partenaires.html">(Partenaires)</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
         </div>
     </footer>
