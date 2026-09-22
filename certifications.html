@@ -1,9 +1,64 @@
----
-layout: default
-title: "Certifications & Habilitations | Matthieu Artisan"
-description: "Registre officiel des qualifications, certifications RGE Qualibois et habilitations techniques de l'entreprise Matthieu Artisan."
-nav_active: "certifications"
----
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Certifications & Habilitations | Matthieu Artisan</title>
+    <meta name="description" content="Registre officiel des qualifications, certifications RGE Qualibois et habilitations techniques de l'entreprise Matthieu Artisan.">
+    <link rel="canonical" href="https://matthieu-artisan.fr/certifications.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Matthieu Artisan">
+    <meta property="og:title" content="Certifications & Habilitations | Matthieu Artisan">
+    <meta property="og:description" content="Registre officiel des qualifications, certifications RGE Qualibois et habilitations techniques de l'entreprise Matthieu Artisan.">
+    <meta property="og:url" content="https://matthieu-artisan.fr/certifications.html">
+    <meta property="og:image" content="https://matthieu-artisan.fr/matthieu-artisan.specialiste.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Certifications & Habilitations | Matthieu Artisan">
+    <meta name="twitter:description" content="Registre officiel des qualifications, certifications RGE Qualibois et habilitations techniques de l'entreprise Matthieu Artisan.">
+    <meta name="twitter:image" content="https://matthieu-artisan.fr/matthieu-artisan.specialiste.png">
+
+    <!-- Favicon classique (Chrome, Firefox, Safari desktop) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Spécifique Apple / Safari (iOS & MacOS) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Matthieu Artisan">
+
+    <!-- Données structurées (SEO local / fiche entreprise) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HVACBusiness",
+      "name": "Matthieu Artisan",
+      "legalName": "MATTHIEU ARTISAN EURL",
+      "description": "Registre des certifications, habilitations et formations continues de l'entreprise Matthieu Artisan, spécialiste des poêles à bois et granulés dans le Rhône.",
+      "url": "https://matthieu-artisan.fr/certifications.html",
+      "image": "https://matthieu-artisan.fr/matthieu-artisan.specialiste.png",
+      "telephone": "+33478470662",
+      "email": "contact@matthieu-artisan.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Saint-Just-d'Avray",
+        "postalCode": "69870",
+        "addressCountry": "FR"
+      },
+      "areaServed": [
+        "Vallée d'Azergues", "Haut Beaujolais", "Beaujolais Vert",
+        "Région des Pierres Dorées", "Val d'Oingt", "Amplepuis", "Tarare",
+        "Valsonne", "Lentilly", "L'Arbresle", "La Tour de Salvagny",
+        "69870", "69380", "69620", "69550", "69170", "69210", "69890"
+      ]
+    }
+    </script>
+
 <style>
 /* Palette de couleurs officielle & académique */
         :root {
@@ -283,7 +338,7 @@ nav_active: "certifications"
         /* --- SYSTÈME D'ONGLETS --- */
         .tabs-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: center;
             gap: 0.6rem;
             margin-bottom: 2rem;
@@ -292,15 +347,17 @@ nav_active: "certifications"
         }
 
         .tab-btn {
+            flex: 1 1 0;
             background: #ffffff;
             border: 2px solid #cbd5e1;
-            padding: 0.7rem 1.3rem;
-            font-size: 0.95rem;
+            padding: 0.7rem 0.9rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--text-color);
             cursor: pointer;
             border-radius: 8px 8px 0 0;
             transition: all 0.25s ease;
+            white-space: nowrap;
         }
 
         .tab-btn:hover {
@@ -637,9 +694,273 @@ nav_active: "certifications"
                 border-radius: 6px;
                 text-align: center;
                 padding: 0.7rem 1rem;
+                white-space: normal;
+            }
+        }
+
+        /* --- EN-TÊTE ALTERNATIF "EXPERTISE" (affiché uniquement en provenance d'expertise.html) --- */
+        #header-expertise {
+            display: none;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #4A80AA;
+        }
+
+        #header-expertise .exp-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        #header-expertise .exp-brand-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        #header-expertise .exp-logo-link {
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        #header-expertise .exp-logo-link img {
+            display: block;
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        #header-expertise .exp-header-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px;
+            border-left: 2px solid #4A80AA;
+            padding-left: 0.8rem;
+            line-height: 1.25;
+        }
+
+        #header-expertise .exp-header-location-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0E2A52;
+            white-space: nowrap;
+            margin-bottom: 6px;
+        }
+
+        #header-expertise .exp-header-phone-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #4A80AA;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        #header-expertise .exp-header-phone-link:hover {
+            color: #356083;
+        }
+
+        /* Navigation (même style liste que le header spécialiste) */
+        #header-expertise nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        #header-expertise nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        #header-expertise nav a:hover {
+            color: #4A80AA;
+        }
+
+        #header-expertise .exp-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        #header-expertise .exp-hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: #0E2A52;
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        #header-expertise .exp-hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        #header-expertise .exp-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #header-expertise .exp-hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        @media (max-width: 834px) {
+            #header-expertise .exp-header-container {
+                position: relative;
+                padding: 0.2rem 1rem;
+                justify-content: space-between;
+            }
+
+            #header-expertise .exp-brand-group {
+                gap: 0.5rem;
+                max-width: calc(100% - 40px);
+            }
+
+            #header-expertise .exp-logo-link img {
+                height: 58px;
+            }
+
+            #header-expertise .exp-header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
+
+            #header-expertise .exp-header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
+
+            #header-expertise .exp-header-phone-link {
+                font-size: 0.75rem;
+            }
+
+            #header-expertise .exp-hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            #header-expertise nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 0.5rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            #header-expertise nav ul.active {
+                display: flex;
+            }
+
+            #header-expertise nav ul li {
+                text-align: center;
+            }
+
+            #header-expertise nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
             }
         }
 </style>
+</head>
+<body>
+
+    <!-- En-tête "spécialiste" (identique à poeles-bois-granules.html / qui-sommes-nous.html / galerie.html / partenaires.html / mentions-legales.html) — affiché par défaut -->
+    <header id="header-specialiste">
+        <div class="header-container">
+            <div class="brand-group">
+                <a href="index.html" class="logo">
+                    <img src="matthieu-artisan.specialiste.png" alt="Matthieu Artisan - Plomberie & Chauffage" width="1150" height="502">
+                </a>
+                <div class="header-info-block">
+                    <span class="header-location-tag">📍 Vallée d'Azergues (69)</span>
+                    <a href="tel:0478470662" class="header-phone-link">📞 04 78 470 662</a>
+                </div>
+            </div>
+
+            <!-- Bouton Hamburger -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="qui-sommes-nous.html">Qui sommes nous</a></li>
+                    <li><a href="galerie.html">Galerie</a></li>
+                    <li><a href="partenaires.html">Partenaires</a></li>
+                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- En-tête "expertise" (identique à expertise.html) — affiché uniquement si l'on vient de expertise.html -->
+    <header id="header-expertise">
+        <div class="exp-header-container">
+            <div class="exp-brand-group">
+                <a href="index.html" class="exp-logo-link">
+                    <img src="matthieu-artisan.expertise.png" alt="Matthieu Artisan - Expertise" width="1140" height="460">
+                </a>
+                <div class="exp-header-info-block">
+                    <span class="exp-header-location-tag">📍 Dans toute la France</span>
+                    <a href="tel:0478470662" class="exp-header-phone-link">📞 04 78 470 662</a>
+                </div>
+            </div>
+
+            <!-- Bouton Hamburger -->
+            <button class="exp-hamburger" id="hamburger-btn-exp" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav>
+                <ul id="nav-menu-exp">
+                    <li><a href="expertise.html">Expertise & Audits</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        /* Bascule d'en-tête selon la provenance : ?from=expertise affiche l'en-tête "expertise" */
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('from') === 'expertise') {
+                document.getElementById('header-specialiste').style.display = 'none';
+                document.getElementById('header-expertise').style.display = 'block';
+            }
+        })();
+    </script>
 
 <!-- Bannière de la page avec logos RGE à gauche (encadrés individuels) -->
 <section class="page-banner">
@@ -674,7 +995,7 @@ nav_active: "certifications"
         <!-- En-tête des Onglets -->
         <div class="tabs-container">
             <button class="tab-btn active" id="btn-specialistes" onclick="switchCertifTab('specialistes')">Formations spécialistes</button>
-            <button class="tab-btn" id="btn-fabricants" onclick="switchCertifTab('fabricants')">Formations fabricants (Matthieu)</button>
+            <button class="tab-btn" id="btn-fabricants" onclick="switchCertifTab('fabricants')">Formations fabricants</button>
             <button class="tab-btn" id="btn-diplomantes" onclick="switchCertifTab('diplomantes')">Formations diplômantes</button>
             <button class="tab-btn" id="btn-experiences" onclick="switchCertifTab('experiences')">Expériences professionnelles</button>
         </div>
@@ -902,154 +1223,6 @@ nav_active: "certifications"
         <div id="tab-fabricants" class="tab-panel">
         <div class="timeline-container">
 
-            <!-- 2001 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">WEISHAUPT</span>
-                        <span class="badge-date">2001</span>
-                    </div>
-                    <h3>Formation brûleurs fioul</h3>
-                </div>
-            </div>
-
-            <!-- 2003 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">VIESSMANN</span>
-                        <span class="badge-date">2003</span>
-                    </div>
-                    <h3>Formation chaudières fioul et gaz</h3>
-                </div>
-            </div>
-
-            <!-- 2006 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">TRYBA SOLAR</span>
-                        <span class="badge-date">2006</span>
-                    </div>
-                    <h3>Formation chaudières granulés de bois</h3>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">SAUNIER DUVAL</span>
-                        <span class="badge-date">2006</span>
-                    </div>
-                    <h3>Formation chaudières gaz</h3>
-                    <p>Fabricant français de chaudières gaz.</p>
-                </div>
-            </div>
-
-            <!-- 2009/2010 -->
-            <div class="timeline-item highlight">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">PIROUX INDUSTRIE</span>
-                        <span class="badge-date">2009 / 2010</span>
-                    </div>
-                    <h3>Formation puis soutien technique</h3>
-                    <p>1<sup>er</sup> fabricant français de poêles à granulés.</p>
-                </div>
-            </div>
-
-            <!-- 2010 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">HOBEN</span>
-                        <span class="badge-date">2010</span>
-                    </div>
-                    <h3>Formation niveau 1 et niveau 2</h3>
-                </div>
-            </div>
-
-            <!-- 2011 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">CTC</span>
-                        <span class="badge-date">2011</span>
-                    </div>
-                    <h3>Formation chaudières bois</h3>
-                </div>
-            </div>
-
-            <!-- 2014 -->
-            <div class="timeline-item highlight">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">RGE</span>
-                        <span class="badge-date">2014</span>
-                    </div>
-                    <h3>Formations RGE Qualibois Air, Qualipac & Qualibat</h3>
-                    <p>Formation RGE Qualibois Air, formation RGE Qualipac, formation RGE Qualibat.</p>
-                </div>
-            </div>
-
-            <!-- 2016 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">RGE</span>
-                        <span class="badge-date">2016</span>
-                    </div>
-                    <h3>Formation RGE Qualibois Eau</h3>
-                </div>
-            </div>
-
-            <!-- 2017 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">COGRA — HARMANN</span>
-                        <span class="badge-date">2017</span>
-                    </div>
-                    <h3>Formation COGRA pour la marque HARMANN</h3>
-                    <p>Revendeur exclusif du fabricant américain.</p>
-                </div>
-            </div>
-
-            <!-- 2022 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">PALAZZETTI</span>
-                        <span class="badge-date">2022</span>
-                    </div>
-                    <h3>Formation poêles à granulés</h3>
-                </div>
-            </div>
-
-            <!-- 2024 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">MELEZE</span>
-                        <span class="badge-date">2024</span>
-                    </div>
-                    <h3>Formation MELEZE</h3>
-                    <p>Fabricant français de poêles de masse.</p>
-                </div>
-            </div>
-
-            <!-- 2025 -->
-            <div class="timeline-item highlight">
-                <div class="timeline-card">
-                    <div class="card-header">
-                        <span class="badge-organism">RGE — KWB</span>
-                        <span class="badge-date">2025</span>
-                    </div>
-                    <h3>Formation RGE Qualisol & échanges techniques KWB</h3>
-                    <p>Formation RGE Qualisol. Échanges techniques avec KWB, fabricant Autrichien de chaudières bois.</p>
-                </div>
-            </div>
-
             <!-- 2026 -->
             <div class="timeline-item highlight">
                 <div class="timeline-card">
@@ -1062,6 +1235,153 @@ nav_active: "certifications"
                 </div>
             </div>
 
+<!-- 2025 -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">RGE — KWB</span>
+                        <span class="badge-date">2025</span>
+                    </div>
+                    <h3>Formation RGE Qualisol & échanges techniques KWB</h3>
+                    <p>Formation RGE Qualisol. Échanges techniques avec KWB, fabricant Autrichien de chaudières bois.</p>
+                </div>
+            </div>
+
+<!-- 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">MELEZE</span>
+                        <span class="badge-date">2024</span>
+                    </div>
+                    <h3>Formation MELEZE</h3>
+                    <p>Fabricant français de poêles de masse.</p>
+                </div>
+            </div>
+
+<!-- 2022 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">PALAZZETTI</span>
+                        <span class="badge-date">2022</span>
+                    </div>
+                    <h3>Formation poêles à granulés</h3>
+                </div>
+            </div>
+
+<!-- 2017 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">COGRA — HARMANN</span>
+                        <span class="badge-date">2017</span>
+                    </div>
+                    <h3>Formation COGRA pour la marque HARMANN</h3>
+                    <p>Revendeur exclusif du fabricant américain.</p>
+                </div>
+            </div>
+
+<!-- 2016 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">RGE</span>
+                        <span class="badge-date">2016</span>
+                    </div>
+                    <h3>Formation RGE Qualibois Eau</h3>
+                </div>
+            </div>
+
+<!-- 2014 -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">RGE</span>
+                        <span class="badge-date">2014</span>
+                    </div>
+                    <h3>Formations RGE Qualibois Air, Qualipac & Qualibat</h3>
+                    <p>Formation RGE Qualibois Air, formation RGE Qualipac, formation RGE Qualibat.</p>
+                </div>
+            </div>
+
+<!-- 2011 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">CTC</span>
+                        <span class="badge-date">2011</span>
+                    </div>
+                    <h3>Formation chaudières bois</h3>
+                </div>
+            </div>
+
+<!-- 2010 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">HOBEN</span>
+                        <span class="badge-date">2010</span>
+                    </div>
+                    <h3>Formation niveau 1 et niveau 2</h3>
+                </div>
+            </div>
+
+<!-- 2009/2010 -->
+            <div class="timeline-item highlight">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">PIROUX INDUSTRIE</span>
+                        <span class="badge-date">2009 / 2010</span>
+                    </div>
+                    <h3>Formation puis soutien technique</h3>
+                    <p>1<sup>er</sup> fabricant français de poêles à granulés.</p>
+                </div>
+            </div>
+
+<div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">SAUNIER DUVAL</span>
+                        <span class="badge-date">2006</span>
+                    </div>
+                    <h3>Formation chaudières gaz</h3>
+                    <p>Fabricant français de chaudières gaz.</p>
+                </div>
+            </div>
+
+<!-- 2006 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">TRYBA SOLAR</span>
+                        <span class="badge-date">2006</span>
+                    </div>
+                    <h3>Formation chaudières granulés de bois</h3>
+                </div>
+            </div>
+
+<!-- 2003 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">VIESSMANN</span>
+                        <span class="badge-date">2003</span>
+                    </div>
+                    <h3>Formation chaudières fioul et gaz</h3>
+                </div>
+            </div>
+
+<!-- 2001 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="badge-organism">WEISHAUPT</span>
+                        <span class="badge-date">2001</span>
+                    </div>
+                    <h3>Formation brûleurs fioul</h3>
+                </div>
+            </div>
         </div>
         </div>
         <!-- FIN ONGLET 2 -->
@@ -1073,12 +1393,13 @@ nav_active: "certifications"
             <div class="timeline-item">
                 <div class="timeline-card">
                     <div class="card-header">
-                        <span class="badge-organism">Matthieu — Académie de Lyon</span>
-                        <span class="badge-date">Juillet 1995</span>
+                        <span class="badge-organism">Marion — IUT A Lyon 1</span>
+                        <span class="badge-date">2004 – 2005</span>
                     </div>
-                    <h3>CAP Installations Sanitaires (Plomberie)</h3>
+                    <h3>DUT Gestion des Entreprises et des Administrations</h3>
+                    <p>Option Ressources Humaines.</p>
                     <div class="card-actions">
-                        <button class="btn-doc" onclick="openDocModal('Diplomes/diplome-cap-installations-sanitaires-plomberie-matthieu-hadi-1995.jpg')">
+                        <button class="btn-doc" onclick="openDocModal('Diplomes/diplome-dut-gestion-entreprises-administrations-marion-hadi-2005.jpg')">
                             <svg viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
                             Voir le diplôme
                         </button>
@@ -1105,13 +1426,12 @@ nav_active: "certifications"
             <div class="timeline-item">
                 <div class="timeline-card">
                     <div class="card-header">
-                        <span class="badge-organism">Marion — IUT A Lyon 1</span>
-                        <span class="badge-date">2004 – 2005</span>
+                        <span class="badge-organism">Matthieu — Académie de Lyon</span>
+                        <span class="badge-date">Juillet 1995</span>
                     </div>
-                    <h3>DUT Gestion des Entreprises et des Administrations</h3>
-                    <p>Option Ressources Humaines.</p>
+                    <h3>CAP Installations Sanitaires (Plomberie)</h3>
                     <div class="card-actions">
-                        <button class="btn-doc" onclick="openDocModal('Diplomes/diplome-dut-gestion-entreprises-administrations-marion-hadi-2005.jpg')">
+                        <button class="btn-doc" onclick="openDocModal('Diplomes/diplome-cap-installations-sanitaires-plomberie-matthieu-hadi-1995.jpg')">
                             <svg viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
                             Voir le diplôme
                         </button>
@@ -1142,18 +1462,18 @@ nav_active: "certifications"
             <div class="timeline-item">
                 <div class="timeline-card">
                     <div class="card-header">
-                        <span class="badge-date">1997 – 1998</span>
+                        <span class="badge-date">1998 – 2005</span>
                     </div>
-                    <h3>Plomberie, chauffage particuliers et industriels</h3>
+                    <h3>Maintenance et dépannage chauffage gaz, fioul et bois</h3>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-card">
                     <div class="card-header">
-                        <span class="badge-date">1998 – 2005</span>
+                        <span class="badge-date">1997 – 1998</span>
                     </div>
-                    <h3>Maintenance et dépannage chauffage gaz, fioul et bois</h3>
+                    <h3>Plomberie, chauffage particuliers et industriels</h3>
                 </div>
             </div>
 
@@ -1191,3 +1511,76 @@ nav_active: "certifications"
             document.getElementById('docViewerModal').style.display = 'none';
         }
     </script>
+
+    <!-- Back To Top -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-sector">
+                <strong>📍 Notre secteur d'intervention :</strong>
+                Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
+            </div>
+            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem;">Nos devis sont <strong>gratuits</strong> et établis après une <strong>visite technique</strong> et un <strong>calcul de dimensionnement</strong> pour valider nos installations.</p>
+            <p style="margin-top: 0.5rem;"><a href="qui-sommes-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
+        </div>
+    </footer>
+
+    <script>
+        /* Hamburger */
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        /* Hamburger (en-tête "expertise") */
+        const hamburgerBtnExp = document.getElementById('hamburger-btn-exp');
+        const navMenuExp = document.getElementById('nav-menu-exp');
+
+        hamburgerBtnExp.addEventListener('click', () => {
+            hamburgerBtnExp.classList.toggle('active');
+            navMenuExp.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#nav-menu-exp a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtnExp.classList.remove('active');
+                navMenuExp.classList.remove('active');
+            });
+        });
+
+        /* Back to Top */
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 834) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
+</body>
+</html>

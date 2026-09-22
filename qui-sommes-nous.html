@@ -1,0 +1,514 @@
+---
+layout: default
+title: "Qui sommes nous | Matthieu Artisan - Poêles & Fumisterie (69)"
+description: "Découvrez Matthieu Artisan : entreprise familiale spécialisée dans la pose, le conseil et la mise en conformité de poêles à bois et granulés dans le Rhône (69)."
+nav_active: "qui-sommes-nous"
+---
+<style>
+/* Palette de couleurs */
+        :root {
+            --primary-blue: #1a67b3;       /* Bleu principal */
+            --navy-academic: #1e293b;     /* Bleu nuit institutionnel */
+            --action-orange: #f97316;      /* Orange Action */
+            --orange-hover: #ea580c;       
+            
+            --accent-red: #fa4222;         
+            --accent-turquoise: #48a1cb;   
+            
+            --bg-light: #f8fafc;
+            --text-color: #334155;
+            --border-color: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- EN-TÊTE --- */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            display: block;
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px;
+            border-left: 2px solid var(--accent-turquoise);
+            padding-left: 0.8rem;
+            line-height: 1.25;
+        }
+
+        .header-location-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            white-space: nowrap;
+            margin-bottom: 6px;
+        }
+
+        .header-phone-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--action-orange);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .header-phone-link:hover {
+            color: var(--orange-hover);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active-link {
+            color: var(--accent-turquoise);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* --- BANNIÈRE DE PAGE --- */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-blue), #114b85);
+            color: white;
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .page-banner h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.6rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-banner p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: 2.5rem auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .brand-matthieu {
+            color: #024d92;
+            font-weight: bold;
+        }
+
+        .brand-artisan {
+            color: #fd3f1e;
+            font-weight: bold;
+        }
+
+        /* --- BULLES STYLE BD --- */
+        .bd-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .bd-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.8rem;
+        }
+
+        .bd-row.bd-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .bd-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+
+        .bd-bubble {
+            position: relative;
+            background: #ffffff;
+            border: 2px solid var(--primary-blue);
+            border-radius: 20px;
+            padding: 1.3rem 1.6rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .bd-bubble p {
+            margin: 0;
+            color: var(--text-color);
+            font-size: 1.02rem;
+            line-height: 1.65;
+            font-style: italic;
+        }
+
+        .bd-bubble-name {
+            display: block;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 0.85rem;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .bd-bubble::before,
+        .bd-bubble::after {
+            content: "";
+            position: absolute;
+            top: 24px;
+            border-style: solid;
+        }
+
+        .bd-row:not(.bd-reverse) .bd-bubble::before {
+            left: -16px;
+            border-width: 11px 16px 11px 0;
+            border-color: transparent var(--primary-blue) transparent transparent;
+        }
+
+        .bd-row:not(.bd-reverse) .bd-bubble::after {
+            left: -12px;
+            border-width: 10px 14px 10px 0;
+            border-color: transparent #ffffff transparent transparent;
+        }
+
+        .bd-row.bd-reverse .bd-bubble::before {
+            right: -16px;
+            border-width: 11px 0 11px 16px;
+            border-color: transparent transparent transparent var(--primary-blue);
+        }
+
+        .bd-row.bd-reverse .bd-bubble::after {
+            right: -12px;
+            border-width: 10px 0 10px 14px;
+            border-color: transparent transparent transparent #ffffff;
+        }
+
+        .qualif-cta {
+            max-width: 850px;
+            margin: 2.5rem auto 0 auto;
+            text-align: center;
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.3rem 1.6rem;
+            font-size: 1.05rem;
+        }
+
+        .qualif-cta a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .qualif-cta a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- BACK TO TOP --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: transparent;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.visible {
+            display: flex !important;
+        }
+
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #000000;
+        }
+
+        /* --- PIED DE PAGE --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent-turquoise);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-sector {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .footer-sector strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        footer a {
+            color: #9cdbfb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-turquoise);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 834px) {
+            .header-container {
+                position: relative;
+                padding: 0.2rem 1rem;
+                justify-content: space-between;
+            }
+
+            .brand-group {
+                gap: 0.5rem;
+                max-width: calc(100% - 40px);
+            }
+
+            .logo img {
+                height: 58px;
+            }
+
+            .header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
+
+            .header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
+
+            .header-phone-link {
+                font-size: 0.75rem;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 0.5rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            /* Adaptation mobile des bulles BD */
+            .bd-row, .bd-row.bd-reverse {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .bd-row:not(.bd-reverse) .bd-bubble::before,
+            .bd-row:not(.bd-reverse) .bd-bubble::after,
+            .bd-row.bd-reverse .bd-bubble::before,
+            .bd-row.bd-reverse .bd-bubble::after {
+                display: none;
+            }
+
+            .page-banner h1 {
+                font-size: 1.35rem;
+            }
+        }
+</style>
+
+    <!-- Bannière de la page -->
+    <section class="page-banner">
+        <h1>MATTHIEU ARTISAN c'est une petite entreprise artisanale et familiale née en 2005.</h1>
+        <p>Un duo que forment Matthieu et Marion, passionnés de leur métier ; spécialistes du chauffage au bois.</p>
+    </section>
+
+    <!-- Contenu Principal -->
+    <main class="main-container">
+
+        <div class="bd-section">
+
+            <!-- Bulle Matthieu -->
+            <div class="bd-row">
+                <img src="Matth_Matthieu-Artisan.jpg" alt="Matthieu, artisan spécialiste énergie bois" class="bd-avatar">
+                <div class="bd-bubble">
+                    <span class="bd-bubble-name">Matthieu</span>
+                    <p>« Plombier/chauffagiste de formation j’ai pris goût au fil des années à l’installation et la mise en conformités des chauffages au bois. J’aime tout autant la partie technique de mon travail que les échanges avec nos clients pour expliquer la conception de nos ouvrages. »</p>
+                </div>
+            </div>
+
+            <!-- Bulle Marion -->
+            <div class="bd-row bd-reverse">
+                <img src="Marion_Matthieu-Artisan.jpg" alt="Marion, experte réglementaire et dimensionnement" class="bd-avatar">
+                <div class="bd-bubble">
+                    <span class="bd-bubble-name">Marion</span>
+                    <p>« Dans mon métier j’aime particulièrement le côté humain dans la relation avec nos clients que le côté règlementaire relative à l’installation des chauffages au bois et que j’ai plaisir à partager. »</p>
+                </div>
+            </div>
+
+            <!-- Bulle Matthieu & Marion — partie 1 (photo Matthieu, parole sur le rôle de Marion) -->
+            <div class="bd-row">
+                <img src="Matth_Matthieu-Artisan.jpg" alt="Matthieu, artisan spécialiste énergie bois" class="bd-avatar">
+                <div class="bd-bubble">
+                    <p>« Concrètement Marion vous accueille au téléphone pour connaître votre besoin et établir des pré-projets chiffrés (dans la mesure du possible). »</p>
+                </div>
+            </div>
+
+            <!-- Bulle Matthieu & Marion — partie 2 (photo Marion, parole sur le rôle de Matthieu) -->
+            <div class="bd-row bd-reverse">
+                <img src="Marion_Matthieu-Artisan.jpg" alt="Marion, experte réglementaire et dimensionnement" class="bd-avatar">
+                <div class="bd-bubble">
+                    <p>« Avant que Matthieu se déplace pour une visite technique gratuite puis réalise les travaux acceptés. A nous deux nous faisons en sorte d’allier vos besoins aux contraintes techniques et règlementaires de notre profession. »</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="qualif-cta">
+            <p>Si vous souhaitez connaître <a href="expertise.html"><strong>NOS QUALIFICATIONS</strong></a></p>
+        </div>
+
+    </main>
+

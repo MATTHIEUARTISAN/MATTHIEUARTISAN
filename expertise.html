@@ -15,13 +15,13 @@
     <meta property="og:title" content="Expertise de Conformité Poêle à Bois | Matthieu Artisan">
     <meta property="og:description" content="Expertise de conformité pour poêles à bois, poêles à granulés et conduits de fumée. Audits techniques, rapports d'assurance - MATTHIEU ARTISAN EURL.">
     <meta property="og:url" content="https://matthieu-artisan.fr/expertise.html">
-    <meta property="og:image" content="https://matthieu-artisan.fr/matthieu-artisan.expertise.2.png">
+    <meta property="og:image" content="https://matthieu-artisan.fr/matthieu-artisan.expertise.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Expertise de Conformité Poêle à Bois | Matthieu Artisan">
     <meta name="twitter:description" content="Expertise de conformité pour poêles à bois, poêles à granulés et conduits de fumée. Audits techniques, rapports d'assurance - MATTHIEU ARTISAN EURL.">
-    <meta name="twitter:image" content="https://matthieu-artisan.fr/matthieu-artisan.expertise.2.png">
+    <meta name="twitter:image" content="https://matthieu-artisan.fr/matthieu-artisan.expertise.png">
 
 
 <!-- Favicon classique (Chrome, Firefox, Safari desktop) -->
@@ -42,7 +42,7 @@
   "legalName": "MATTHIEU ARTISAN EURL",
   "description": "Entreprise artisanale et familiale spécialisée dans l'expertise de conformité et le diagnostic technique de poêles à bois, poêles à granulés et conduits de fumée, dans le Rhône.",
   "url": "https://matthieu-artisan.fr/expertise.html",
-  "image": "https://matthieu-artisan.fr/matthieu-artisan.expertise.2.png",
+  "image": "https://matthieu-artisan.fr/matthieu-artisan.expertise.png",
   "telephone": "+33478470662",
   "email": "contact@matthieu-artisan.fr",
   "address": {
@@ -117,14 +117,13 @@
             gap: 1rem;
         }
 
-        .single-logo-link {
+        .logo {
             display: inline-block;
-            height: 80px; /* Restauration de la hauteur d'origine (80px) */
-            width: 197px;
             flex-shrink: 0;
         }
 
-        .single-logo-link img {
+        .logo img {
+            display: block;
             height: 80px;
             width: auto;
             object-fit: contain;
@@ -161,31 +160,57 @@
             color: var(--logo-steel-hover);
         }
 
-        /* Navigation Header */
-        .nav-links {
+        /* Navigation Header (même style que poeles-bois-granules.html) */
+        nav ul {
             display: flex;
-            align-items: center;
-            gap: 0.8rem;
+            list-style: none;
+            gap: 1.5rem;
         }
 
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.6rem 1.2rem;
-            background-color: var(--logo-green-hover);
-            color: #ffffff;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.9rem;
+        nav a {
             text-decoration: none;
-            box-shadow: 0 2px 6px rgba(74, 128, 170, 0.3);
-            transition: all 0.2s ease;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
         }
 
-        .nav-btn:hover {
-            background-color: #5d941b;
-            transform: translateY(-1px);
+        nav a:hover, nav a.active-link {
+            color: var(--logo-steel-blue);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--logo-navy);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
 
         /* Hero Banner */
@@ -343,23 +368,17 @@
         /* Responsive Mobile */
         @media (max-width: 834px) {
             .header-container {
-                padding: 0.5rem 1rem;
-                flex-direction: column;
-                gap: 0.8rem;
+                position: relative;
+                padding: 0.2rem 1rem;
+                justify-content: space-between;
             }
 
             .brand-group {
                 gap: 0.5rem;
-                width: 100%;
-                justify-content: space-between;
+                max-width: calc(100% - 40px);
             }
 
-            .single-logo-link {
-                height: 58px;
-                width: 143px;
-            }
-
-            .single-logo-link img {
+            .logo img {
                 height: 58px;
             }
 
@@ -377,9 +396,38 @@
                 font-size: 0.75rem;
             }
 
-            .nav-links {
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
                 width: 100%;
-                justify-content: center;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 0.5rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
             }
 
             .hero h1 {
@@ -394,12 +442,12 @@
 </head>
 <body>
 
-    <!-- Header avec taille originale (80px), logo matthieu-artisan.expertise.3.png et lien "Voir la Version 2" -->
+    <!-- Header (même style que poeles-bois-granules.html), logo matthieu-artisan.expertise.png -->
     <header>
         <div class="header-container">
             <div class="brand-group">
-                <a href="index.html" class="single-logo-link">
-                    <img src="matthieu-artisan.expertise.3.png" alt="Matthieu Artisan - Expertise" width="1727" height="700">
+                <a href="index.html" class="logo">
+                    <img src="matthieu-artisan.expertise.png" alt="Matthieu Artisan - Expertise" width="1140" height="460">
                 </a>
                 <div class="header-info-block">
                     <span class="header-location-tag">📍 Dans toute la France</span>
@@ -407,14 +455,18 @@
                 </div>
             </div>
 
-            <!-- Lien mis à jour -->
-            <nav class="nav-links">
-                <a href="certifications.html" class="nav-btn">
-                    🎓 Certifications
-                </a>
-                <a href="expertise2.html" class="nav-btn">
-                    🎨 Version 2 (vert)
-                </a>
+            <!-- Bouton Hamburger -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="certifications.html?from=expertise">Certifications</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -541,8 +593,23 @@
         </div>
     </footer>
 
-    <!-- JavaScript Back To Top -->
+    <!-- JavaScript Hamburger & Back To Top -->
     <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         const backToTopBtn = document.getElementById("backToTop");
 
         window.addEventListener('scroll', function() {
