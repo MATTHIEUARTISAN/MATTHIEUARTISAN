@@ -371,7 +371,7 @@
 
     <div class="splash-container">
         <!-- Lien - Dépannage & Installation -->
-        <a href="index.html" onclick="redirectProject(event, 'specialiste')" class="side side-tri">
+        <a href="poeles-bois-granules.html" onclick="redirectProject(event, 'specialiste')" class="side side-tri">
             <div class="content">
                 <div class="logo-box">
     <img src="matthieu-artisan.specialiste.png" alt="Plomberie & Chauffage - Dépannage et Installation" class="logo-img">
@@ -418,16 +418,10 @@ function redirectProject(event, project) {
         event.preventDefault();
     }
 
-    const languages = navigator.languages || [navigator.language || navigator.userLanguage];
-    
-    const hasFrench = languages.some(lang => lang.toLowerCase().startsWith('fr'));
-    const hasEnglish = languages.some(lang => lang.toLowerCase().startsWith('en'));
-    const shouldGoToEn = !hasFrench && hasEnglish;
-
     if (project === 'specialiste') {
-        window.location.href = shouldGoToEn ? 'poeles-bois-granules.html' : 'index.html';
+        window.location.href = 'poeles-bois-granules.html';
     } else if (project === 'expertise') {
-        window.location.href = shouldGoToEn ? 'expertise.html' : 'expertise.html';
+        window.location.href = 'expertise.html';
     }
 }
 </script>

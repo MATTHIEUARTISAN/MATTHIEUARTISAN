@@ -88,14 +88,14 @@
             line-height: 1.6;
         }
 
-        /* --- EN-TÊTE --- */
+        /* --- EN-TÊTE (même style que expertise.html) --- */
         header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 3px solid var(--accent-turquoise);
+            border-bottom: 3px solid #4A80AA;
         }
 
         .header-container {
@@ -131,7 +131,7 @@
             flex-direction: column;
             justify-content: center;
             height: 64px;
-            border-left: 2px solid var(--accent-turquoise);
+            border-left: 2px solid #4A80AA;
             padding-left: 0.8rem;
             line-height: 1.25;
         }
@@ -139,7 +139,7 @@
         .header-location-tag {
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--primary-blue);
+            color: #0E2A52;
             white-space: nowrap;
             margin-bottom: 6px;
         }
@@ -147,14 +147,14 @@
         .header-phone-link {
             font-size: 0.9rem;
             font-weight: bold;
-            color: var(--action-orange);
+            color: #4A80AA;
             text-decoration: none;
             white-space: nowrap;
             transition: color 0.2s;
         }
 
         .header-phone-link:hover {
-            color: var(--orange-hover);
+            color: #356083;
         }
 
         nav ul {
@@ -172,7 +172,7 @@
         }
 
         nav a:hover, nav a.active-link {
-            color: var(--accent-turquoise);
+            color: #4A80AA;
         }
 
         .hamburger {
@@ -192,7 +192,7 @@
         .hamburger span {
             width: 100%;
             height: 3px;
-            background-color: var(--primary-blue);
+            background-color: #0E2A52;
             border-radius: 3px;
             transition: all 0.3s linear;
         }
@@ -214,10 +214,10 @@
 /* --- BANNIÈRE AVEC ENCADRÉS INDIVIDUELS --- */
 /* --- BANNIÈRE AVEC LOGOS À GAUCHE ET TEXTE ANCRÉ AU CENTRE --- */
 .page-banner {
-    background: linear-gradient(135deg, var(--primary-blue), #114b85);
+    background: linear-gradient(135deg, #0E2A52, #06152B);
     color: white;
-    padding: 2.5rem 1.5rem;
-    border-bottom: 3px solid var(--accent-turquoise);
+    padding: 3.5rem 1.5rem;
+    border-bottom: 4px solid #4A80AA;
     position: relative; /* Indispensable pour l'ancrage absolu des logos */
 }
 
@@ -257,7 +257,7 @@
 
 .rge-card:hover {
     background: rgba(255, 255, 255, 0.22); /* Légère surbrillance au survol */
-    border-color: var(--accent-turquoise);  /* Rappel de la couleur turquoise au survol */
+    border-color: #4A80AA;  /* Rappel du bleu acier au survol */
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
@@ -281,14 +281,14 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2.2rem;
     font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.6rem;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
 }
 
 .banner-content p {
-    font-size: 1rem;
-    opacity: 0.85;
-    font-style: italic;
+    font-size: 1.1rem;
+    color: #E2E8F0;
     margin: 0 auto;
 }
 
@@ -575,13 +575,13 @@
 
         /* --- PIED DE PAGE --- */
         footer {
-            background-color: var(--primary-blue);
+            background-color: #0E2A52;
             color: white;
             text-align: center;
             padding: 2rem 1.5rem;
             margin-top: 4rem;
             font-size: 0.9rem;
-            border-top: 3px solid var(--accent-turquoise);
+            border-top: 3px solid #4A80AA;
         }
 
         .footer-content {
@@ -697,208 +697,19 @@
                 white-space: normal;
             }
         }
-
-        /* --- EN-TÊTE ALTERNATIF "EXPERTISE" (affiché uniquement en provenance d'expertise.html) --- */
-        #header-expertise {
-            display: none;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 3px solid #4A80AA;
-        }
-
-        #header-expertise .exp-header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        #header-expertise .exp-brand-group {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        #header-expertise .exp-logo-link {
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-        #header-expertise .exp-logo-link img {
-            display: block;
-            height: 80px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        #header-expertise .exp-header-info-block {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 64px;
-            border-left: 2px solid #4A80AA;
-            padding-left: 0.8rem;
-            line-height: 1.25;
-        }
-
-        #header-expertise .exp-header-location-tag {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #0E2A52;
-            white-space: nowrap;
-            margin-bottom: 6px;
-        }
-
-        #header-expertise .exp-header-phone-link {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #4A80AA;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: color 0.2s;
-        }
-
-        #header-expertise .exp-header-phone-link:hover {
-            color: #356083;
-        }
-
-        /* Navigation (même style liste que le header spécialiste) */
-        #header-expertise nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        #header-expertise nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-
-        #header-expertise nav a:hover {
-            color: #4A80AA;
-        }
-
-        #header-expertise .exp-hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 28px;
-            height: 24px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 101;
-            flex-shrink: 0;
-        }
-
-        #header-expertise .exp-hamburger span {
-            width: 100%;
-            height: 3px;
-            background-color: #0E2A52;
-            border-radius: 3px;
-            transition: all 0.3s linear;
-        }
-
-        #header-expertise .exp-hamburger.active span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        #header-expertise .exp-hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        #header-expertise .exp-hamburger.active span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        @media (max-width: 834px) {
-            #header-expertise .exp-header-container {
-                position: relative;
-                padding: 0.2rem 1rem;
-                justify-content: space-between;
-            }
-
-            #header-expertise .exp-brand-group {
-                gap: 0.5rem;
-                max-width: calc(100% - 40px);
-            }
-
-            #header-expertise .exp-logo-link img {
-                height: 58px;
-            }
-
-            #header-expertise .exp-header-info-block {
-                height: auto;
-                padding-left: 0.5rem;
-            }
-
-            #header-expertise .exp-header-location-tag {
-                font-size: 0.68rem;
-                margin-bottom: 2px;
-            }
-
-            #header-expertise .exp-header-phone-link {
-                font-size: 0.75rem;
-            }
-
-            #header-expertise .exp-hamburger {
-                display: flex;
-                margin-left: auto;
-                align-self: center;
-            }
-
-            #header-expertise nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                padding: 0.5rem 0;
-                gap: 0;
-                border-top: 1px solid #e2e8f0;
-            }
-
-            #header-expertise nav ul.active {
-                display: flex;
-            }
-
-            #header-expertise nav ul li {
-                text-align: center;
-            }
-
-            #header-expertise nav a {
-                display: block;
-                padding: 0.8rem 1.5rem;
-                border-bottom: 1px solid #f1f5f9;
-            }
-        }
 </style>
 </head>
 <body>
 
-    <!-- En-tête "spécialiste" (identique à poeles-bois-granules.html / qui-sommes-nous.html / galerie.html / partenaires.html / mentions-legales.html) — affiché par défaut -->
-    <header id="header-specialiste">
+    <!-- Header (identique à expertise.html), logo matthieu-artisan.expertise.png -->
+    <header>
         <div class="header-container">
             <div class="brand-group">
                 <a href="index.html" class="logo">
-                    <img src="matthieu-artisan.specialiste.png" alt="Matthieu Artisan - Plomberie & Chauffage" width="1150" height="502">
+                    <img src="matthieu-artisan.expertise.png" alt="Matthieu Artisan - Expertise" width="1140" height="460">
                 </a>
                 <div class="header-info-block">
-                    <span class="header-location-tag">📍 Vallée d'Azergues (69)</span>
+                    <span class="header-location-tag">📍 Dans toute la France</span>
                     <a href="tel:0478470662" class="header-phone-link">📞 04 78 470 662</a>
                 </div>
             </div>
@@ -913,54 +724,12 @@
             <!-- Navigation -->
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="qui-sommes-nous.html">Qui sommes nous</a></li>
-                    <li><a href="galerie.html">Galerie</a></li>
-                    <li><a href="partenaires.html">Partenaires</a></li>
-                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                    <li><a href="expertise.html">Expertise</a></li>
+                    <li><a href="certifications.html" class="active-link">Certifications</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
-    <!-- En-tête "expertise" (identique à expertise.html) — affiché uniquement si l'on vient de expertise.html -->
-    <header id="header-expertise">
-        <div class="exp-header-container">
-            <div class="exp-brand-group">
-                <a href="index.html" class="exp-logo-link">
-                    <img src="matthieu-artisan.expertise.png" alt="Matthieu Artisan - Expertise" width="1140" height="460">
-                </a>
-                <div class="exp-header-info-block">
-                    <span class="exp-header-location-tag">📍 Dans toute la France</span>
-                    <a href="tel:0478470662" class="exp-header-phone-link">📞 04 78 470 662</a>
-                </div>
-            </div>
-
-            <!-- Bouton Hamburger -->
-            <button class="exp-hamburger" id="hamburger-btn-exp" aria-label="Menu de navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Navigation -->
-            <nav>
-                <ul id="nav-menu-exp">
-                    <li><a href="expertise.html">Expertise & Audits</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <script>
-        /* Bascule d'en-tête selon la provenance : ?from=expertise affiche l'en-tête "expertise" */
-        (function () {
-            var params = new URLSearchParams(window.location.search);
-            if (params.get('from') === 'expertise') {
-                document.getElementById('header-specialiste').style.display = 'none';
-                document.getElementById('header-expertise').style.display = 'block';
-            }
-        })();
-    </script>
 
 <!-- Bannière de la page avec logos RGE à gauche (encadrés individuels) -->
 <section class="page-banner">
@@ -1519,16 +1288,15 @@
         </svg>
     </button>
 
-    <!-- Footer -->
+    <!-- Footer (identique à expertise.html) -->
     <footer>
         <div class="footer-content">
             <div class="footer-sector">
-                <strong>📍 Notre secteur d'intervention :</strong>
-                Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
+                <strong>📍 Périmètre d'Intervention :</strong>
+                Audits et expertises de conformité de poêles à bois, granulés et fumisterie sur l'ensemble du territoire national (France métropolitaine).
             </div>
-            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
+            <p>&copy; 2026 MATTHIEU ARTISAN EURL — Tous droits réservés.</p>
             <p style="margin-top: 0.5rem;">Nos devis sont <strong>gratuits</strong> et établis après une <strong>visite technique</strong> et un <strong>calcul de dimensionnement</strong> pour valider nos installations.</p>
-            <p style="margin-top: 0.5rem;"><a href="qui-sommes-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
         </div>
     </footer>
 
@@ -1546,22 +1314,6 @@
             link.addEventListener('click', () => {
                 hamburgerBtn.classList.remove('active');
                 navMenu.classList.remove('active');
-            });
-        });
-
-        /* Hamburger (en-tête "expertise") */
-        const hamburgerBtnExp = document.getElementById('hamburger-btn-exp');
-        const navMenuExp = document.getElementById('nav-menu-exp');
-
-        hamburgerBtnExp.addEventListener('click', () => {
-            hamburgerBtnExp.classList.toggle('active');
-            navMenuExp.classList.toggle('active');
-        });
-
-        document.querySelectorAll('#nav-menu-exp a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerBtnExp.classList.remove('active');
-                navMenuExp.classList.remove('active');
             });
         });
 
