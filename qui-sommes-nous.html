@@ -214,13 +214,78 @@ nav_active: "qui-sommes-nous"
             flex-direction: row-reverse;
         }
 
-        /* Regroupe les deux bulles "conjointes" (même échange, en deux bulles) avec un
-           espacement bien plus resserré que le gap standard entre bulles de .bd-section,
-           pour qu'elles se lisent comme une seule prise de parole continue. */
-        .bd-joint-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.7rem;
+        /* --- Bulle "conjointe" Matthieu & Marion : un seul phylactère avec deux pointes
+           (une vers chaque photo) plutôt que deux bulles distinctes — pour montrer qu'ils
+           se complètent et parlent ensemble, contrairement aux bulles solo au-dessus. */
+        .bd-joint {
+            position: relative;
+            padding: 34px 0;
+        }
+
+        .bd-joint-bubble {
+            margin: 0 90px;
+        }
+
+        .bd-joint-bubble p + p {
+            margin-top: 1rem;
+        }
+
+        .bd-joint-bubble::before,
+        .bd-joint-bubble::after {
+            /* Neutralise le générique .bd-bubble::before/::after (défini plus bas dans la
+               feuille, même spécificité) qui, sans ce !important, gagne le conflit d'ordre
+               de source et fait apparaître un fantôme de pointe par défaut ici. */
+            content: none !important;
+        }
+
+        .bd-joint-avatar {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .bd-joint-avatar-top {
+            top: 0;
+            left: 0;
+        }
+
+        .bd-joint-avatar-bottom {
+            bottom: 0;
+            right: 0;
+        }
+
+        .bd-tail {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .bd-tail-top-outline {
+            top: 34px;
+            left: -16px;
+            border-width: 11px 16px 11px 0;
+            border-color: transparent var(--primary-blue) transparent transparent;
+        }
+
+        .bd-tail-top-fill {
+            top: 34px;
+            left: -12px;
+            border-width: 10px 14px 10px 0;
+            border-color: transparent #ffffff transparent transparent;
+        }
+
+        .bd-tail-bottom-outline {
+            bottom: 34px;
+            right: -16px;
+            border-width: 11px 0 11px 16px;
+            border-color: transparent transparent transparent var(--primary-blue);
+        }
+
+        .bd-tail-bottom-fill {
+            bottom: 34px;
+            right: -12px;
+            border-width: 10px 0 10px 14px;
+            border-color: transparent transparent transparent #ffffff;
         }
 
         .bd-avatar {
@@ -462,6 +527,39 @@ nav_active: "qui-sommes-nous"
                 display: none;
             }
 
+            /* Bulle conjointe : empilée (photo Matthieu, bulle, photo Marion), sans les
+               pointes qui n'ont plus de sens une fois les photos repassées au-dessus/dessous
+               plutôt que sur les côtés. */
+            .bd-joint {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 0;
+                text-align: center;
+            }
+
+            .bd-joint-avatar {
+                position: static;
+            }
+
+            .bd-joint-avatar-top {
+                order: 1;
+            }
+
+            .bd-joint-bubble {
+                order: 2;
+                margin: 0;
+            }
+
+            .bd-joint-avatar-bottom {
+                order: 3;
+            }
+
+            .bd-tail {
+                display: none;
+            }
+
             .page-banner h1 {
                 font-size: 1.35rem;
             }
@@ -497,31 +595,21 @@ nav_active: "qui-sommes-nous"
                 </div>
             </div>
 
-            <!-- Bulles Matthieu & Marion — conjointes : regroupées avec un espacement réduit
-                 (voir .bd-joint-group) pour bien montrer qu'il s'agit d'un seul échange en deux
-                 bulles, plutôt que deux prises de parole distinctes comme les bulles solo
-                 au-dessus. Le « … » en tête de la seconde bulle marque la continuité avec la
-                 première. -->
-            <div class="bd-joint-group">
-
-                <!-- partie 1 (photo Matthieu, parole sur le rôle de Marion) -->
-                <div class="bd-row">
-                    <img src="Matth_Matthieu-Artisan.jpg" alt="Matthieu, artisan spécialiste énergie bois" class="bd-avatar">
-                    <div class="bd-bubble">
-                        <span class="bd-bubble-name">Matthieu et Marion</span>
-                        <p>« Concrètement Marion vous accueille au téléphone pour connaître votre besoin et établir des pré-projets chiffrés (dans la mesure du possible). »</p>
-                    </div>
+            <!-- Bulle conjointe Matthieu & Marion : un seul phylactère avec deux pointes (une
+                 vers chaque photo), plutôt que deux bulles distinctes comme les bulles solo
+                 au-dessus — pour montrer qu'ils se complètent et parlent ensemble. -->
+            <div class="bd-joint">
+                <img src="Matth_Matthieu-Artisan.jpg" alt="Matthieu, artisan spécialiste énergie bois" class="bd-avatar bd-joint-avatar bd-joint-avatar-top">
+                <img src="Marion_Matthieu-Artisan.jpg" alt="Marion, experte réglementaire et dimensionnement" class="bd-avatar bd-joint-avatar bd-joint-avatar-bottom">
+                <div class="bd-bubble bd-joint-bubble">
+                    <i class="bd-tail bd-tail-top-outline"></i>
+                    <i class="bd-tail bd-tail-top-fill"></i>
+                    <i class="bd-tail bd-tail-bottom-outline"></i>
+                    <i class="bd-tail bd-tail-bottom-fill"></i>
+                    <span class="bd-bubble-name">Matthieu et Marion</span>
+                    <p>« Concrètement Marion vous accueille au téléphone pour connaître votre besoin et établir des pré-projets chiffrés (dans la mesure du possible). »</p>
+                    <p>« … Avant que Matthieu se déplace pour une visite technique gratuite puis réalise les travaux acceptés. A nous deux nous faisons en sorte d’allier vos besoins aux contraintes techniques et règlementaires de notre profession. »</p>
                 </div>
-
-                <!-- partie 2 (photo Marion, parole sur le rôle de Matthieu) -->
-                <div class="bd-row bd-reverse">
-                    <img src="Marion_Matthieu-Artisan.jpg" alt="Marion, experte réglementaire et dimensionnement" class="bd-avatar">
-                    <div class="bd-bubble">
-                        <span class="bd-bubble-name">Matthieu et Marion</span>
-                        <p>« … Avant que Matthieu se déplace pour une visite technique gratuite puis réalise les travaux acceptés. A nous deux nous faisons en sorte d’allier vos besoins aux contraintes techniques et règlementaires de notre profession. »</p>
-                    </div>
-                </div>
-
             </div>
 
         </div>
