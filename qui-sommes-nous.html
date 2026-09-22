@@ -214,6 +214,15 @@ nav_active: "qui-sommes-nous"
             flex-direction: row-reverse;
         }
 
+        /* Regroupe les deux bulles "conjointes" (même échange, en deux bulles) avec un
+           espacement bien plus resserré que le gap standard entre bulles de .bd-section,
+           pour qu'elles se lisent comme une seule prise de parole continue. */
+        .bd-joint-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
         .bd-avatar {
             width: 110px;
             height: 110px;
@@ -488,20 +497,31 @@ nav_active: "qui-sommes-nous"
                 </div>
             </div>
 
-            <!-- Bulle Matthieu & Marion — partie 1 (photo Matthieu, parole sur le rôle de Marion) -->
-            <div class="bd-row">
-                <img src="Matth_Matthieu-Artisan.jpg" alt="Matthieu, artisan spécialiste énergie bois" class="bd-avatar">
-                <div class="bd-bubble">
-                    <p>« Concrètement Marion vous accueille au téléphone pour connaître votre besoin et établir des pré-projets chiffrés (dans la mesure du possible). »</p>
-                </div>
-            </div>
+            <!-- Bulles Matthieu & Marion — conjointes : regroupées avec un espacement réduit
+                 (voir .bd-joint-group) pour bien montrer qu'il s'agit d'un seul échange en deux
+                 bulles, plutôt que deux prises de parole distinctes comme les bulles solo
+                 au-dessus. Le « … » en tête de la seconde bulle marque la continuité avec la
+                 première. -->
+            <div class="bd-joint-group">
 
-            <!-- Bulle Matthieu & Marion — partie 2 (photo Marion, parole sur le rôle de Matthieu) -->
-            <div class="bd-row bd-reverse">
-                <img src="Marion_Matthieu-Artisan.jpg" alt="Marion, experte réglementaire et dimensionnement" class="bd-avatar">
-                <div class="bd-bubble">
-                    <p>« Avant que Matthieu se déplace pour une visite technique gratuite puis réalise les travaux acceptés. A nous deux nous faisons en sorte d’allier vos besoins aux contraintes techniques et règlementaires de notre profession. »</p>
+                <!-- partie 1 (photo Matthieu, parole sur le rôle de Marion) -->
+                <div class="bd-row">
+                    <img src="Matth_Matthieu-Artisan.jpg" alt="Matthieu, artisan spécialiste énergie bois" class="bd-avatar">
+                    <div class="bd-bubble">
+                        <span class="bd-bubble-name">Matthieu et Marion</span>
+                        <p>« Concrètement Marion vous accueille au téléphone pour connaître votre besoin et établir des pré-projets chiffrés (dans la mesure du possible). »</p>
+                    </div>
                 </div>
+
+                <!-- partie 2 (photo Marion, parole sur le rôle de Matthieu) -->
+                <div class="bd-row bd-reverse">
+                    <img src="Marion_Matthieu-Artisan.jpg" alt="Marion, experte réglementaire et dimensionnement" class="bd-avatar">
+                    <div class="bd-bubble">
+                        <span class="bd-bubble-name">Matthieu et Marion</span>
+                        <p>« … Avant que Matthieu se déplace pour une visite technique gratuite puis réalise les travaux acceptés. A nous deux nous faisons en sorte d’allier vos besoins aux contraintes techniques et règlementaires de notre profession. »</p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
