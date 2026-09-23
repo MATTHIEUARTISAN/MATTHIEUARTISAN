@@ -17,19 +17,19 @@
 
     
     <style>
-        /* Palette de couleurs */
+        /* Palette de couleurs (identique à expertise.html) */
         :root {
-            --primary-blue: #1a67b3;       /* Bleu principal */
-            --navy-academic: #1e293b;     /* Bleu nuit institutionnel */
-            --action-orange: #f97316;      /* Orange Action */
-            --orange-hover: #ea580c;       
-            
-            --accent-red: #fa4222;         
-            --accent-turquoise: #48a1cb;   
-            
+            --logo-navy: #0E2A52;
+            --logo-steel-blue: #4A80AA;
+            --logo-steel-hover: #356083;
+            --logo-grey: #737679;
+            --logo-light-grey: #e2e8f0;
             --bg-light: #f8fafc;
-            --text-color: #334155;
-            --border-color: #cbd5e1;
+            --bg-card-accent: #EAF1F8;
+            --text-color: #2D3748;
+            --legal-dark: #0B1D3A;
+            --legal-border: #cbd5e1;
+            --logo-green-hover: #5d941b;
         }
 
         * {
@@ -52,7 +52,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 3px solid var(--accent-turquoise);
+            border-bottom: 3px solid var(--logo-steel-blue);
         }
 
         .header-container {
@@ -87,7 +87,7 @@
             flex-direction: column;
             justify-content: center;
             height: 64px;
-            border-left: 2px solid var(--accent-turquoise);
+            border-left: 2px solid var(--logo-steel-blue);
             padding-left: 0.8rem;
             line-height: 1.25;
         }
@@ -95,7 +95,7 @@
         .header-location-tag {
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--primary-blue);
+            color: var(--logo-navy);
             white-space: nowrap;
             margin-bottom: 6px;
         }
@@ -103,14 +103,14 @@
         .header-phone-link {
             font-size: 0.9rem;
             font-weight: bold;
-            color: var(--action-orange);
+            color: var(--logo-steel-blue);
             text-decoration: none;
             white-space: nowrap;
             transition: color 0.2s;
         }
 
         .header-phone-link:hover {
-            color: var(--orange-hover);
+            color: var(--logo-steel-hover);
         }
 
         nav ul {
@@ -128,7 +128,7 @@
         }
 
         nav a:hover, nav a.active-link {
-            color: var(--accent-turquoise);
+            color: var(--logo-steel-blue);
         }
 
         .hamburger {
@@ -148,7 +148,7 @@
         .hamburger span {
             width: 100%;
             height: 3px;
-            background-color: var(--primary-blue);
+            background-color: var(--logo-navy);
             border-radius: 3px;
             transition: all 0.3s linear;
         }
@@ -167,11 +167,11 @@
 
         /* --- BANNIÈRE DE PAGE --- */
         .page-banner {
-            background: linear-gradient(135deg, var(--primary-blue), #114b85);
+            background: linear-gradient(135deg, var(--logo-navy), #06152B);
             color: white;
             padding: 3.5rem 1.5rem;
             text-align: center;
-            border-bottom: 3px solid var(--accent-turquoise);
+            border-bottom: 4px solid var(--logo-steel-blue);
         }
 
         .page-banner h1 {
@@ -199,11 +199,11 @@
         .team-box {
             background: #ffffff;
             border-radius: 8px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--legal-border);
             padding: 2rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            border-left: 5px solid var(--primary-blue);
+            border-left: 5px solid var(--logo-steel-blue);
         }
 
         /* Profils individuels (Texte + Photo ronde à droite) */
@@ -231,7 +231,7 @@
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--primary-blue);
+            border: 3px solid var(--logo-steel-blue);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
             margin-bottom: 0.6rem;
         }
@@ -239,13 +239,13 @@
         .person-card .person-name {
             font-weight: 700;
             font-size: 1rem;
-            color: var(--navy-academic);
+            color: var(--logo-navy);
             line-height: 1.2;
         }
 
         .person-card .person-title {
             font-size: 0.85rem;
-            color: var(--primary-blue);
+            color: var(--logo-steel-blue);
             font-weight: 600;
             margin-top: 0.2rem;
             line-height: 1.2;
@@ -261,7 +261,7 @@
             color: #475569;
             background: #f1f5f9;
             padding: 1.2rem 1.4rem;
-            border-left: 4px solid var(--accent-turquoise);
+            border-left: 4px solid var(--logo-steel-blue);
             border-radius: 4px;
             margin-top: 1rem;
         }
@@ -275,17 +275,17 @@
         }
 
         .brand-matthieu {
-            color: #024d92;
+            color: var(--logo-navy);
             font-weight: bold;
         }
 
         .brand-artisan {
-            color: #fd3f1e;
+            color: var(--logo-grey);
             font-weight: bold;
         }
 
         .team-subtitle {
-            color: var(--navy-academic);
+            color: var(--logo-navy);
             font-size: 1.15rem;
             font-style: italic;
             font-weight: 600;
@@ -298,7 +298,7 @@
             bottom: 20px;
             right: 20px;
             z-index: 2000;
-            background-color: transparent;
+            background-color: var(--logo-steel-blue);
             color: white;
             width: 45px;
             height: 45px;
@@ -317,18 +317,18 @@
         #backToTop svg {
             width: 24px;
             height: 24px;
-            fill: #000000;
+            fill: #ffffff;
         }
 
         /* --- PIED DE PAGE --- */
         footer {
-            background-color: var(--primary-blue);
+            background-color: var(--logo-navy);
             color: white;
             text-align: center;
             padding: 2rem 1.5rem;
             margin-top: 4rem;
             font-size: 0.9rem;
-            border-top: 3px solid var(--accent-turquoise);
+            border-top: 3px solid var(--logo-steel-blue);
         }
 
         .footer-content {
@@ -393,7 +393,7 @@
         }
 
         footer a:hover {
-            color: var(--accent-turquoise);
+            color: var(--logo-steel-blue);
             text-decoration: underline;
         }
 
@@ -482,10 +482,10 @@
         <div class="header-container">
             <div class="brand-group">
                 <a href="index.html" class="logo">
-                    <img src="matthieu-artisan.specialiste.png" alt="Matthieu Artisan - Plomberie & Chauffage" width="1150" height="502">
+                    <img src="matthieu-artisan.expertise.png" alt="Matthieu Artisan - Expertise" width="1140" height="460">
                 </a>
                 <div class="header-info-block">
-                    <span class="header-location-tag">📍 Vallée d’Azergues (69)</span>
+                    <span class="header-location-tag">📍 Intervention France entière (sur devis)</span>
                     <a href="tel:0478470662" class="header-phone-link">📞 04 78 470 662</a>
                 </div>
             </div>
@@ -500,12 +500,9 @@
             <!-- Navigation -->
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="poeles-bois-granules.html">Poêles & Granulés</a></li>
-                    <li><a href="qui-sommes-nous.html">Qui sommes nous</a></li>
+                    <li><a href="expertise.html">Expertise</a></li>
+                    <li><a href="nos-qualifications.html">Nos qualifications</a></li>
                     <li><a href="a-propos-de-nous.html" class="active-link">À propos de nous</a></li>
-                    <li><a href="galerie.html">Galerie</a></li>
-                    <li><a href="partenaires.html">(Partenaires)</a></li>
-                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
                 </ul>
             </nav>
         </div>
@@ -530,14 +527,14 @@
                         <p>Plombier/chauffagiste de formation, qui a travaillé pour plusieurs entreprises avant de se mettre à son compte, dont plusieurs années en maintenance (entretiens et dépannages de chaudières fioul, gaz et bois).</p>
                         <blockquote>
                             <p>« Je suis devenu indépendant en 2005. J’ai d’abord œuvré aussi bien dans le domaine de la plomberie (création ou rénovation sanitaire, dépannages…) que du chauffage (chaudières toutes énergies, poêles, réseau chauffage central, travail du cuivre).</p>
-                            <p>Au fil des années j’ai pris goût à l’énergie bois et je suis aujourd’hui spécialiste des moyens de chauffage fonctionnant au bois ou granulés (chaudière, poêles d’appoint ou poêle de masse) ainsi que des conduits de fumées (création ou mise en conformité).</p>
-                            <p>Je suis particulièrement soucieux de toujours mieux maîtriser les règles de l’art. Je pense important de savoir se remettre en question et de mettre à jour son savoir ce que je fais par des formations annuelles (voir <a href="nos-qualifications.html" style="color: var(--primary-blue); font-weight: 600;">nos qualifications</a>) et par l’échange avec nos collègues ramoneurs ou installateurs qui sont dans la même démarche. »</p>
+                            <p>Au fil des années j’ai pris goût à l’énergie bois et je suis aujourd’hui spécialiste des moyens de chauffage fonctionnant au bois bûches et granulés (poêles d'appoint, poêles de masse et chaudières).</p>
+                            <p>Je suis particulièrement soucieux de toujours mieux maîtriser les règles de l’art. Je pense important de savoir se remettre en question et de mettre à jour son savoir ce que je fais par des formations annuelles (voir <a href="nos-qualifications.html" style="color: var(--logo-steel-blue); font-weight: 600;">nos qualifications</a>) et par l’échange avec nos collègues ramoneurs ou installateurs qui sont dans la même démarche. »</p>
                         </blockquote>
                     </div>
                     <div class="person-card">
                         <img src="Matth_Matthieu-Artisan.jpg" alt="Spécialiste poêle à bois et granulés - Matthieu Hadi" class="profile-img">
                         <span class="person-name">Matthieu Hadi</span>
-                        <span class="person-title">Spécialiste énergie bois</span>
+                        <span class="person-title">Chauffagiste, spécialiste Energie Bois</span>
                     </div>
                 </div>
             </article>
@@ -549,7 +546,7 @@
                         <h2>
                             <span class="brand-matthieu">MATTHIEU</span> <span class="brand-artisan">ARTISAN</span><span class="team-subtitle">, c’est aussi Marion.</span>
                         </h2>
-                        <p>Son épouse, à ses côtés au début pour la gestion administrative et relation clients/fournisseurs.</p>
+                        <p>Son épouse, à ses côtés pour la partie administrative et pré-chiffrage des projets.</p>
                         <blockquote>
                             <p>« En travaillant à notre compte nous pouvons développer la relation avec nos clients que nous souhaitons. C’est vraiment ce que j’ai aimé d’abord. En ce qui concerne la partie technique, si la plomberie m’a peu passionnée, je l’ai été davantage pour la partie mise en œuvre des conduits de fumées. Avec Matthieu nous prenons plaisir à nous former très régulièrement et maîtriser chaque jour davantage nos connaissances techniques et réglementaires. Je suis aujourd’hui experte à ses côtés, surtout dans la connaissance des textes de référence et dans les calculs de dimensionnement, maniant les logiciels KESA ALADIN (la référence des fabricants de conduits), QC2 et Z1E (développés par C2AP, expert français dans le domaine). »</p>
                         </blockquote>
@@ -557,25 +554,9 @@
                     <div class="person-card">
                         <img src="Marion_Matthieu-Artisan.jpg" alt="Experte en dimensionnement et réglementation poêle à bois - Marion Hadi" class="profile-img">
                         <span class="person-name">Marion Hadi</span>
-                        <span class="person-title">Experte réglementaire & dimensionnement</span>
+                        <span class="person-title">Spécialiste règlementation et dimensionnement</span>
                     </div>
                 </div>
-            </article>
-
-            <!-- Bloc 3 : L'Équipe -->
-            <article class="team-box" style="border-left-color: var(--accent-turquoise);">
-                <h2>
-                    <span class="brand-matthieu">MATTHIEU</span> <span class="brand-artisan">ARTISAN</span><span class="team-subtitle"> c’est donc Matthieu et Marion, une équipe qui se complète bien.</span>
-                </h2>
-                <p style="margin-top: 0.5rem;">
-                    Marion établit des pré-projets chiffrés avant que Matthieu, sur le terrain, ne définisse et mette en œuvre les travaux préconisés.
-                </p>
-                <p style="margin-top: 0.8rem;">
-                    À nous deux nous mettons tout en œuvre pour que <strong>notre service</strong> et notre <strong>travail soigné</strong> vous apportent <strong>entière satisfaction</strong> et nous restons <strong>à votre écoute</strong> avant, pendant et après la réalisation de votre projet.
-                </p>
-                <p style="margin-top: 0.8rem; font-weight: 600; color: var(--navy-academic);">
-                    Nos devis sont gratuits et établis après une visite technique et calcul du dimensionnement sur un logiciel agréé pour valider nos installations.
-                </p>
             </article>
 
     </main>
@@ -590,16 +571,11 @@
     <!-- Pied de page -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
-            <p style="margin-top: 0.5rem;"><a href="qui-sommes-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="partenaires.html">(Partenaires)</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
-
-            <!-- Liste étendue de communes/codes postaux, repliée par défaut : présente dans
-                 le HTML pour le référencement local (SEO), sans alourdir visuellement le pied
-                 de page pour le visiteur. -->
-            <details class="footer-seo-zones">
-                <summary>Zones d'intervention détaillées</summary>
-                <p>69870 Lamure - 69620 Le Bois d'Oingt / Theizé - 69170 Tarare / Valsonne - 69550 Amplepuis / Ronno - 69490 Pontcharra / Sarcey - 69210 L'Arbresle / Lentilly - 69380 Lozanne / Chessy - 69480 Anse / Chazay - 69890 La Tour de Salvagny - 69760 Limonest - 69570 Dardilly - 69400 Villefranche / Gleizé - 42630 Régny - 42470 St Symphorien de Lay</p>
-            </details>
+            <div class="footer-sector">
+                <strong>📍 Périmètre d'Intervention :</strong>
+                Audits et expertises de conformité de poêles à bois, granulés et fumisterie sur l'ensemble du territoire national (France métropolitaine).
+            </div>
+            <p>&copy; 2026 MATTHIEU ARTISAN EURL — Tous droits réservés.</p>
         </div>
     </footer>
 
