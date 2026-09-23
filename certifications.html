@@ -90,14 +90,14 @@
             line-height: 1.6;
         }
 
-        /* --- EN-TÊTE (même style que expertise.html) --- */
+        /* --- EN-TÊTE (même style que qui-sommes-nous.html) --- */
         header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 3px solid #4A80AA;
+            border-bottom: 3px solid var(--accent-turquoise);
         }
 
         .header-container {
@@ -133,7 +133,7 @@
             flex-direction: column;
             justify-content: center;
             height: 64px;
-            border-left: 2px solid #4A80AA;
+            border-left: 2px solid var(--accent-turquoise);
             padding-left: 0.8rem;
             line-height: 1.25;
         }
@@ -141,7 +141,7 @@
         .header-location-tag {
             font-size: 0.85rem;
             font-weight: 600;
-            color: #0E2A52;
+            color: var(--primary-blue);
             white-space: nowrap;
             margin-bottom: 6px;
         }
@@ -149,14 +149,14 @@
         .header-phone-link {
             font-size: 0.9rem;
             font-weight: bold;
-            color: #4A80AA;
+            color: var(--action-orange);
             text-decoration: none;
             white-space: nowrap;
             transition: color 0.2s;
         }
 
         .header-phone-link:hover {
-            color: #356083;
+            color: var(--orange-hover);
         }
 
         nav ul {
@@ -174,7 +174,7 @@
         }
 
         nav a:hover, nav a.active-link {
-            color: #4A80AA;
+            color: var(--accent-turquoise);
         }
 
         .hamburger {
@@ -194,7 +194,7 @@
         .hamburger span {
             width: 100%;
             height: 3px;
-            background-color: #0E2A52;
+            background-color: var(--primary-blue);
             border-radius: 3px;
             transition: all 0.3s linear;
         }
@@ -216,10 +216,10 @@
 /* --- BANNIÈRE AVEC ENCADRÉS INDIVIDUELS --- */
 /* --- BANNIÈRE AVEC LOGOS À GAUCHE ET TEXTE ANCRÉ AU CENTRE --- */
 .page-banner {
-    background: linear-gradient(135deg, #0E2A52, #06152B);
+    background: linear-gradient(135deg, var(--primary-blue), #114b85);
     color: white;
     padding: 3.5rem 1.5rem;
-    border-bottom: 4px solid #4A80AA;
+    border-bottom: 3px solid var(--accent-turquoise);
     position: relative; /* Indispensable pour l'ancrage absolu des logos */
 }
 
@@ -259,7 +259,7 @@
 
 .rge-card:hover {
     background: rgba(255, 255, 255, 0.22); /* Légère surbrillance au survol */
-    border-color: #4A80AA;  /* Rappel du bleu acier au survol */
+    border-color: var(--accent-turquoise);  /* Rappel de la couleur d'accent au survol */
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
@@ -577,13 +577,13 @@
 
         /* --- PIED DE PAGE --- */
         footer {
-            background-color: #0E2A52;
+            background-color: var(--primary-blue);
             color: white;
             text-align: center;
             padding: 2rem 1.5rem;
             margin-top: 4rem;
             font-size: 0.9rem;
-            border-top: 3px solid #4A80AA;
+            border-top: 3px solid var(--accent-turquoise);
         }
 
         .footer-content {
