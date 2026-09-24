@@ -64,8 +64,46 @@ page_key: formations
         .tab-panel { display: none; }
         .tab-panel.active { display: block; }
 
-        .timeline-container { position: relative; }
-        .timeline-item { position: relative; margin-bottom: 1.3rem; }
+        .timeline-container { position: relative; padding-left: 28px; }
+
+        .timeline-container::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--logo-green), transparent);
+            opacity: 0.35;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.3rem;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-item.in-view { opacity: 1; transform: translateY(0); }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -28px;
+            top: 1.5rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid var(--logo-green);
+            z-index: 1;
+        }
+
+        .timeline-item.highlight::before {
+            background: var(--logo-green);
+            box-shadow: 0 0 0 4px rgba(127, 171, 43, 0.18);
+        }
 
         .timeline-card {
             background: #ffffff;
@@ -74,7 +112,7 @@ page_key: formations
             border-left: 4px solid var(--logo-navy);
             padding: 1.25rem 1.6rem;
             box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
 
         .timeline-item.highlight .timeline-card {
@@ -82,7 +120,7 @@ page_key: formations
             background-color: #fafbfc;
         }
 
-        .timeline-card:hover { border-color: #94a3b8; box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+        .timeline-card:hover { border-color: #94a3b8; box-shadow: 0 5px 16px rgba(0,0,0,0.09); transform: translateX(4px); }
 
         .card-header {
             display: flex;

@@ -385,12 +385,51 @@
         /* Registre des qualifications */
         .timeline-container {
             position: relative;
-            padding-left: 0;
+            padding-left: 28px;
+        }
+
+        /* Ligne de temps verticale, dans le padding du conteneur */
+        .timeline-container::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-blue), transparent);
+            opacity: 0.3;
         }
 
         .timeline-item {
             position: relative;
             margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Point sur la ligne de temps, pour chaque carte */
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -28px;
+            top: 1.5rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid var(--primary-blue);
+            z-index: 1;
+        }
+
+        .timeline-item.highlight::before {
+            background: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(26, 103, 179, 0.15);
         }
 
         /* Cartes Style Certificat / Académique */
@@ -401,7 +440,7 @@
             border-left: 4px solid var(--navy-academic);
             padding: 1.25rem 1.6rem;
             box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
 
         .timeline-item.highlight .timeline-card {
@@ -411,7 +450,8 @@
 
         .timeline-card:hover {
             border-color: #94a3b8;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            box-shadow: 0 5px 16px rgba(0,0,0,0.09);
+            transform: translateX(4px);
         }
 
         .card-header {
@@ -847,6 +887,25 @@
         backToTopBtn.onclick = function() {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
+
+        /* Apparition progressive des cartes de la timeline au scroll (et à l'ouverture
+           d'un onglet, puisque le changement d'onglet modifie leur géométrie visible).
+           Filet de sécurité : si IntersectionObserver n'est pas supporté (très vieux
+           navigateur), tout s'affiche immédiatement plutôt que de rester invisible. */
+        if ('IntersectionObserver' in window) {
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        timelineObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.timeline-item').forEach(item => timelineObserver.observe(item));
+        } else {
+            document.querySelectorAll('.timeline-item').forEach(item => item.classList.add('in-view'));
+        }
     </script>
+    <noscript><style>.timeline-item { opacity: 1 !important; transform: none !important; }</style></noscript>
 </body>
 </html>
