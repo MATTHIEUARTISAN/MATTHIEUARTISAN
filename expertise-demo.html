@@ -9,17 +9,21 @@ page_key: accueil
     <meta name="robots" content="noindex, nofollow">
     <title>[Démo] Expertise — Matthieu Artisan</title>
     {% include expertise-demo-style.html %}
-    <!-- Bandeau principal de cette page uniquement : photo en fond, avec un voile navy en
-         dégradé par-dessus pour garder le texte blanc lisible et rester dans la palette de
-         marque (même logique que les bandeaux photo du site concurrent). -->
+    <!-- Bandeau principal de cette page uniquement : photo en fond, avec cette fois un voile
+         clair (au lieu du voile navy sombre précédent) — donc texte foncé par-dessus plutôt
+         que blanc, contrastes inversés par rapport à la version précédente. -->
     <style>
         .hero {
             background:
-                linear-gradient(135deg, rgba(14, 42, 82, 0.72), rgba(6, 21, 43, 0.80)),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(234, 241, 227, 0.9)),
                 url('expertise-demo-hero.jpg');
             background-size: cover;
-            background-position: center 30%;
+            background-position: center 35%;
+            border-bottom-color: var(--logo-green);
         }
+        .hero .eyebrow { color: var(--logo-green-hover); }
+        .hero h1 { color: var(--logo-navy); }
+        .hero p { color: #33455e; }
     </style>
 </head>
 <body>
@@ -64,9 +68,9 @@ page_key: accueil
             <a href="expertise-demo-formations.html" class="teaser-card">
                 <div class="teaser-top"></div>
                 <div class="teaser-body">
-                    <h3>Nos formations</h3>
+                    <h3>Formations suivies</h3>
                     <p>Les formations suivies chaque année pour rester à jour sur les règles techniques et réglementaires.</p>
-                    <span class="teaser-link">Consulter nos formations →</span>
+                    <span class="teaser-link">Voir les formations suivies →</span>
                 </div>
             </a>
 
