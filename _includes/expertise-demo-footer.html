@@ -8,11 +8,13 @@
     <footer>
         <div class="footer-content">
             <p><strong>MATTHIEU ARTISAN EURL</strong> — Expertise fumisterie tous combustibles (inférieur à 85kW)</p>
-            <p class="legal">&copy; 2026 MATTHIEU ARTISAN EURL — Tous droits réservés. Cette page est une maquette de démonstration, non indexée et non destinée à la publication en l'état.</p>
+            <p class="legal">&copy; <span id="copyright-year">2026</span> MATTHIEU ARTISAN EURL — Tous droits réservés. Cette page est une maquette de démonstration, non indexée et non destinée à la publication en l'état.</p>
         </div>
     </footer>
 
     <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
         /* Menu Hamburger */
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
