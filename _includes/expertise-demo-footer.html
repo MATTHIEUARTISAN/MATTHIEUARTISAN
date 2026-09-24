@@ -1,0 +1,42 @@
+    <!-- Back To Top -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>MATTHIEU ARTISAN EURL</strong> — Expertise fumisterie tous combustibles (inférieur à 85kW)</p>
+            <p class="legal">&copy; 2026 MATTHIEU ARTISAN EURL — Tous droits réservés. Cette page est une maquette de démonstration, non indexée et non destinée à la publication en l'état.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* Menu Hamburger */
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        /* Back to Top */
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>

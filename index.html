@@ -218,6 +218,10 @@
         /* ZONE BOUTON : ALIGNÉ EN BAS */
         .btn-box {
             margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn {
@@ -233,6 +237,22 @@
             transition: all 0.3s ease;
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Second bouton (maquette Expertise) : même forme, plus discret, avec un petit
+           repère "DÉMO" pour ne jamais le confondre avec le vrai site en ligne. */
+        .btn-demo {
+            padding: 10px 28px;
+            font-size: 0.68rem;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 0.9;
+        }
+        .side-run:hover .btn-demo {
+            background: rgba(255, 255, 255, 0.5);
+            border-color: var(--run-color);
+            color: var(--text-dark);
         }
 
         /* EFFET DE SURVOL ET DE MOUVEMENT */
@@ -244,7 +264,7 @@
         .side:hover .content { transform: scale(1.05); }
 
         .side-tri:hover .btn { background: var(--tri-color); border-color: var(--tri-color); color: var(--white); }
-        .side-run:hover .btn { background: var(--run-color); border-color: var(--run-color); color: var(--white); }
+        .side-run:hover .btn:not(.btn-demo) { background: var(--run-color); border-color: var(--run-color); color: var(--white); }
 
         /* OPTIMISATION MOBILE */
         @media (max-width: 834px) {
@@ -282,10 +302,14 @@
 
             .content { padding: 10px 20px 0; margin-top: 0; }
 
-            .btn-box { margin-top: 8px; }
+            .btn-box { margin-top: 8px; gap: 6px; }
             .btn { 
                 padding: 10px 25px; 
                 font-size: 0.75rem;
+            }
+            .btn-demo {
+                padding: 7px 20px;
+                font-size: 0.62rem;
             }
         }
 
@@ -390,7 +414,7 @@
         </a>
 
         <!-- Lien - Expertise & Inspection -->
-        <a href="expertise.html" onclick="redirectProject(event, 'expertise')" class="side side-run">
+        <div class="side side-run" onclick="redirectProject(event, 'expertise')">
             <div class="content">
                 <div class="logo-box">
     <img src="matthieu-artisan.expertise.png" alt="Expertise énergie bois" class="logo-img">
@@ -399,7 +423,8 @@
     <h2>EXPERTISE FUMISTERIE PARTICULIERS / PROFESSIONNELS</h2>
 </div>
                 <div class="btn-box">
-                    <div class="btn">Accéder au site</div>
+                    <a href="expertise.html" class="btn" onclick="event.stopPropagation();">Accéder au site</a>
+                    <a href="expertise-demo.html" class="btn btn-demo" onclick="event.stopPropagation();">Accéder au site (démo)</a>
                 </div>
                 <div class="info-box">
                     <p>Audits avant-vente immobilière</p>
@@ -408,7 +433,7 @@
                     <p>Conseil de partie</p>
                 </div>
             </div>
-        </a>
+        </div>
     </div>
 
 <script>

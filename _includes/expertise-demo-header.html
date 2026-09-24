@@ -1,0 +1,30 @@
+    <div class="demo-ribbon">🛠️ MAQUETTE — Version démo non publiée, à valider avant mise en ligne</div>
+
+    <header>
+        <div class="header-container">
+            <div class="brand-group">
+                <a href="expertise-demo.html" class="logo">
+                    <img src="matthieu-artisan.expertise.png" alt="Matthieu Artisan - Expertise">
+                </a>
+                <div class="header-info-block">
+                    <span class="header-location-tag">📍 Intervention France entière (sur devis)</span>
+                    <a href="tel:0478470662" class="header-phone-link">📞 04 78 470 662</a>
+                </div>
+            </div>
+
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="expertise-demo.html" class="{% if page.page_key == 'accueil' %}active-link{% endif %}">Accueil</a></li>
+                    <li><a href="expertise-demo-competences.html" class="{% if page.page_key == 'competences' %}active-link{% endif %}">Nos compétences</a></li>
+                    <li><a href="expertise-demo-expertises.html" class="{% if page.page_key == 'expertises' %}active-link{% endif %}">Nos expertises</a></li>
+                    <li><a href="expertise-demo-formations.html" class="{% if page.page_key == 'formations' %}active-link{% endif %}">Nos formations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>

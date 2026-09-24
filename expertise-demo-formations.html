@@ -1,0 +1,231 @@
+---
+page_key: formations
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>[Démo] Nos formations — Matthieu Artisan</title>
+    {% include expertise-demo-style.html %}
+    <!-- Style additionnel : classes utilisées par le contenu partagé
+         _includes/qualifications-content.html (identique à nos-qualifications.html et
+         certifications.html), recoloré ici dans la palette de la maquette Expertise plutôt
+         que reproduit une 3e fois avec ses propres couleurs. -->
+    <style>
+        .intro-box {
+            background: #ffffff;
+            border-radius: 4px;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid var(--legal-border);
+            border-left: 5px solid var(--logo-navy);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .tabs-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--logo-light-grey);
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            flex: 1 1 0;
+            background: #ffffff;
+            border: 2px solid var(--legal-border);
+            padding: 0.7rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover { border-color: var(--logo-navy); color: var(--logo-navy); }
+
+        .tab-btn.active {
+            background-color: var(--logo-navy);
+            color: #ffffff;
+            border-color: var(--logo-navy);
+            box-shadow: 0 4px 12px rgba(14, 42, 82, 0.2);
+        }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        .timeline-container { position: relative; }
+        .timeline-item { position: relative; margin-bottom: 1.3rem; }
+
+        .timeline-card {
+            background: #ffffff;
+            border-radius: 4px;
+            border: 1px solid var(--legal-border);
+            border-left: 4px solid var(--logo-navy);
+            padding: 1.25rem 1.6rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-item.highlight .timeline-card {
+            border-left-color: var(--logo-steel-blue);
+            background-color: #fafbfc;
+        }
+
+        .timeline-card:hover { border-color: #94a3b8; box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .badge-organism {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--logo-navy);
+            background-color: var(--bg-card-accent);
+            border: 1px solid var(--legal-border);
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-item.highlight .badge-organism {
+            color: var(--logo-steel-blue);
+            background-color: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .badge-date {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .timeline-card h3 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.1rem;
+            color: var(--logo-navy);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-card p { font-size: 0.92rem; color: #475569; line-height: 1.6; }
+
+        .card-ref-code {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 0.4rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed var(--legal-border);
+            flex-wrap: wrap;
+        }
+
+        .btn-doc {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: #ffffff;
+            color: var(--logo-navy);
+            border: 1px solid var(--legal-border);
+            padding: 0.35rem 0.75rem;
+            border-radius: 3px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-doc:hover { background-color: var(--logo-navy); color: #ffffff; border-color: var(--logo-navy); }
+        .btn-doc svg { width: 14px; height: 14px; fill: currentColor; }
+
+        .modal-img-viewer {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(11, 29, 58, 0.88);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .modal-img-viewer img {
+            max-width: 90%; max-height: 85vh;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: #ffffff;
+            object-fit: contain;
+            border: 4px solid #ffffff;
+        }
+        .modal-img-close {
+            position: absolute; top: 20px; right: 25px;
+            color: #ffffff; font-size: 2.2rem; font-weight: bold; cursor: pointer;
+        }
+
+        @media (max-width: 834px) {
+            .tabs-container { flex-direction: column; gap: 0.5rem; }
+            .tab-btn { border-radius: 6px; }
+        }
+
+        /* Le contenu partagé apporte son propre <main class="main-container">, imbriqué ici
+           dans .demo-container qui gère déjà la largeur/le padding — on le neutralise pour
+           éviter un double espacement. */
+        main.main-container { max-width: none; margin: 0; padding: 0; }
+    </style>
+</head>
+<body>
+
+    {% include expertise-demo-header.html %}
+
+    <section class="hero">
+        <span class="eyebrow">Rester à jour</span>
+        <h1>Nos formations</h1>
+        <p>Le détail des formations suivies chaque année, pour garantir des expertises fondées sur les règles techniques et réglementaires en vigueur.</p>
+    </section>
+
+    <div class="demo-container" style="padding-top: 3rem;">
+        {% include qualifications-content.html %}
+    </div>
+
+    <div class="demo-container narrow" style="padding-top: 0;">
+        <div class="demo-cta">
+            <h2>Une question sur nos qualifications ?</h2>
+            <p>N'hésitez pas à nous contacter pour en discuter directement.</p>
+            <a href="tel:0478470662">📞 04 78 470 662</a>
+        </div>
+    </div>
+
+    {% include expertise-demo-footer.html %}
+
+</body>
+</html>
