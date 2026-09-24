@@ -41,4 +41,24 @@
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        /* Apparition progressive des cartes de la timeline au scroll (n'a d'effet que sur
+           la page Formation continue, qui est la seule à contenir des .timeline-item ;
+           ne fait rien sur les 3 autres pages de la maquette). Filet de sécurité : si
+           IntersectionObserver n'est pas supporté, tout s'affiche immédiatement plutôt
+           que de rester invisible. */
+        if ('IntersectionObserver' in window) {
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        timelineObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.timeline-item').forEach(item => timelineObserver.observe(item));
+        } else {
+            document.querySelectorAll('.timeline-item').forEach(item => item.classList.add('in-view'));
+        }
     </script>
+    <noscript><style>.timeline-item { opacity: 1 !important; transform: none !important; }</style></noscript>
