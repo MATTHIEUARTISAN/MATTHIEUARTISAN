@@ -395,7 +395,7 @@
 
     <div class="splash-container">
         <!-- Lien - Dépannage & Installation -->
-        <a href="poeles-bois-granules.html" onclick="redirectProject(event, 'specialiste')" class="side side-tri">
+        <div class="side side-tri" onclick="redirectProject(event, 'specialiste')">
             <div class="content">
                 <div class="logo-box">
     <img src="matthieu-artisan.specialiste.png" alt="Plomberie & Chauffage - Dépannage et Installation" class="logo-img">
@@ -404,14 +404,14 @@
     <h2>POÊLES À BOIS & GRANULÉS</h2>
 </div>
                 <div class="btn-box">
-                    <div class="btn">Accéder au site</div>
+                    <a href="poeles-bois-granules.html" class="btn" onclick="event.stopPropagation();">Accéder au site</a>
                 </div>
                 <div class="info-box">
                     <p>Conduit de fumées / Tubage flexible</p>
                     <p>Mise en conformité</p>
                 </div>
             </div>
-        </a>
+        </div>
 
         <!-- Lien - Expertise & Inspection -->
         <div class="side side-run" onclick="redirectProject(event, 'expertise')">
