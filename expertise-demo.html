@@ -9,6 +9,18 @@ page_key: accueil
     <meta name="robots" content="noindex, nofollow">
     <title>[Démo] Expertise — Matthieu Artisan</title>
     {% include expertise-demo-style.html %}
+    <!-- Bandeau principal de cette page uniquement : photo en fond, avec un voile navy en
+         dégradé par-dessus pour garder le texte blanc lisible et rester dans la palette de
+         marque (même logique que les bandeaux photo du site concurrent). -->
+    <style>
+        .hero {
+            background:
+                linear-gradient(135deg, rgba(14, 42, 82, 0.72), rgba(6, 21, 43, 0.80)),
+                url('expertise-demo-hero.jpg');
+            background-size: cover;
+            background-position: center 30%;
+        }
+    </style>
 </head>
 <body>
 
