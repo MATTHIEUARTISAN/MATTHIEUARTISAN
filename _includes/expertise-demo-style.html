@@ -21,6 +21,7 @@
         --legal-dark: #0B1D3A;
         --legal-border: #cbd5e1;
         --logo-green-hover: #5d941b;
+        --logo-green: #7fab2b;
         --demo-amber: #b7791f;
         --demo-amber-bg: #fdf6e9;
     }
@@ -65,7 +66,7 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        border-bottom: 3px solid var(--logo-steel-blue);
+        border-bottom: 3px solid var(--logo-green);
     }
 
     .header-container {
@@ -90,30 +91,38 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 60px;
-        border-left: 2px solid var(--logo-steel-blue);
+        height: auto;
+        border-left: 2px solid var(--logo-green);
         padding-left: 0.8rem;
-        line-height: 1.25;
+        line-height: 1.35;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .header-location-tag {
         font-size: 0.85rem;
-        font-weight: 600;
+        font-weight: 700;
         color: var(--logo-navy);
         white-space: nowrap;
-        margin-bottom: 6px;
+        margin-bottom: 2px;
+    }
+
+    .header-scope-tag {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--logo-grey);
+        white-space: nowrap;
+        margin-bottom: 4px;
     }
 
     .header-phone-link {
         font-size: 0.9rem;
         font-weight: bold;
-        color: var(--logo-steel-blue);
+        color: var(--logo-green);
         text-decoration: none;
         white-space: nowrap;
         transition: color 0.2s;
     }
-    .header-phone-link:hover { color: var(--logo-steel-hover); }
+    .header-phone-link:hover { color: var(--logo-green-hover); }
 
     nav ul { display: flex; list-style: none; gap: 1.5rem; }
     nav a {
@@ -124,7 +133,7 @@
         transition: color 0.2s;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    nav a:hover, nav a.active-link { color: var(--logo-steel-blue); }
+    nav a:hover, nav a.active-link { color: var(--logo-green); }
 
     .hamburger {
         display: none;
@@ -156,7 +165,7 @@
         color: white;
         text-align: center;
         padding: 5rem 1.5rem 4.5rem;
-        border-bottom: 4px solid var(--logo-steel-blue);
+        border-bottom: 4px solid var(--logo-green);
     }
     .hero .eyebrow {
         display: block;
@@ -165,7 +174,7 @@
         font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: #9cc3de;
+        color: #b9d485;
         margin-bottom: 1rem;
     }
     .hero h1 {
@@ -185,7 +194,7 @@
     /* --- Bandeau plein de section (motif emprunté à expertise-chauffage-bois.fr,
          recoloré dans la palette actuelle plutôt qu'en orange) --- */
     .section-band {
-        background: var(--logo-steel-blue);
+        background: var(--logo-green);
         color: #ffffff;
         text-align: center;
         padding: 0.6rem 1rem;
@@ -235,7 +244,7 @@
         border-radius: 10px;
         padding: 1.8rem;
         box-shadow: 0 6px 20px rgba(14, 42, 82, 0.07);
-        border-top: 3px solid var(--logo-steel-blue);
+        border-top: 3px solid var(--logo-green);
     }
     .demo-card h3 {
         font-size: 1.15rem;
@@ -251,7 +260,7 @@
         content: "—";
         position: absolute;
         left: 0;
-        color: var(--logo-steel-blue);
+        color: var(--logo-green);
     }
 
     /* --- Domaines : bloc "checkmark" (inspiré du concurrent) --- */
@@ -266,12 +275,12 @@
         width: 56px;
         height: 56px;
         margin: 0 auto 0.9rem;
-        border: 2px solid var(--logo-steel-blue);
+        border: 2px solid var(--logo-green);
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--logo-steel-blue);
+        color: var(--logo-green);
         font-size: 1.6rem;
     }
     .checkmark-item p {
@@ -300,7 +309,7 @@
         content: "⚠";
         position: absolute;
         left: 0;
-        color: var(--logo-steel-blue);
+        color: var(--logo-green);
         font-size: 0.85rem;
     }
     @media (max-width: 680px) {
@@ -346,13 +355,13 @@
         height: 130px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid var(--logo-steel-blue);
+        border: 3px solid var(--logo-green);
         flex-shrink: 0;
     }
     .profile-block h3 { font-size: 1.3rem; margin-bottom: 0.2rem; }
     .profile-block .role {
         display: block;
-        color: var(--logo-steel-blue);
+        color: var(--logo-green);
         font-weight: 600;
         font-size: 0.9rem;
         margin-bottom: 0.9rem;
@@ -360,7 +369,7 @@
     }
     .profile-block blockquote {
         background: var(--bg-light);
-        border-left: 3px solid var(--logo-steel-blue);
+        border-left: 3px solid var(--logo-green);
         padding: 0.9rem 1.2rem;
         margin-top: 0.9rem;
         font-style: italic;
@@ -383,7 +392,7 @@
     .demo-cta p { color: var(--text-color); margin-bottom: 1.5rem; }
     .demo-cta a {
         display: inline-block;
-        background-color: var(--logo-steel-blue);
+        background-color: var(--logo-green);
         color: white;
         padding: 0.8rem 2rem;
         border-radius: 5px;
@@ -392,7 +401,7 @@
         font-size: 1.05rem;
         transition: background 0.3s;
     }
-    .demo-cta a:hover { background-color: var(--logo-steel-hover); }
+    .demo-cta a:hover { background-color: var(--logo-green-hover); }
 
     /* --- Teasers d'accueil vers les 3 autres pages --- */
     .teaser-card {
@@ -410,7 +419,7 @@
     }
     .teaser-card .teaser-top {
         height: 6px;
-        background: var(--logo-steel-blue);
+        background: var(--logo-green);
     }
     .teaser-card .teaser-body { padding: 1.8rem; }
     .teaser-card h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
@@ -421,7 +430,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 0.85rem;
         font-weight: 700;
-        color: var(--logo-steel-blue);
+        color: var(--logo-green);
     }
 
     /* --- BACK TO TOP --- */
@@ -431,7 +440,7 @@
         bottom: 20px;
         right: 20px;
         z-index: 2000;
-        background-color: var(--logo-steel-blue);
+        background-color: var(--logo-green);
         color: white;
         width: 45px;
         height: 45px;
@@ -461,10 +470,11 @@
     @media (max-width: 834px) {
         .header-container { position: relative; padding: 0.2rem 1rem; justify-content: space-between; }
         .brand-group { gap: 0.5rem; max-width: calc(100% - 40px); }
-        .logo img { height: 56px; }
+        .logo img { height: 48px; }
         .header-info-block { height: auto; padding-left: 0.5rem; }
-        .header-location-tag { font-size: 0.68rem; margin-bottom: 2px; }
-        .header-phone-link { font-size: 0.75rem; }
+        .header-location-tag { font-size: 0.66rem; margin-bottom: 1px; }
+        .header-scope-tag { font-size: 0.58rem; margin-bottom: 2px; }
+        .header-phone-link { font-size: 0.72rem; }
         .hamburger { display: flex; margin-left: auto; align-self: center; }
         nav ul {
             display: none;
