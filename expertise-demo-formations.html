@@ -239,6 +239,62 @@ page_key: formations
            dans .demo-container qui gère déjà la largeur/le padding — on le neutralise pour
            éviter un double espacement. */
         main.main-container { max-width: none; margin: 0; padding: 0; }
+
+        /* --- Logos RGE dans le bandeau, même principe que sur nos-qualifications.html/
+           certifications.html, recolorés dans la palette de la maquette (survol vert). --- */
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-rge-logos {
+            position: absolute;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .rge-card {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            padding: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.25s ease;
+            text-decoration: none;
+            line-height: 0;
+            width: fit-content;
+            overflow: hidden;
+        }
+
+        .rge-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--logo-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        .rge-card img {
+            height: 38px;
+            width: auto;
+            display: block;
+            margin: 0;
+            transform: scale(1.08);
+            object-fit: cover;
+        }
+
+        @media (max-width: 834px) {
+            .hero-container { flex-direction: column; gap: 1.1rem; }
+            .hero-rge-logos { position: static; flex-direction: row; justify-content: center; gap: 0.7rem; }
+            .rge-card img { height: 32px; }
+        }
     </style>
 </head>
 <body>
@@ -246,9 +302,24 @@ page_key: formations
     {% include expertise-demo-header.html %}
 
     <section class="hero">
-        <span class="eyebrow">Rester à jour</span>
-        <h1>Formation continue</h1>
-        <p>Le détail des formations suivies chaque année, pour garantir des expertises fondées sur les règles techniques et réglementaires en vigueur.</p>
+        <div class="hero-container">
+            <!-- Logos RGE, même principe que sur nos-qualifications.html/certifications.html,
+                 recolorés (survol vert) pour rester dans la palette de la maquette. -->
+            <div class="hero-rge-logos">
+                <a href="https://www.qualypso.fr/download_file.php?id=ebf05986-a1b5-4872-85a9-bc012f8fff1c" target="_blank" rel="noopener" class="rge-card" title="Attestation QualiBOIS RGE (PDF)">
+                    <img src="https://www.qualit-enr.org/wp-content/uploads/2020/08/Logo-QualiBOIS-RGE.png" alt="Logo Certification RGE QualiBOIS">
+                </a>
+                <a href="https://www.qualypso.fr/download_file.php?id=85886f51-f914-4ef9-b839-145e1f1f4114" target="_blank" rel="noopener" class="rge-card" title="Attestation QualiSOL RGE (PDF)">
+                    <img src="https://www.qualit-enr.org/wp-content/uploads/2020/08/Logo-QualiSOL-RGE.png" alt="Logo Certification RGE QualiSOL">
+                </a>
+            </div>
+
+            <div class="hero-text">
+                <span class="eyebrow">Rester à jour</span>
+                <h1>Formation continue</h1>
+                <p>Le détail des formations suivies chaque année, pour garantir des expertises fondées sur les règles techniques et réglementaires en vigueur.</p>
+            </div>
+        </div>
     </section>
 
     <div class="demo-container" style="padding-top: 3rem;">
