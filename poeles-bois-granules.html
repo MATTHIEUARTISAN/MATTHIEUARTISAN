@@ -1281,7 +1281,7 @@ startTimer();
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
+            <p>&copy; <span id="copyright-year">2026</span> matthieu-artisan.fr — Tous droits réservés.</p>
 
             <!-- Liste étendue de communes/codes postaux, repliée par défaut : présente dans
                  le HTML pour le référencement local (SEO), sans alourdir visuellement le pied
@@ -1293,6 +1293,8 @@ startTimer();
             <p style="margin-top: 0.5rem;"><a href="qui-sommes-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="partenaires.html">(Partenaires)</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
         </div>
     </footer>
+
+    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
     <script>
         /* Hamburger */
         const hamburgerBtn = document.getElementById('hamburger-btn');

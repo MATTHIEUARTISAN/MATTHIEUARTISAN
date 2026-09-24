@@ -808,7 +808,7 @@
     <!-- Footer (identique à expertise.html) -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
+            <p>&copy; <span id="copyright-year">2026</span> matthieu-artisan.fr — Tous droits réservés.</p>
             <p style="margin-top: 0.5rem;"><a href="qui-sommes-nous.html">Qui sommes nous</a> | <a href="galerie.html">Galerie</a> | <a href="partenaires.html">(Partenaires)</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
 
             <!-- Liste étendue de communes/codes postaux, repliée par défaut : présente dans
@@ -820,6 +820,8 @@
             </details>
         </div>
     </footer>
+
+    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
 
     <script>
         /* Hamburger */
