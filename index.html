@@ -263,12 +263,14 @@
         .side:hover::after { background: rgba(255, 255, 255, 0.12); }
         .side:hover .content { transform: scale(1.05); }
 
-        .side-tri:hover .btn { background: var(--tri-color); border-color: var(--tri-color); color: var(--white); }
-        .side-run:hover .btn:not(.btn-demo) { background: var(--run-color); border-color: var(--run-color); color: var(--white); }
+        .side-tri .btn:hover { background: var(--tri-color); border-color: var(--tri-color); color: var(--white); }
+        .side-run .btn:not(.btn-demo):hover { background: var(--run-color); border-color: var(--run-color); color: var(--white); }
+        .side-run .btn-demo:hover { background: var(--run-color); border-color: var(--run-color); color: var(--white); opacity: 1; }
 
         /* Effet propre au bouton lui-même (indépendant du survol de tout le panneau) :
-           un léger agrandissement + ombre plus marquée, pour que le bouton réagisse
-           visiblement quand on le survole précisément, pas seulement le panneau entier. */
+           un léger agrandissement + ombre plus marquée, en plus de l'inversion de couleur
+           ci-dessus, pour que le bouton réagisse visiblement quand on le survole
+           précisément, pas seulement le panneau entier. */
         .btn:hover {
             transform: scale(1.06);
             box-shadow: 0 6px 22px rgba(0,0,0,0.22);
