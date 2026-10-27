@@ -482,7 +482,8 @@ function redirectProject(event, project) {
 /* Partie Expertise en construction : accès par mot de passe (voir expertise-gate.js) */
 function openExpertiseGate() {
     if (window.ExpertiseGate) {
-        window.ExpertiseGate.open(function () { window.location.href = 'expertise.html'; });
+        /* Après le mot de passe, on arrive sur la maquette (démo) ; le bouton en bas à gauche permet de passer au site Expertise actuel. */
+        window.ExpertiseGate.open(function () { window.location.href = 'expertise-demo.html'; });
     }
 }
 </script>
