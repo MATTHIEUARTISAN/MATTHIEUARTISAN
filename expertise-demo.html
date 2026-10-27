@@ -78,7 +78,9 @@ page_key: accueil
             align-items: center;
             gap: 0.5rem;
             background: rgba(255, 255, 255, 0.9);
-            padding: 0.4rem 0.7rem;
+            /* Contour en pointillés : signale que cette option est temporaire (maquette) */
+            border: 2px dashed var(--logo-steel-blue);
+            padding: calc(0.4rem - 2px) calc(0.7rem - 2px);
             border-radius: 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 0.72rem;
@@ -114,7 +116,7 @@ page_key: accueil
         .hero-fx-toggle input:checked + .switch::before { transform: translateX(15px); }
 
         @media (max-width: 600px) {
-            .hero-fx-toggle { font-size: 0.62rem; padding: 0.3rem 0.55rem; top: 8px; right: 8px; }
+            .hero-fx-toggle { font-size: 0.62rem; padding: calc(0.3rem - 2px) calc(0.55rem - 2px); top: 8px; right: 8px; }
         }
     </style>
 </head>
