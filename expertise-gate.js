@@ -108,8 +108,12 @@
         ".gate-shake{animation:gateShake .35s}" +
         "@keyframes gateShake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}" +
         ".gate-bar{background:#0E2A52;color:#fff;text-align:center;font:600 .8rem 'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;padding:7px 12px}" +
-        ".gate-bar a{color:#bfdbfe;margin-left:10px;white-space:nowrap}" +
-        ".gate-bar a:hover{color:#fff}";
+        ".gate-switch{position:fixed;left:16px;bottom:16px;z-index:9000;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;" +
+        "background:#0E2A52;color:#fff;border:2px solid #fff;border-radius:30px;box-shadow:0 6px 18px rgba(0,0,0,.35);" +
+        "font:700 .88rem 'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;text-decoration:none;transition:background .2s,transform .2s}" +
+        ".gate-switch:hover{background:#1a67b3;transform:translateY(-2px)}" +
+        ".gate-switch .gate-ico{font-size:1.1rem;line-height:1}" +
+        "@media(max-width:600px){.gate-switch{left:10px;bottom:10px;padding:9px 14px;font-size:.8rem}}";
     document.head.appendChild(style);
 
     /* ---------- Fenêtre de saisie du mot de passe ---------- */
@@ -173,15 +177,24 @@
         });
     }
 
-    /* ---------- Bandeau de navigation Expertise <-> maquette (accès validé) ---------- */
+    /* ---------- Bouton fixe pour passer du site Expertise à la maquette (et inversement) ---------- */
     function addBar() {
-        if (document.querySelector(".gate-bar")) return;
         var file = (location.pathname.split("/").pop() || "").toLowerCase();
-        if (file.indexOf("expertise-demo") === 0) return; /* la maquette a déjà son propre bandeau */
-        var bar = document.createElement("div");
-        bar.className = "gate-bar";
-        bar.innerHTML = 'Accès privé : partie Expertise en construction <a href="' + DEMO_URL + '">Voir la maquette (démo) &rarr;</a>';
-        document.body.insertBefore(bar, document.body.firstChild);
+        var isDemo = file.indexOf("expertise-demo") === 0;
+        /* petit bandeau d'information (la maquette a déjà son propre bandeau orange) */
+        if (!isDemo && !document.querySelector(".gate-bar")) {
+            var bar = document.createElement("div");
+            bar.className = "gate-bar";
+            bar.textContent = "Accès privé : partie Expertise en construction";
+            document.body.insertBefore(bar, document.body.firstChild);
+        }
+        if (document.querySelector(".gate-switch")) return;
+        var btn = document.createElement("a");
+        btn.className = "gate-switch";
+        btn.href = isDemo ? SITE_URL : DEMO_URL;
+        btn.innerHTML = '<span class="gate-ico" aria-hidden="true">&#8644;</span>' +
+            (isDemo ? "Voir le site Expertise actuel" : "Voir la maquette (démo)");
+        document.body.appendChild(btn);
     }
 
     window.ExpertiseGate = { open: open, isUnlocked: isUnlocked, siteUrl: SITE_URL, demoUrl: DEMO_URL };
