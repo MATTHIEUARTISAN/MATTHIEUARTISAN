@@ -1,3 +1,5 @@
+<!-- Accès protégé par mot de passe (voir expertise-gate.js) -->
+<script src="expertise-gate.js" data-protect></script>
 <!-- Feuille de style partagée par les 4 pages de la maquette "Expertise — Démo".
      Palette identique à expertise.html (mêmes variables --logo-*), pour rester dans le
      style actuel de la section Expertise. Ce qui change : une police de titres éditoriale
@@ -57,6 +59,12 @@
         letter-spacing: 0.5px;
         padding: 0.45rem 1rem;
         border-bottom: 1px solid #f0dca6;
+    }
+
+    .demo-ribbon-link {
+        margin-left: 12px;
+        color: var(--logo-navy);
+        white-space: nowrap;
     }
 
     /* --- EN-TÊTE (même structure/couleurs que expertise.html) --- */
