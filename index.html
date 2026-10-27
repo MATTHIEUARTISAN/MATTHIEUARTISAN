@@ -242,18 +242,11 @@
             cursor: pointer;
         }
 
-        /* Second bouton (maquette Expertise) : même forme, plus discret, avec un petit
-           repère "DÉMO" pour ne jamais le confondre avec le vrai site en ligne. */
-        .btn-demo {
-            padding: 10px 28px;
-            font-size: 0.68rem;
-            background: rgba(255, 255, 255, 0.3);
-            opacity: 0.9;
-        }
-        .side-run:hover .btn-demo {
-            background: rgba(255, 255, 255, 0.5);
-            border-color: var(--run-color);
-            color: var(--text-dark);
+        /* Bouton "En construction" (partie Expertise) : même forme que les autres boutons,
+           contour en pointillés ; un clic ouvre la saisie du mot de passe. */
+        .btn-construction {
+            font-family: inherit;
+            border-style: dashed;
         }
 
         /* EFFET DE SURVOL ET DE MOUVEMENT */
@@ -265,8 +258,7 @@
         .side:hover .content { transform: scale(1.05); }
 
         .side-tri .btn:hover { background: var(--tri-color); border-color: var(--tri-color); color: var(--white); }
-        .side-run .btn:not(.btn-demo):hover { background: var(--run-color); border-color: var(--run-color); color: var(--white); }
-        .side-run .btn-demo:hover { background: var(--run-color); border-color: var(--run-color); color: var(--white); opacity: 1; }
+        .side-run .btn:hover { background: var(--run-color); border-color: var(--run-color); color: var(--white); }
 
         /* Effet propre au bouton lui-même (indépendant du survol de tout le panneau) :
            un léger agrandissement + ombre plus marquée, en plus de l'inversion de couleur
@@ -317,10 +309,6 @@
             .btn { 
                 padding: 10px 25px; 
                 font-size: 0.75rem;
-            }
-            .btn-demo {
-                padding: 7px 20px;
-                font-size: 0.62rem;
             }
         }
 
@@ -464,8 +452,7 @@
     <h2>EXPERTISE FUMISTERIE PARTICULIERS / PROFESSIONNELS</h2>
 </div>
                 <div class="btn-box">
-                    <a href="expertise.html" class="btn" onclick="event.stopPropagation();">Accéder au site</a>
-                    <a href="expertise-demo.html" class="btn btn-demo" onclick="event.stopPropagation();">Accéder au site (démo)</a>
+                    <button type="button" class="btn btn-construction" aria-haspopup="dialog" onclick="event.stopPropagation(); openExpertiseGate();">En construction</button>
                 </div>
                 <div class="info-box">
                     <p>Audits avant-vente immobilière</p>
@@ -477,6 +464,7 @@
         </div>
     </div>
 
+<script src="expertise-gate.js"></script>
 <script>
 
 function redirectProject(event, project) {
@@ -487,7 +475,14 @@ function redirectProject(event, project) {
     if (project === 'specialiste') {
         window.location.href = 'poeles-bois-granules.html';
     } else if (project === 'expertise') {
-        window.location.href = 'expertise.html';
+        openExpertiseGate();
+    }
+}
+
+/* Partie Expertise en construction : accès par mot de passe (voir expertise-gate.js) */
+function openExpertiseGate() {
+    if (window.ExpertiseGate) {
+        window.ExpertiseGate.open(function () { window.location.href = 'expertise.html'; });
     }
 }
 </script>
