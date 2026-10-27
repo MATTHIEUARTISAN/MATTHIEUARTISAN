@@ -396,6 +396,10 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.03);
         }
 
+        .services-list > li.service-wide {
+            grid-column: 1 / -1;
+        }
+
         .services-list > li::before {
             content: "✓";
             color: var(--accent-turquoise);
@@ -1029,17 +1033,17 @@
                         </ul>
                     </li>
                     <li>
+                        <span class="audit-link" onclick="openRsdtModal()" role="button" tabindex="0" onkeypress="if(event.key==='Enter')openRsdtModal()">AUDIT AVANT-VENTE IMMOBILIÈRE</span>
+                        <ul>
+                            <li>Diagnostic technique avant achat ou vente</li>
+                        </ul>
+                    </li>
+                    <li class="service-wide">
                         DIAGNOSTICS & EXPERTISE
                         <ul>
                             <li>Soutien d'expertise amiable (assurances)</li>
                             <li>Soutien d'expertise judiciaire</li>
                             <li>Diagnostic en cas de dysfonctionnement</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="audit-link" onclick="openRsdtModal()" role="button" tabindex="0" onkeypress="if(event.key==='Enter')openRsdtModal()">AUDIT AVANT-VENTE IMMOBILIÈRE</span>
-                        <ul>
-                            <li>Diagnostic technique avant achat ou vente</li>
                         </ul>
                     </li>
                 </ul>
