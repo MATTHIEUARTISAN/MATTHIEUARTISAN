@@ -595,6 +595,60 @@
             scrollbar-width: thin;
         }
 
+        /* Cartes de secours : affichées à la place des publications Facebook quand le navigateur
+           les bloque (Firefox, Safari, bloqueurs de publicités…). */
+        .fb-card {
+            text-align: left;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.9rem 1rem;
+            margin: 0 auto 0.8rem;
+            max-width: 500px;
+        }
+
+        .fb-card-head {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: #1c1e21;
+            font-size: 0.9rem;
+        }
+
+        .fb-card-ico {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #1877f2;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .fb-card p {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: #374151;
+            margin: 0 0 0.6rem;
+        }
+
+        .fb-card a {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #1877f2;
+            text-decoration: none;
+        }
+
+        .fb-card a:hover {
+            text-decoration: underline;
+        }
+
         .fb-feed .fb-post {
             display: block;
             margin: 0 auto 1rem;
@@ -1161,12 +1215,12 @@
          puis recopiez l'adresse dans data-href d'un bloc <div class="fb-post"> ci-dessous. -->
     <div id="fb-root"></div>
     <div class="fb-feed" id="fb-feed">
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02DmfJZoB2qdfQASLdtyJMfPbu6D5Q1YD1vVAwyPyzX7Vde3PDWg8VNVHtrTZXZn5dl&id=61594346696834" data-show-text="true"></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0zuRqJCi78Py6gE4shvqvsWGJKzQUvk18Y3b1sAGq6wpyKadMKMiU67zAzBz1fDFhl&id=61594346696834" data-show-text="true"></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02KxXSTmETThK7f3Nyc9tBpjyBqMgbjEpQpnBjnzLrJqtRKMqqWdbXuc1upmr2Trm6l&id=61594346696834" data-show-text="true"></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid024BmaUQ2G6Gpygti6iFEtxMLPtS6cX1k1YbFUc3UmsuHmz5yoHSypH5APYuKHYZ6Hl&id=61594346696834" data-show-text="true"></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0jHjgeRW6yV75M3BDQ8fxYkDNehS5jYCB5h4wMPkHt2gYSTtgmpMgYB5VmKBBtkcpl&id=61594346696834" data-show-text="true"></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02XjjPfqJbzYXDUGqhTkyLaaL2jUU65fMqAYYDyBANwzS7xdBFP9WvG5BeDSGj3ECzl&id=61594346696834" data-show-text="true"></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02DmfJZoB2qdfQASLdtyJMfPbu6D5Q1YD1vVAwyPyzX7Vde3PDWg8VNVHtrTZXZn5dl&id=61594346696834" data-show-text="true" data-text="Photos avant/après de l&#x27;installation d&#x27;un poêle à bois encastrable dans un âtre avec conduit flexible isolé dans le boisseau et installation de plaques sur mesure pour finitions autour du poêle. Calcul de dimensionnement à l&#x27;appui, ventilation du boisseau (haute et basse), grille pour prise d&#x27;air de combustion extérieur, pose d&#x27;une plaque signalétique."></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0zuRqJCi78Py6gE4shvqvsWGJKzQUvk18Y3b1sAGq6wpyKadMKMiU67zAzBz1fDFhl&id=61594346696834" data-show-text="true" data-text="Mise en conformité d&#x27;une hotte d&#x27;insert et tubage du boisseau qui bistrait trop rapidement, sous les conseils des ramoneurs du client. Fixation du tubage flexible dans la hotte, plaque signalétique, changement des grilles pour la conformité de la ventilation de hotte."></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02KxXSTmETThK7f3Nyc9tBpjyBqMgbjEpQpnBjnzLrJqtRKMqqWdbXuc1upmr2Trm6l&id=61594346696834" data-show-text="true" data-text="Démontage d&#x27;un insert à bois bûche et de son boisseau (évacuation des matériaux comprise) pour l&#x27;installation d&#x27;un poêle à granulés plat et d&#x27;un conduit concentrique vertical (ventouse), pilotable à distance, avec un réservoir permettant plusieurs jours d&#x27;autonomie."></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid024BmaUQ2G6Gpygti6iFEtxMLPtS6cX1k1YbFUc3UmsuHmz5yoHSypH5APYuKHYZ6Hl&id=61594346696834" data-show-text="true" data-text="En rénovation, installation d&#x27;un poêle à bois avec création du conduit de fumées double paroi isolé, conduit de raccordement émail noir et caisson incombustible (placo et isolant A1) autour du poêle, avec création d&#x27;une amenée d&#x27;air de combustion et calcul de dimensionnement."></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0jHjgeRW6yV75M3BDQ8fxYkDNehS5jYCB5h4wMPkHt2gYSTtgmpMgYB5VmKBBtkcpl&id=61594346696834" data-show-text="true" data-text="Installation d&#x27;un poêle à granulés étanche (agréé CSTB) avec raccordement conduit émail noir et conduit de fumées double paroi isolé. Raccordement de l&#x27;air de combustion vers l&#x27;extérieur et mise en route par la station technique agréée de la marque."></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02XjjPfqJbzYXDUGqhTkyLaaL2jUU65fMqAYYDyBANwzS7xdBFP9WvG5BeDSGj3ECzl&id=61594346696834" data-show-text="true" data-text="Installation d&#x27;une chaudière à granulés avec son silo de grande capacité, en remplacement d&#x27;une chaudière fioul. Démontage complet de l&#x27;ancienne chaufferie, avec une évacuation délicate."></div>
     </div>
 
     <!-- Bouton fallback si AdBlock bloque le composant -->
@@ -1380,21 +1434,65 @@ startTimer();
     <script>
         /* Publications Facebook : on règle la largeur (350 à 500 px, limites du plugin) selon la
            colonne, puis on charge le script Facebook, qui ajuste ensuite la hauteur de chaque
-           publication tout seul (photos comprises). Si le script est bloqué (bloqueur de
-           publicités…), le bouton "Retrouvez-nous sur Facebook" reste disponible. */
+           publication tout seul (photos comprises).
+           Firefox, Safari et les bloqueurs de publicités bloquent souvent ce contenu : si les
+           publications n'apparaissent pas au bout de quelques secondes, on affiche à la place des
+           cartes de secours (texte + lien vers la publication, lus dans data-text / data-href). */
         (function () {
             var feed = document.getElementById("fb-feed");
             if (!feed) return;
-            var w = Math.round(Math.max(350, Math.min(500, feed.clientWidth - 24)));
-            feed.querySelectorAll(".fb-post").forEach(function (post) {
-                post.setAttribute("data-width", w);
+            var posts = Array.prototype.slice.call(feed.querySelectorAll(".fb-post"));
+            var data = posts.map(function (p) {
+                return { href: p.getAttribute("data-href"), text: p.getAttribute("data-text") || "" };
             });
+            var w = Math.round(Math.max(350, Math.min(500, feed.clientWidth - 24)));
+            posts.forEach(function (post) { post.setAttribute("data-width", w); });
+
+            var fallbackDone = false;
+            function showFallback() {
+                if (fallbackDone) return;
+                fallbackDone = true;
+                feed.innerHTML = "";
+                data.forEach(function (d) {
+                    var card = document.createElement("div");
+                    card.className = "fb-card";
+                    var head = document.createElement("div");
+                    head.className = "fb-card-head";
+                    var ico = document.createElement("span");
+                    ico.className = "fb-card-ico";
+                    ico.textContent = "f";
+                    head.appendChild(ico);
+                    head.appendChild(document.createTextNode("MatthieuArtisan"));
+                    var txt = document.createElement("p");
+                    txt.textContent = d.text;
+                    var link = document.createElement("a");
+                    link.href = d.href;
+                    link.target = "_blank";
+                    link.rel = "noopener noreferrer";
+                    link.textContent = "Voir la publication sur Facebook \u2197";
+                    card.appendChild(head);
+                    card.appendChild(txt);
+                    card.appendChild(link);
+                    feed.appendChild(card);
+                });
+            }
+
             var sdk = document.createElement("script");
             sdk.async = true;
             sdk.defer = true;
             sdk.crossOrigin = "anonymous";
             sdk.src = "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v21.0";
+            sdk.onerror = showFallback;
             document.body.appendChild(sdk);
+
+            /* Au bout de 8 s, si aucune publication n'a pris de hauteur, Facebook est bloqué. */
+            setTimeout(function () {
+                var ok = posts.some(function (p) {
+                    var box = p.querySelector("span");
+                    return box && box.getBoundingClientRect().height > 150;
+                });
+                if (!ok) showFallback();
+            }, 8000);
         })();
     </script>
     <script>
