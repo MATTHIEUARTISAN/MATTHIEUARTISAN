@@ -595,12 +595,9 @@
             scrollbar-width: thin;
         }
 
-        .facebook-section iframe {
+        .fb-feed .fb-post {
             display: block;
-            width: 100%;
-            max-width: 500px;
             margin: 0 auto 1rem;
-            flex: none;
         }
 
         /* Pop-up Modal */
@@ -1158,64 +1155,18 @@
         <aside class="facebook-section">
     <h3>Suivez notre actualité</h3>
     
-    <!-- Publications Facebook intégrées (plugin "Post"), la plus récente en premier.
-         Pour en ajouter ou en changer : sur Facebook, trois points de la publication > Intégrer,
-         puis recopiez la partie "story_fbid=pfbid…" dans data-post d'un des blocs ci-dessous. -->
+    <!-- Publications Facebook intégrées, la plus récente en premier.
+         Elles se redimensionnent toutes seules (script Facebook chargé en bas de page).
+         Pour en ajouter ou en retirer : sur Facebook, trois points de la publication > Intégrer,
+         puis recopiez l'adresse dans data-href d'un bloc <div class="fb-post"> ci-dessous. -->
+    <div id="fb-root"></div>
     <div class="fb-feed" id="fb-feed">
-        <iframe class="fb-post-frame"
-                data-post="pfbid02DmfJZoB2qdfQASLdtyJMfPbu6D5Q1YD1vVAwyPyzX7Vde3PDWg8VNVHtrTZXZn5dl" data-ratio="0.72"
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02DmfJZoB2qdfQASLdtyJMfPbu6D5Q1YD1vVAwyPyzX7Vde3PDWg8VNVHtrTZXZn5dl%26id%3D61594346696834&show_text=true&width=460"
-                title="Publication Facebook de Matthieu Artisan (la plus récente)"
-                width="460" height="331"
-                style="border:none; overflow:hidden;"
-                scrolling="no" frameborder="0" loading="lazy" allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-        <iframe class="fb-post-frame"
-                data-post="pfbid0zuRqJCi78Py6gE4shvqvsWGJKzQUvk18Y3b1sAGq6wpyKadMKMiU67zAzBz1fDFhl" data-ratio="1.45"
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0zuRqJCi78Py6gE4shvqvsWGJKzQUvk18Y3b1sAGq6wpyKadMKMiU67zAzBz1fDFhl%26id%3D61594346696834&show_text=true&width=460"
-                title="Publication Facebook de Matthieu Artisan"
-                width="460" height="667"
-                style="border:none; overflow:hidden;"
-                scrolling="no" frameborder="0" loading="lazy" allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-        <iframe class="fb-post-frame"
-                data-post="pfbid02KxXSTmETThK7f3Nyc9tBpjyBqMgbjEpQpnBjnzLrJqtRKMqqWdbXuc1upmr2Trm6l" data-ratio="1.65"
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02KxXSTmETThK7f3Nyc9tBpjyBqMgbjEpQpnBjnzLrJqtRKMqqWdbXuc1upmr2Trm6l%26id%3D61594346696834&show_text=true&width=460"
-                title="Publication Facebook de Matthieu Artisan"
-                width="460" height="759"
-                style="border:none; overflow:hidden;"
-                scrolling="no" frameborder="0" loading="lazy" allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-        <iframe class="fb-post-frame"
-                data-post="pfbid024BmaUQ2G6Gpygti6iFEtxMLPtS6cX1k1YbFUc3UmsuHmz5yoHSypH5APYuKHYZ6Hl" data-ratio="1.6"
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid024BmaUQ2G6Gpygti6iFEtxMLPtS6cX1k1YbFUc3UmsuHmz5yoHSypH5APYuKHYZ6Hl%26id%3D61594346696834&show_text=true&width=460"
-                title="Publication Facebook de Matthieu Artisan"
-                width="460" height="736"
-                style="border:none; overflow:hidden;"
-                scrolling="no" frameborder="0" loading="lazy" allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-        <iframe class="fb-post-frame"
-                data-post="pfbid0jHjgeRW6yV75M3BDQ8fxYkDNehS5jYCB5h4wMPkHt2gYSTtgmpMgYB5VmKBBtkcpl" data-ratio="1.6"
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0jHjgeRW6yV75M3BDQ8fxYkDNehS5jYCB5h4wMPkHt2gYSTtgmpMgYB5VmKBBtkcpl%26id%3D61594346696834&show_text=true&width=460"
-                title="Publication Facebook de Matthieu Artisan"
-                width="460" height="736"
-                style="border:none; overflow:hidden;"
-                scrolling="no" frameborder="0" loading="lazy" allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-        <iframe class="fb-post-frame"
-                data-post="pfbid02XjjPfqJbzYXDUGqhTkyLaaL2jUU65fMqAYYDyBANwzS7xdBFP9WvG5BeDSGj3ECzl" data-ratio="1.5"
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02XjjPfqJbzYXDUGqhTkyLaaL2jUU65fMqAYYDyBANwzS7xdBFP9WvG5BeDSGj3ECzl%26id%3D61594346696834&show_text=true&width=460"
-                title="Publication Facebook de Matthieu Artisan"
-                width="460" height="690"
-                style="border:none; overflow:hidden;"
-                scrolling="no" frameborder="0" loading="lazy" allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02DmfJZoB2qdfQASLdtyJMfPbu6D5Q1YD1vVAwyPyzX7Vde3PDWg8VNVHtrTZXZn5dl&id=61594346696834" data-show-text="true"></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0zuRqJCi78Py6gE4shvqvsWGJKzQUvk18Y3b1sAGq6wpyKadMKMiU67zAzBz1fDFhl&id=61594346696834" data-show-text="true"></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02KxXSTmETThK7f3Nyc9tBpjyBqMgbjEpQpnBjnzLrJqtRKMqqWdbXuc1upmr2Trm6l&id=61594346696834" data-show-text="true"></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid024BmaUQ2G6Gpygti6iFEtxMLPtS6cX1k1YbFUc3UmsuHmz5yoHSypH5APYuKHYZ6Hl&id=61594346696834" data-show-text="true"></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0jHjgeRW6yV75M3BDQ8fxYkDNehS5jYCB5h4wMPkHt2gYSTtgmpMgYB5VmKBBtkcpl&id=61594346696834" data-show-text="true"></div>
+        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02XjjPfqJbzYXDUGqhTkyLaaL2jUU65fMqAYYDyBANwzS7xdBFP9WvG5BeDSGj3ECzl&id=61594346696834" data-show-text="true"></div>
     </div>
 
     <!-- Bouton fallback si AdBlock bloque le composant -->
@@ -1427,17 +1378,23 @@ startTimer();
         };
     </script>
     <script>
-        /* Publications Facebook : largeur adaptée à la colonne (le plugin accepte 350 à 500 px) */
+        /* Publications Facebook : on règle la largeur (350 à 500 px, limites du plugin) selon la
+           colonne, puis on charge le script Facebook, qui ajuste ensuite la hauteur de chaque
+           publication tout seul (photos comprises). Si le script est bloqué (bloqueur de
+           publicités…), le bouton "Retrouvez-nous sur Facebook" reste disponible. */
         (function () {
             var feed = document.getElementById("fb-feed");
             if (!feed) return;
             var w = Math.round(Math.max(350, Math.min(500, feed.clientWidth - 24)));
-            feed.querySelectorAll("iframe[data-post]").forEach(function (frame) {
-                var url = "https://www.facebook.com/permalink.php?story_fbid=" + frame.getAttribute("data-post") + "&id=61594346696834";
-                frame.src = "https://www.facebook.com/plugins/post.php?href=" + encodeURIComponent(url) + "&show_text=true&width=" + w;
-                frame.width = w;
-                frame.style.height = Math.round(w * parseFloat(frame.getAttribute("data-ratio"))) + "px";
+            feed.querySelectorAll(".fb-post").forEach(function (post) {
+                post.setAttribute("data-width", w);
             });
+            var sdk = document.createElement("script");
+            sdk.async = true;
+            sdk.defer = true;
+            sdk.crossOrigin = "anonymous";
+            sdk.src = "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v21.0";
+            document.body.appendChild(sdk);
         })();
     </script>
     <script>
