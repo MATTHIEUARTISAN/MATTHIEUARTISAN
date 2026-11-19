@@ -1091,6 +1091,11 @@
 
         }
 
+        /* Téléphone en portrait : pas de vidéo, seulement le fond RAL 1020 */
+        @media (max-width: 767px) and (orientation: portrait) {
+            .hero-video-wrapper { display: none; }
+        }
+
         /* iPhone / Android en paysage : le navigateur agrandit automatiquement les textes ; on l'empêche */
         html {
             -webkit-text-size-adjust: 100%;
@@ -1191,11 +1196,12 @@
 
     <!-- Banner avec Vidéo YouTube en Fond -->
 <section class="hero">
-    <!-- Vidéo YouTube en arrière-plan (lecture auto, une seule fois, muet, sans contrôles) -->
+    <!-- Vidéo YouTube en arrière-plan (lecture auto, une seule fois, muet, sans contrôles).
+         Elle n'est PAS chargée sur téléphone en mode portrait (voir le script « Vidéo de fond » en bas de page) : le fond RAL 1020 reste affiché. -->
     <div class="hero-video-wrapper">
         <iframe 
             id="heroYtVideo"
-            src="https://www.youtube-nocookie.com/embed/kbHfR8u0smo?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&disablekb=1&enablejsapi=1&iv_load_policy=3&origin=https%3A%2F%2Fmatthieuartisan.github.io" 
+            data-src="https://www.youtube-nocookie.com/embed/kbHfR8u0smo?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&disablekb=1&enablejsapi=1&iv_load_policy=3&origin=https%3A%2F%2Fmatthieuartisan.github.io" 
             title="Vidéo de fond Matthieu Artisan" 
             frameborder="0" 
             allow="autoplay; encrypted-media">
@@ -1563,20 +1569,28 @@ function resetTimer() {
 startTimer();
     </script>
 
-<script src="https://www.youtube.com/iframe_api"></script>
 <script>
     /* Vidéo de fond : lue UNE SEULE FOIS (pas de boucle). Tant qu'elle ne joue pas (chargement,
-       pause, fin, blocage), le bandeau reste sur son fond RAL 1020. */
-    function onYouTubeIframeAPIReady() {
+       pause, fin, blocage), le bandeau reste sur son fond RAL 1020.
+       Sur téléphone en mode PORTRAIT, la vidéo n'est ni chargée ni lancée (économie de données,
+       fond RAL 1020 seul). En passant en mode paysage, elle se charge et démarre ; en revenant en
+       portrait, elle est mise en pause. */
+    (function () {
         const iframe = document.getElementById('heroYtVideo');
         const hero = document.querySelector('.hero');
-        let player;
+        const noVideo = window.matchMedia('(max-width: 767px) and (orientation: portrait)');
+        let player = null;
+        let apiRequested = false;
 
-        /* Affiche / masque la vidéo selon l'état réel du lecteur. On interroge le lecteur directement
-           (au lieu de ne compter que sur l'événement « lecture démarrée ») : si la vidéo démarre avant
-           que le lecteur soit prêt — fréquent sur mobile, où le script YouTube arrive plus tard —,
-           l'événement serait manqué et la vidéo resterait invisible alors qu'elle joue. */
+        /* Affiche / masque la vidéo selon l'état réel du lecteur (on interroge le lecteur directement,
+           car l'événement « lecture démarrée » peut être manqué si la vidéo démarre avant que le lecteur
+           soit prêt — fréquent sur mobile). */
         function sync() {
+            if (noVideo.matches) {
+                iframe.classList.remove('is-playing');
+                hero.classList.remove('video-on');
+                return;
+            }
             if (!player || typeof player.getPlayerState !== 'function') return;
             const state = player.getPlayerState();
             if (state === YT.PlayerState.PLAYING) {
@@ -1589,26 +1603,57 @@ startTimer();
             /* BUFFERING / UNSTARTED : on ne touche à rien pour éviter les clignotements */
         }
 
-        player = new YT.Player('heroYtVideo', {
-            events: {
-                onReady: function(event) {
-                    event.target.setPlaybackRate(0.75);
-                    event.target.mute();
-                    event.target.playVideo();
-                    sync();
-                },
-                onStateChange: function(event) {
-                    if (event.data === YT.PlayerState.PLAYING) {
+        function startPlayer() {
+            if (player) return;
+            player = new YT.Player('heroYtVideo', {
+                events: {
+                    onReady: function (event) {
                         event.target.setPlaybackRate(0.75);
+                        event.target.mute();
+                        if (!noVideo.matches) event.target.playVideo();
+                        sync();
+                    },
+                    onStateChange: function (event) {
+                        if (event.data === YT.PlayerState.PLAYING) {
+                            if (noVideo.matches) { event.target.pauseVideo(); }
+                            else { event.target.setPlaybackRate(0.75); }
+                        }
+                        sync();
                     }
-                    sync();
                 }
-            }
-        });
+            });
+            setInterval(sync, 500); /* filet de sécurité */
+        }
 
-        /* Filet de sécurité : vérification régulière (légère) de l'état du lecteur */
-        setInterval(sync, 500);
-    }
+        window.onYouTubeIframeAPIReady = startPlayer;
+
+        function update() {
+            if (noVideo.matches) {
+                /* Portrait sur téléphone : pas de vidéo */
+                if (player && typeof player.pauseVideo === 'function') player.pauseVideo();
+                sync();
+                return;
+            }
+            if (!iframe.getAttribute('src')) iframe.setAttribute('src', iframe.getAttribute('data-src'));
+            if (window.YT && YT.Player) {
+                startPlayer();
+                if (player && typeof player.getPlayerState === 'function' &&
+                    player.getPlayerState() !== YT.PlayerState.ENDED &&
+                    typeof player.playVideo === 'function') {
+                    player.playVideo(); /* reprise après un retour en paysage */
+                }
+            } else if (!apiRequested) {
+                apiRequested = true;
+                const tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                document.head.appendChild(tag);
+            }
+        }
+
+        if (noVideo.addEventListener) noVideo.addEventListener('change', update);
+        else if (noVideo.addListener) noVideo.addListener(update);
+        update();
+    })();
 </script>
     <!-- Back To Top -->
     <button id="backToTop" title="Retour en haut">
