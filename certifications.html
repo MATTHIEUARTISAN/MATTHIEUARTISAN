@@ -325,12 +325,12 @@
         }
 
         .intro-box {
-            background: #ffffff;
-            border-radius: 4px;
+            background: var(--card-bg);
+            border-radius: 8px;
             padding: 1.5rem 1.8rem;
-            border: 1px solid var(--border-color);
-            border-left: 5px solid var(--navy-academic);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--card-border);
+            border-left: 5px solid var(--card-accent);
+            box-shadow: var(--card-shadow);
             margin-bottom: 3rem;
             font-size: 0.95rem;
             color: #334155;
@@ -434,18 +434,18 @@
 
         /* Cartes Style Certificat / Académique */
         .timeline-card {
-            background: #ffffff;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--navy-academic);
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--card-accent);
             padding: 1.25rem 1.6rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            box-shadow: var(--card-shadow);
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
 
         .timeline-item.highlight .timeline-card {
             border-left-color: var(--primary-blue);
-            background-color: #fafbfc;
+            background-color: #fffdf8;
         }
 
         .timeline-card:hover {
@@ -778,7 +778,7 @@
     <style>
         /* Charte graphique de la partie « Installation » (identique à poeles-bois-granules.html) :
            RAL 1015 pour le fond de page et l'en-tête, RAL 1020 pour le bandeau de titre. */
-        :root { --ral-1015: #E6D2B5; --ral-1020: #999950; }
+        :root { --ral-1015: #E6D2B5; --ral-1020: #999950; --card-bg: #FBF6EC; --card-border: #d9c3a0; --card-accent: #999950; --card-shadow: 0 3px 10px rgba(90, 70, 30, 0.15); }
         html body { background-color: var(--ral-1015); }
         html body > header { background-color: var(--ral-1015); }
         html body .page-banner { background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), var(--ral-1020); }

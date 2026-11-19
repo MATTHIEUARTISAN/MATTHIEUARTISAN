@@ -215,14 +215,15 @@ nav_active: "bons-conseils"
         }
 
         .partner-card {
-            background: #ffffff;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--card-shadow);
             padding: 1.8rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-top: 4px solid var(--accent-turquoise);
+            border-top: 4px solid var(--card-accent);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -656,11 +657,11 @@ nav_active: "bons-conseils"
             justify-content: space-between;
             aspect-ratio: 1 / 1;
             padding: 1.6rem 1.4rem 1.3rem;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-top: 4px solid var(--accent-turquoise);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-top: 4px solid var(--card-accent);
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--card-shadow);
             text-decoration: none;
             color: var(--text-color);
             transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -731,12 +732,12 @@ nav_active: "bons-conseils"
             display: flex;
             gap: 0.9rem;
             align-items: flex-start;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid var(--accent-turquoise);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--card-accent);
             border-radius: 8px;
             padding: 0.9rem 1rem;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--card-shadow);
         }
 
         .geste-num {
@@ -782,12 +783,9 @@ nav_active: "bons-conseils"
             margin: 0 auto;
         }
 
+        /* Pas de carte : le texte est posé directement sur le panneau de l'onglet */
         .article-card {
-            background: #ffffff;
-            border-radius: 8px;
-            border-top: 3px solid var(--accent-turquoise);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            padding: 2rem 2.2rem;
+            padding: 0 0.5rem;
         }
 
         .article-card h3 {
@@ -850,7 +848,6 @@ nav_active: "bons-conseils"
 
         @media (max-width: 560px) {
             .tip-card { flex-basis: 100%; aspect-ratio: auto; min-height: 220px; }
-            .article-card { padding: 1.4rem 1.2rem; }
         }
 </style>
 
@@ -865,7 +862,7 @@ nav_active: "bons-conseils"
         <!-- Onglets (affichés uniquement si JavaScript est actif ; sinon les 3 parties se suivent) -->
         <div class="tabs-container" role="tablist" aria-label="Bons conseils">
             <button class="tab-btn" role="tab" id="tabbtn-feu" aria-controls="tab-feu" aria-selected="true" data-tab="feu">🔥 Allumer un feu</button>
-            <button class="tab-btn" role="tab" id="tabbtn-gestes" aria-controls="tab-gestes" aria-selected="false" data-tab="gestes" tabindex="-1">🌿 Se chauffer au bois</button>
+            <button class="tab-btn" role="tab" id="tabbtn-gestes" aria-controls="tab-gestes" aria-selected="false" data-tab="gestes" tabindex="-1">🪵 Se chauffer au bois</button>
             <button class="tab-btn" role="tab" id="tabbtn-partenaires" aria-controls="tab-partenaires" aria-selected="false" data-tab="partenaires" tabindex="-1">🤝 Nos partenaires</button>
         </div>
 
