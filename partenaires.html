@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Nos Partenaires | Matthieu Artisan - Poêles à Bois & Fumisterie"
-description: "Découvrez les partenaires de confiance de Matthieu Artisan pour la maintenance, le ramonage et le dépannage de vos installations de chauffage."
+title: "Bons conseils | Matthieu Artisan - Poêles à Bois & Fumisterie"
+description: "Nos bons conseils : allumer un feu facilement, bien utiliser son poêle, prévenir les incendies et comprendre le ramonage."
 nav_active: "partenaires"
 ---
 <style>
@@ -568,185 +568,190 @@ nav_active: "partenaires"
                 margin: 0 auto;
             }
         }
+
+        /* ---------- Page « Bons conseils » : carrés de liens ---------- */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.6rem;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .tip-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            aspect-ratio: 1 / 1;
+            padding: 1.6rem 1.4rem 1.3rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid var(--accent-turquoise);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .tip-card:hover,
+        .tip-card:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(26, 103, 179, 0.15);
+            border-top-color: var(--accent-red);
+        }
+
+        .tip-icon {
+            font-size: 2.4rem;
+            line-height: 1;
+        }
+
+        .tip-title {
+            color: var(--primary-blue);
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin: 0.6rem 0 0.4rem;
+        }
+
+        .tip-text {
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: #475569;
+        }
+
+        .tip-source {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            padding-top: 0.7rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .tip-go {
+            color: var(--action-orange);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 900px) {
+            .tips-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 560px) {
+            .tips-grid { grid-template-columns: 1fr; }
+            .tip-card { aspect-ratio: auto; min-height: 220px; }
+        }
+
+        /* ---------- Page « Allumer un feu facilement » ---------- */
+        .article-container {
+            max-width: 820px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border-radius: 8px;
+            border-top: 3px solid var(--accent-turquoise);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 2rem 2.2rem;
+        }
+
+        .article-card h2 {
+            color: var(--primary-blue);
+            font-size: 1.35rem;
+            margin: 1.6rem 0 0.7rem;
+            border-left: 4px solid var(--accent-red);
+            padding-left: 0.8rem;
+        }
+
+        .article-card h2:first-child { margin-top: 0; }
+
+        .article-card p { margin-bottom: 1rem; }
+
+        .article-card ol,
+        .article-card ul {
+            margin: 0 0 1rem 1.4rem;
+        }
+
+        .article-card li { margin-bottom: 0.5rem; }
+
+        .article-back {
+            display: inline-block;
+            margin-top: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .article-back:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .article-card { padding: 1.4rem 1.2rem; }
+        }
 </style>
 
-    <!-- Banner Hero -->
+    <!-- Bannière -->
     <section class="hero">
-        <h1>Nos Partenaires de Confiance</h1>
-        <p>Afin de vous assurer un service complet et de qualité, nous collaborons avec des professionnels qualifiés pour l'entretien, le ramonage et la maintenance de vos installations de chauffage.</p>
+        <h1>Bons conseils</h1>
+        <p>Quelques lectures et vidéos utiles pour bien utiliser votre poêle, chauffer proprement et en toute sécurité.</p>
     </section>
 
-    <!-- Main Content -->
     <main class="partners-container">
-        <div class="section-intro">
-            <h2>Réseau Partenaires & Experts Chauffage</h2>
-            <p>Découvrez les entreprises et professionnels de confiance avec lesquels nous collaborons pour la maintenance de vos équipements, le ramonage et la réalisation de vos projets sur mesure.</p>
-        </div>
-
-        <div class="partners-grid">
-            
-            <!-- Partenaire 1 : AXOP -->
-            <article class="partner-card">
+        <div class="tips-grid">
+            <a class="tip-card" href="allumer-un-feu-facilement.html">
                 <div>
-                    <div class="partner-logo-container">
-                        <img src="https://www.axop.fr/images/nicepage-images/axop102.jpg" alt="Axop" class="partner-logo">
-                    </div>
-                    <div class="partner-header">
-                        <h3 class="partner-name">AXOP (Xavier MOUSSET)</h3>
-                        <p class="partner-services">Ramonage fumisterie / Maintenance poêles à granulés / Expertise</p>
-                    </div>
-                    <ul class="partner-details">
-                        <li>📍 69380 LISSIEU</li>
-                    </ul>
+                    <span class="tip-icon" aria-hidden="true">🔥</span>
+                    <h3 class="tip-title">Allumer un feu facilement</h3>
+                    <p class="tip-text">La méthode du feu allumé par le haut : plus propre, plus de chaleur.</p>
                 </div>
-                <div class="partner-actions">
-                    <a href="tel:0750486817" class="btn-partner btn-phone">📞 07 50 48 68 17</a>
-                    <a href="https://www.axop.fr/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
-                </div>
-            </article>
-
-            <!-- Partenaire 2 : GRÉGOIRE GAILLARD ARCHITECTE -->
-            <article class="partner-card">
+                <div class="tip-source"><span>Matthieu Artisan</span><span class="tip-go">Lire →</span></div>
+            </a>
+            <a class="tip-card" href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">
                 <div>
-                    <div class="partner-logo-container">
-                        <span style="font-size: 2.5rem; color: var(--primary-blue);">📐</span>
-                    </div>
-                    <div class="partner-header">
-                        <h3 class="partner-name">GRÉGOIRE GAILLARD ARCHITECTE D.E.A.</h3>
-                        <p class="partner-services">Architecte / Maisons modulaires, performances BBC, ossature bois privilégiée</p>
-                    </div>
-                    <ul class="partner-details">
-                        <li>📍 69170 TARARE</li>
-                    </ul>
+                    <span class="tip-icon" aria-hidden="true">▶️</span>
+                    <h3 class="tip-title">Vidéo à regarder</h3>
+                    <p class="tip-text">Un conseil en vidéo, à voir directement sur YouTube.</p>
                 </div>
-                <div class="partner-actions">
-                    <a href="tel:0474640907" class="btn-partner btn-phone">📞 04 74 64 09 07</a>
-                    <a href="https://www.architectes-pour-tous.fr/architectes-pour-tous/gaillard-gregoire" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 En savoir plus</a>
-                </div>
-            </article>
-
-            <!-- Partenaire 3 : LOGITHERM -->
-            <article class="partner-card">
+                <div class="tip-source"><span>YouTube</span><span class="tip-go">Voir ↗</span></div>
+            </a>
+            <a class="tip-card" href="https://agirpourlatransition.ademe.fr/particuliers/amenager-maison/chauffer/chauffage-bois-moins-consommer-moins-polluer" target="_blank" rel="noopener noreferrer">
                 <div>
-                    <div class="partner-logo-container">
-                        <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=1140x10000:format=png/path/s857b28d6d1176a4b/image/i0ba6f8f03db9ed6a/version/1525268836/image.png" alt="Logitherm" class="partner-logo">
-                    </div>
-                    <div class="partner-header">
-                        <h3 class="partner-name">LOGITHERM</h3>
-                        <p class="partner-services">Maintenance & Dépannage de votre chaudière gaz / fioul / granulés et poêles à granulés AlpenWood (Hoben)</p>
-                    </div>
-                    <ul class="partner-details">
-                        <li>📍 69490 Les Olmes</li>
-                    </ul>
+                    <span class="tip-icon" aria-hidden="true">🌿</span>
+                    <h3 class="tip-title">Chauffage au bois : moins consommer, moins polluer</h3>
+                    <p class="tip-text">Les bons gestes pour se chauffer au bois de façon plus économique et plus propre.</p>
                 </div>
-                <div class="partner-actions">
-                    <a href="tel:0474636116" class="btn-partner btn-phone">📞 04 74 63 61 16</a>
-                    <a href="http://www.logitherm.fr/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
-                </div>
-            </article>
-
-            <!-- Partenaire 4 : CAMILLE LE RAMONEUR -->
-            <article class="partner-card">
+                <div class="tip-source"><span>ADEME</span><span class="tip-go">Voir ↗</span></div>
+            </a>
+            <a class="tip-card" href="https://www.boisenergienord.fr/blog/blog-3/prevenir-les-incendies-le-triangle-et-le-tetraedre-du-feu-expliques-1202" target="_blank" rel="noopener noreferrer">
                 <div>
-                    <div class="partner-logo-container">
-                        <img src="https://camilleleramoneur.fr/templates/clr/images/Logo-CLR.png" alt="Camille le ramoneur" class="partner-logo">
-                    </div>
-                    <div class="partner-header">
-                        <h3 class="partner-name">Camille le Ramoneur</h3>
-                        <p class="partner-services">Ramonage, Entretiens poêles à granulés, Débistrage, Extraction nids de frelons</p>
-                    </div>
-                    <ul class="partner-details">
-                        <li>📍 69380 CHATILLON D'AZERGUES</li>
-                    </ul>
+                    <span class="tip-icon" aria-hidden="true">🧯</span>
+                    <h3 class="tip-title">Prévenir les incendies : le triangle et le tétraèdre du feu</h3>
+                    <p class="tip-text">Comprendre comment naît un feu, comment l'arrêter et comment s'en prémunir chez soi.</p>
                 </div>
-                <div class="partner-actions">
-                    <a href="tel:0781857157" class="btn-partner btn-phone">📞 07 81 85 71 57</a>
-                    <a href="https://camilleleramoneur.fr/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
-                </div>
-            </article>
-
-            <!-- Partenaire 5 : ABITIBI TURDINE -->
-            <article class="partner-card">
+                <div class="tip-source"><span>Bois Énergie Nord</span><span class="tip-go">Voir ↗</span></div>
+            </a>
+            <a class="tip-card" href="https://axop.fr/roman.html" target="_blank" rel="noopener noreferrer">
                 <div>
-                    <div class="partner-logo-container">
-                        <img src="https://abitibi.fr/assets/img/Logos-Abitibi-140623_Abitibi.fr.svg" alt="Abitibi.fr" class="partner-logo">
-                    </div>
-                    <div class="partner-header">
-                        <h3 class="partner-name">ABITIBI TURDINE</h3>
-                        <p class="partner-services">Maintenance & Dépannage de votre pompe à chaleur, chauffe-eau thermodynamique, chaudière gaz / fioul, climatisation</p>
-                    </div>
-                    <ul class="partner-details">
-                        <li>📍 69170 TARARE</li>
-                        <li>✉️ turdine@abitibi.fr</li>
-                    </ul>
+                    <span class="tip-icon" aria-hidden="true">📖</span>
+                    <h3 class="tip-title">Le Ramoneur de Malesco</h3>
+                    <p class="tip-text">Un roman inspiré de faits réels sur le quotidien des enfants ramoneurs d'autrefois.</p>
                 </div>
-                <div class="partner-actions">
-                    <a href="tel:0474642019" class="btn-partner btn-phone">📞 04 74 64 20 19</a>
-                    <a href="https://abitibi.fr/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
-                </div>
-            </article>
-
-            <!-- Partenaire 6 : CHEVILLON DÉPANNAGE -->
-            <article class="partner-card">
+                <div class="tip-source"><span>AXOP</span><span class="tip-go">Voir ↗</span></div>
+            </a>
+            <a class="tip-card" href="https://www.camilleleramoneur.fr/le-ramonage" target="_blank" rel="noopener noreferrer">
                 <div>
-                    <div class="partner-logo-container">
-                        <img src="http://www.chevillon-depannage.com/assets/logos-chevillon/chevillon-depannage.png" alt="Chevillon Dépannage" class="partner-logo">
-                    </div>
-                    <div class="partner-header">
-                        <h3 class="partner-name">CHEVILLON DÉPANNAGE</h3>
-                        <p class="partner-services">Maintenance & Dépannages chaudières (gaz, fioul, granulés), poêles à granulés, pompes à chaleur, chauffe-eau, climatisation</p>
-                    </div>
-                    <ul class="partner-details">
-                        <li>📍 69430 BEAUJEU</li>
-                    </ul>
+                    <span class="tip-icon" aria-hidden="true">🧹</span>
+                    <h3 class="tip-title">Le ramonage</h3>
+                    <p class="tip-text">Pourquoi, quand et comment faire ramoner : conseils d'entretien d'un ramoneur de l'Ouest lyonnais.</p>
                 </div>
-                <div class="partner-actions">
-                    <a href="tel:0474692827" class="btn-partner btn-phone">📞 04 74 69 28 27</a>
-                    <a href="http://www.chevillon-depannage.com/" target="_blank" rel="noopener noreferrer" class="btn-partner btn-web">🌐 Site Web</a>
-                </div>
-            </article>
-
+                <div class="tip-source"><span>Camille le Ramoneur</span><span class="tip-go">Voir ↗</span></div>
+            </a>
         </div>
     </main>
-
-    <!-- Modal (Zone de couverture) -->
-    <div id="zoneModal" class="modal" onclick="closeModalOnOuterClick(event)">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 style="color: var(--primary-blue);">Zone d'intervention globale</h2>
-            <p>Situés à <strong>SAINT JUST d’AVRAY (69)</strong>, nous ne nous limitons pas à la commune et intervenons sur un large secteur :</p>
-            
-            <div class="modal-body">
-                <div>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.5rem;">• <strong>Lamure-sur-Azergues</strong> & la Vallée d’Azergues</li>
-                        <li style="margin-bottom: 0.5rem;">• <strong>Villefranche-sur-Saône</strong> & les Pierres Dorées</li>
-                        <li style="margin-bottom: 0.5rem;">• <strong>L'Arbresle</strong> & l'Ouest Lyonnais</li>
-                        <li style="margin-bottom: 0.5rem;">• <strong>Tarare</strong></li>
-                        <li style="margin-bottom: 0.5rem;">• <strong>Amplepuis</strong> et secteur <strong>Chauffailles</strong></li>
-                    </ul>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; background: #f1f5f9; padding: 0.8rem; border-radius: 6px;">
-                        🔥 <strong>Projets spécifiques :</strong> Nous nous déplaçons bien au-delà (Auvergne, Isère...) pour l'installation de <strong>poêles de masse</strong> et les <strong>missions d’expertises</strong> !
-                    </p>
-                </div>
-                <img src="Zone.intervention.matthieu-artisan.plomberie.gif" alt="Carte zone d'intervention" width="382" height="433">
-            </div>
-        </div>
-    </div>
-
-    <script>
-        /* Modal */
-        function openModal() {
-            document.getElementById('zoneModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('zoneModal').style.display = 'none';
-        }
-
-        function closeModalOnOuterClick(event) {
-            if (event.target.id === 'zoneModal') {
-                closeModal();
-            }
-        }
-    </script>
