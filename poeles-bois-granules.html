@@ -625,15 +625,14 @@
             scrollbar-width: thin;
         }
 
-        /* Cartes de secours : affichées à la place des publications Facebook quand le navigateur
-           les bloque (Firefox, Safari, bloqueurs de publicités…). */
+        /* Publications Facebook affichées sous forme de cartes fixes (texte + photos) */
         .fb-card {
             text-align: left;
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 0.9rem 1rem;
-            margin: 0 auto 0.8rem;
+            margin: 0 auto 0.9rem;
             max-width: 500px;
         }
 
@@ -641,47 +640,65 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             font-weight: 700;
             color: #1c1e21;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
         .fb-card-ico {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            background: #1877f2;
-            color: #ffffff;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1rem;
+            object-fit: contain;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
             flex-shrink: 0;
         }
 
-        .fb-card p {
+        .fb-card-body p {
             font-size: 0.88rem;
             line-height: 1.5;
             color: #374151;
-            margin: 0 0 0.6rem;
+            margin: 0 0 0.45rem;
         }
 
-        .fb-card a {
+        .fb-card-photo {
+            position: relative;
+            display: block;
+            margin: 0.6rem 0 0.5rem;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .fb-card-photo img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .fb-card-more {
+            position: absolute;
+            right: 8px;
+            bottom: 8px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.65);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .fb-card-link {
+            display: inline-block;
             font-size: 0.82rem;
             font-weight: 700;
             color: #1877f2;
             text-decoration: none;
         }
 
-        .fb-card a:hover {
+        .fb-card-link:hover {
             text-decoration: underline;
-        }
-
-        .fb-feed .fb-post {
-            display: block;
-            margin: 0 auto 1rem;
         }
 
         /* Pop-up Modal */
@@ -1244,18 +1261,76 @@
         <aside class="facebook-section">
     <h3>Suivez notre actualité</h3>
     
-    <!-- Publications Facebook intégrées, la plus récente en premier.
-         Elles se redimensionnent toutes seules (script Facebook chargé en bas de page).
-         Pour en ajouter ou en retirer : sur Facebook, trois points de la publication > Intégrer,
-         puis recopiez l'adresse dans data-href d'un bloc <div class="fb-post"> ci-dessous. -->
-    <div id="fb-root"></div>
+    <!-- Publications Facebook : copies fixes (texte + photos enregistrées dans le dossier actualites/),
+         donc plus de dépendance au chargement de Facebook ni aux bloqueurs du navigateur.
+         Pour mettre à jour : remplacer les photos actualites/publication-N.jpg et les textes ci-dessous. -->
     <div class="fb-feed" id="fb-feed">
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02DmfJZoB2qdfQASLdtyJMfPbu6D5Q1YD1vVAwyPyzX7Vde3PDWg8VNVHtrTZXZn5dl&id=61594346696834" data-show-text="true" data-text="Photos avant/après de l&#x27;installation d&#x27;un poêle à bois encastrable dans un âtre avec conduit flexible isolé dans le boisseau et installation de plaques sur mesure pour finitions autour du poêle. Calcul de dimensionnement à l&#x27;appui, ventilation du boisseau (haute et basse), grille pour prise d&#x27;air de combustion extérieur, pose d&#x27;une plaque signalétique."></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0zuRqJCi78Py6gE4shvqvsWGJKzQUvk18Y3b1sAGq6wpyKadMKMiU67zAzBz1fDFhl&id=61594346696834" data-show-text="true" data-text="Mise en conformité d&#x27;une hotte d&#x27;insert et tubage du boisseau qui bistrait trop rapidement, sous les conseils des ramoneurs du client. Fixation du tubage flexible dans la hotte, plaque signalétique, changement des grilles pour la conformité de la ventilation de hotte."></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02KxXSTmETThK7f3Nyc9tBpjyBqMgbjEpQpnBjnzLrJqtRKMqqWdbXuc1upmr2Trm6l&id=61594346696834" data-show-text="true" data-text="Démontage d&#x27;un insert à bois bûche et de son boisseau (évacuation des matériaux comprise) pour l&#x27;installation d&#x27;un poêle à granulés plat et d&#x27;un conduit concentrique vertical (ventouse), pilotable à distance, avec un réservoir permettant plusieurs jours d&#x27;autonomie."></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid024BmaUQ2G6Gpygti6iFEtxMLPtS6cX1k1YbFUc3UmsuHmz5yoHSypH5APYuKHYZ6Hl&id=61594346696834" data-show-text="true" data-text="En rénovation, installation d&#x27;un poêle à bois avec création du conduit de fumées double paroi isolé, conduit de raccordement émail noir et caisson incombustible (placo et isolant A1) autour du poêle, avec création d&#x27;une amenée d&#x27;air de combustion et calcul de dimensionnement."></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0jHjgeRW6yV75M3BDQ8fxYkDNehS5jYCB5h4wMPkHt2gYSTtgmpMgYB5VmKBBtkcpl&id=61594346696834" data-show-text="true" data-text="Installation d&#x27;un poêle à granulés étanche (agréé CSTB) avec raccordement conduit émail noir et conduit de fumées double paroi isolé. Raccordement de l&#x27;air de combustion vers l&#x27;extérieur et mise en route par la station technique agréée de la marque."></div>
-        <div class="fb-post" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid02XjjPfqJbzYXDUGqhTkyLaaL2jUU65fMqAYYDyBANwzS7xdBFP9WvG5BeDSGj3ECzl&id=61594346696834" data-show-text="true" data-text="Installation d&#x27;une chaudière à granulés avec son silo de grande capacité, en remplacement d&#x27;une chaudière fioul. Démontage complet de l&#x27;ancienne chaufferie, avec une évacuation délicate."></div>
+        <article class="fb-card">
+            <div class="fb-card-head">
+                <img class="fb-card-ico" src="favicon.png" alt="" width="32" height="32">
+                <span>MatthieuArtisan</span>
+            </div>
+            <div class="fb-card-body"><p>Photos avant/après de l'installation d'un poêle à bois encastrable dans un âtre avec conduit flexible isolé dans le boisseau et installation de plaques sur mesure pour finitions autour du poêle.</p><p>Et selon normes en vigueur : calcul de dimensionnement à l'appui, ventilation du boisseau (haute et basse), installation grille pour prise d'air de combustion extérieur, pose d'une plaque signalétique.</p><p>Nous remercions nos clients pour leur confiance de cette réalisation dans un décor très soigné !</p></div>
+            <a class="fb-card-photo" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02DmfJZoB2qdfQASLdtyJMfPbu6D5Q1YD1vVAwyPyzX7Vde3PDWg8VNVHtrTZXZn5dl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">
+                <img src="actualites/publication-1.jpg" alt="Poêle à bois encastrable dans un âtre : photos avant et après installation, conduit sur le toit" loading="lazy">
+            </a>
+            <a class="fb-card-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02DmfJZoB2qdfQASLdtyJMfPbu6D5Q1YD1vVAwyPyzX7Vde3PDWg8VNVHtrTZXZn5dl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">Voir la publication sur Facebook ↗</a>
+        </article>
+        <article class="fb-card">
+            <div class="fb-card-head">
+                <img class="fb-card-ico" src="favicon.png" alt="" width="32" height="32">
+                <span>MatthieuArtisan</span>
+            </div>
+            <div class="fb-card-body"><p>Mise en conformité d'une hotte d'insert et tubage du boisseau qui bistrait trop rapidement, sous les conseils des ramoneurs du client.</p><p>– photo lors de la visite technique avant travaux</p><p>– photos fixation tubage flexible dans la hotte / plaque signalétique</p><p>– photo changement des grilles pour conformité ventilation de hotte</p><p>– photo sur la souche : tubage (libre dilatation respectée avec pièce insérée autour du tubage) avec embout de finition…</p></div>
+            <a class="fb-card-photo" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0zuRqJCi78Py6gE4shvqvsWGJKzQUvk18Y3b1sAGq6wpyKadMKMiU67zAzBz1fDFhl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">
+                <img src="actualites/publication-2.jpg" alt="Mise en conformité d&#x27;une hotte d&#x27;insert : tubage flexible, grilles de ventilation et souche de cheminée" loading="lazy"><span class="fb-card-more">+5 autres photos sur Facebook</span>
+            </a>
+            <a class="fb-card-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0zuRqJCi78Py6gE4shvqvsWGJKzQUvk18Y3b1sAGq6wpyKadMKMiU67zAzBz1fDFhl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">Voir la publication sur Facebook ↗</a>
+        </article>
+        <article class="fb-card">
+            <div class="fb-card-head">
+                <img class="fb-card-ico" src="favicon.png" alt="" width="32" height="32">
+                <span>MatthieuArtisan</span>
+            </div>
+            <div class="fb-card-body"><p>Démontage d'un insert à bois bûche et son boisseau (compris évacuation des matériaux) pour installation d'un poêle à granulés plat (KLOVER Vertical 80) et un conduit concentrique vertical (ventouse).</p><p>Dans le cadre de la rénovation de leur pièce de vie principale nos clients souhaitaient supprimer leur insert pour un appareil automatique, pilotable à distance (application WIFI). Leur choix a également été fait en tenant compte de la capacité du réservoir afin de leur permettre de faire fonctionner le poêle plusieurs jours en cas d'absence.</p><p>La finition sur le mur et au sol sera réalisée dans un 2e temps des travaux par d'autres artisans.</p><p>Nous remercions nos clients de leur confiance ; aussi bien pour la partie démontage qu'installation !</p></div>
+            <a class="fb-card-photo" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02KxXSTmETThK7f3Nyc9tBpjyBqMgbjEpQpnBjnzLrJqtRKMqqWdbXuc1upmr2Trm6l&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">
+                <img src="actualites/publication-3.jpg" alt="Poêle à granulés plat avec conduit concentrique vertical installé à la place d&#x27;un insert" loading="lazy">
+            </a>
+            <a class="fb-card-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02KxXSTmETThK7f3Nyc9tBpjyBqMgbjEpQpnBjnzLrJqtRKMqqWdbXuc1upmr2Trm6l&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">Voir la publication sur Facebook ↗</a>
+        </article>
+        <article class="fb-card">
+            <div class="fb-card-head">
+                <img class="fb-card-ico" src="favicon.png" alt="" width="32" height="32">
+                <span>MatthieuArtisan</span>
+            </div>
+            <div class="fb-card-body"><p>En rénovation, installation d'un poêle à bois avec création du conduit de fumées double paroi isolé, conduit de raccordement émail noir et création d'un caisson incombustible (placo et isolant A1) autour du poêle. Le reste de la structure et finitions étaient à la charge du plaquiste peintre.</p><p>Avec création amenée d'air de combustion et calcul de dimensionnement à l'appui.</p><p>Nous remercions nos clients pour leur confiance et ce rendu si joli à photographier !</p></div>
+            <a class="fb-card-photo" href="https://www.facebook.com/permalink.php?story_fbid=pfbid024BmaUQ2G6Gpygti6iFEtxMLPtS6cX1k1YbFUc3UmsuHmz5yoHSypH5APYuKHYZ6Hl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">
+                <img src="actualites/publication-4.jpg" alt="Poêle à bois dans un caisson incombustible, conduit double paroi isolé et raccordement émail noir" loading="lazy">
+            </a>
+            <a class="fb-card-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid024BmaUQ2G6Gpygti6iFEtxMLPtS6cX1k1YbFUc3UmsuHmz5yoHSypH5APYuKHYZ6Hl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">Voir la publication sur Facebook ↗</a>
+        </article>
+        <article class="fb-card">
+            <div class="fb-card-head">
+                <img class="fb-card-ico" src="favicon.png" alt="" width="32" height="32">
+                <span>MatthieuArtisan</span>
+            </div>
+            <div class="fb-card-body"><p>Installation d'un poêle à granulés étanche (agréé CSTB) avec raccordement conduit émail noir et conduit de fumées double paroi isolé (noir intérieur / inox extérieur).</p><p>Et raccordement de l'air de combustion vers l'extérieur (percement plaque au sol pour traversée plancher).</p><p>Mise en route par la station technique agréée de la marque (69380 Châtillon).</p><p>Nous remercions nos clients de leur confiance pour l'installation de ce poêle dans leur pièce si joliment rénovée !</p></div>
+            <a class="fb-card-photo" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0jHjgeRW6yV75M3BDQ8fxYkDNehS5jYCB5h4wMPkHt2gYSTtgmpMgYB5VmKBBtkcpl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">
+                <img src="actualites/publication-5.jpg" alt="Poêle à granulés étanche avec conduit double paroi isolé dans une pièce rénovée" loading="lazy">
+            </a>
+            <a class="fb-card-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0jHjgeRW6yV75M3BDQ8fxYkDNehS5jYCB5h4wMPkHt2gYSTtgmpMgYB5VmKBBtkcpl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">Voir la publication sur Facebook ↗</a>
+        </article>
+        <article class="fb-card">
+            <div class="fb-card-head">
+                <img class="fb-card-ico" src="favicon.png" alt="" width="32" height="32">
+                <span>MatthieuArtisan</span>
+            </div>
+            <div class="fb-card-body"><p>Nous venons de finaliser l'installation d'une chaudière à granulés OKOFEN avec son silo d'une grande capacité correspondant au besoin de nos clients.</p><p>Cette chaudière à granulés vient en remplacement d'une chaudière fioul.</p><p>Nous avons complètement démonté l'ancienne chaufferie, avec une évacuation délicate.</p><p>Et nos clients ont remis un coup de propre et de peinture avant installation de la nouvelle chaudière.</p></div>
+            <a class="fb-card-photo" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02XjjPfqJbzYXDUGqhTkyLaaL2jUU65fMqAYYDyBANwzS7xdBFP9WvG5BeDSGj3ECzl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">
+                <img src="actualites/publication-6.jpg" alt="Chaudière à granulés avec son silo, installée en remplacement d&#x27;une chaudière fioul" loading="lazy">
+            </a>
+            <a class="fb-card-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02XjjPfqJbzYXDUGqhTkyLaaL2jUU65fMqAYYDyBANwzS7xdBFP9WvG5BeDSGj3ECzl&amp;id=61594346696834" target="_blank" rel="noopener noreferrer">Voir la publication sur Facebook ↗</a>
+        </article>
     </div>
 
     <!-- Bouton fallback si AdBlock bloque le composant -->
@@ -1471,70 +1546,6 @@ startTimer();
         backToTopBtn.onclick = function() {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
-    </script>
-    <script>
-        /* Publications Facebook : on règle la largeur (350 à 500 px, limites du plugin) selon la
-           colonne, puis on charge le script Facebook, qui ajuste ensuite la hauteur de chaque
-           publication tout seul (photos comprises).
-           Firefox, Safari et les bloqueurs de publicités bloquent souvent ce contenu : si les
-           publications n'apparaissent pas au bout de quelques secondes, on affiche à la place des
-           cartes de secours (texte + lien vers la publication, lus dans data-text / data-href). */
-        (function () {
-            var feed = document.getElementById("fb-feed");
-            if (!feed) return;
-            var posts = Array.prototype.slice.call(feed.querySelectorAll(".fb-post"));
-            var data = posts.map(function (p) {
-                return { href: p.getAttribute("data-href"), text: p.getAttribute("data-text") || "" };
-            });
-            var w = Math.round(Math.max(350, Math.min(500, feed.clientWidth - 24)));
-            posts.forEach(function (post) { post.setAttribute("data-width", w); });
-
-            var fallbackDone = false;
-            function showFallback() {
-                if (fallbackDone) return;
-                fallbackDone = true;
-                feed.innerHTML = "";
-                data.forEach(function (d) {
-                    var card = document.createElement("div");
-                    card.className = "fb-card";
-                    var head = document.createElement("div");
-                    head.className = "fb-card-head";
-                    var ico = document.createElement("span");
-                    ico.className = "fb-card-ico";
-                    ico.textContent = "f";
-                    head.appendChild(ico);
-                    head.appendChild(document.createTextNode("MatthieuArtisan"));
-                    var txt = document.createElement("p");
-                    txt.textContent = d.text;
-                    var link = document.createElement("a");
-                    link.href = d.href;
-                    link.target = "_blank";
-                    link.rel = "noopener noreferrer";
-                    link.textContent = "Voir la publication sur Facebook \u2197";
-                    card.appendChild(head);
-                    card.appendChild(txt);
-                    card.appendChild(link);
-                    feed.appendChild(card);
-                });
-            }
-
-            var sdk = document.createElement("script");
-            sdk.async = true;
-            sdk.defer = true;
-            sdk.crossOrigin = "anonymous";
-            sdk.src = "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v21.0";
-            sdk.onerror = showFallback;
-            document.body.appendChild(sdk);
-
-            /* Au bout de 8 s, si aucune publication n'a pris de hauteur, Facebook est bloqué. */
-            setTimeout(function () {
-                var ok = posts.some(function (p) {
-                    var box = p.querySelector("span");
-                    return box && box.getBoundingClientRect().height > 150;
-                });
-                if (!ok) showFallback();
-            }, 8000);
-        })();
     </script>
     <script>
         /* Cartes Google My Maps : bouton qui ferme la fiche d'un repère (recharge la carte) */
