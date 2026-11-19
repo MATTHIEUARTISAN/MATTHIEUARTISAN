@@ -1570,26 +1570,44 @@ startTimer();
     function onYouTubeIframeAPIReady() {
         const iframe = document.getElementById('heroYtVideo');
         const hero = document.querySelector('.hero');
-        new YT.Player('heroYtVideo', {
+        let player;
+
+        /* Affiche / masque la vidéo selon l'état réel du lecteur. On interroge le lecteur directement
+           (au lieu de ne compter que sur l'événement « lecture démarrée ») : si la vidéo démarre avant
+           que le lecteur soit prêt — fréquent sur mobile, où le script YouTube arrive plus tard —,
+           l'événement serait manqué et la vidéo resterait invisible alors qu'elle joue. */
+        function sync() {
+            if (!player || typeof player.getPlayerState !== 'function') return;
+            const state = player.getPlayerState();
+            if (state === YT.PlayerState.PLAYING) {
+                iframe.classList.add('is-playing');
+                hero.classList.add('video-on');
+            } else if (state === YT.PlayerState.ENDED || state === YT.PlayerState.PAUSED) {
+                iframe.classList.remove('is-playing');
+                hero.classList.remove('video-on');
+            }
+            /* BUFFERING / UNSTARTED : on ne touche à rien pour éviter les clignotements */
+        }
+
+        player = new YT.Player('heroYtVideo', {
             events: {
                 onReady: function(event) {
                     event.target.setPlaybackRate(0.75);
                     event.target.mute();
                     event.target.playVideo();
+                    sync();
                 },
                 onStateChange: function(event) {
                     if (event.data === YT.PlayerState.PLAYING) {
-                        iframe.classList.add('is-playing');
-                        hero.classList.add('video-on');
                         event.target.setPlaybackRate(0.75);
-                    } else if (event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.PAUSED) {
-                        iframe.classList.remove('is-playing');
-                        hero.classList.remove('video-on');
                     }
-                    /* BUFFERING / UNSTARTED : on ne touche à rien pour éviter les clignotements */
+                    sync();
                 }
             }
         });
+
+        /* Filet de sécurité : vérification régulière (légère) de l'état du lecteur */
+        setInterval(sync, 500);
     }
 </script>
     <!-- Back To Top -->
