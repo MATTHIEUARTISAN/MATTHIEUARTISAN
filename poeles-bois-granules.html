@@ -1128,6 +1128,23 @@
                 padding: 0.45rem 0.9rem;
                 font-size: 0.8rem;
             }
+            /* Mise en page paysage : « Secteurs d'intervention » et « Facebook » côte à côte,
+               le texte d'accueil, les prestations et les avis restant sur toute la largeur */
+            .main-content {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.2rem;
+                align-items: stretch;
+            }
+            .main-content > div { display: contents; }
+            .main-content .about,
+            .main-content .reviews-section { grid-column: 1 / -1; }
+            .main-content .reviews-section,
+            .main-content .zone-card { margin-top: 0; }
+            .main-content .facebook-section { position: static; align-self: stretch; }
+            .main-content .facebook-section .fb-feed { max-height: 600px; }
+            .main-content .facebook-section .fb-feed + * { margin-top: auto; }
+            .zone-container { gap: 0.8rem; }
+
             /* Les cartes de prestations : 2 par ligne en paysage */
             .services-list {
                 grid-template-columns: repeat(2, 1fr);
