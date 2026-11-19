@@ -256,7 +256,9 @@
 /* Séparateur « • » entre les 3 thèmes du titre (ordinateur : sur la même ligne) */
 .hero h1 .h1-dot {
     display: inline-block;
-    margin: 0 0.55em;
+    font-size: 0.75em;          /* puce discrète */
+    vertical-align: middle;
+    margin: 0 1em;
     opacity: 0.85;
 }
 
@@ -264,7 +266,7 @@
    (le séparateur ne peut ainsi jamais se retrouver en fin de ligne) */
 @media (max-width: 1099px) and (min-height: 521px) {
     .hero h1 .h1-part { display: block; }
-    .hero h1 .h1-dot { display: block; margin: 0.1em 0; line-height: 1; font-size: 0.8em; }
+    .hero h1 .h1-dot { display: block; margin: 0.1em 0; line-height: 1; font-size: 0.7em; }
 }
 
 /* Écrans larges : le titre tient sur une seule ligne */
@@ -1104,7 +1106,7 @@
                 line-height: 1.2;
                 margin: 0 0 0.4rem;
             }
-            .hero h1 .h1-dot { margin: 0 0.4em; }
+            .hero h1 .h1-dot { margin: 0 0.8em; }
             .hero .location-tag {
                 font-size: 0.82rem;
                 margin-bottom: 0.4rem;
