@@ -695,6 +695,35 @@ nav_active: "partenaires"
         @media (max-width: 600px) {
             .article-card { padding: 1.4rem 1.2rem; }
         }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin: 0.4rem 0 0.6rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #0f172a;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-link {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-link a {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
 </style>
 
     <section class="hero">
@@ -715,6 +744,12 @@ nav_active: "partenaires"
                 <li>Déposez tout en haut vos allume-feu et allumez-les.</li>
                 <li>Laissez la prise d'air ouverte : le feu descend tout seul, de haut en bas, et enflamme les bûches au fur et à mesure.</li>
             </ol>
+
+            <h2>La méthode en vidéo</h2>
+            <div class="video-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/LPmUUMw8bSM?rel=0" title="Allumer un feu par le haut : la méthode en vidéo" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="video-link"><a href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">Voir la vidéo sur YouTube ↗</a></p>
 
             <h2>À éviter</h2>
             <ul>

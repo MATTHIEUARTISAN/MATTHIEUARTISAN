@@ -572,11 +572,17 @@ nav_active: "partenaires"
         /* ---------- Page « Bons conseils » : carrés de liens ---------- */
         .tips-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 1.6rem;
             max-width: 980px;
             margin: 0 auto;
         }
+
+        .tip-card { grid-column: span 2; }
+
+        /* 5 carrés : la 2e ligne (2 carrés) est centrée */
+        .tip-card:nth-child(4) { grid-column: 2 / span 2; }
+        .tip-card:nth-child(5) { grid-column: 4 / span 2; }
 
         .tip-card {
             display: flex;
@@ -641,11 +647,16 @@ nav_active: "partenaires"
 
         @media (max-width: 900px) {
             .tips-grid { grid-template-columns: repeat(2, 1fr); }
+            .tip-card,
+            .tip-card:nth-child(4),
+            .tip-card:nth-child(5) { grid-column: auto; }
+            .tip-card:nth-child(5) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 0.8rem); }
         }
 
         @media (max-width: 560px) {
             .tips-grid { grid-template-columns: 1fr; }
             .tip-card { aspect-ratio: auto; min-height: 220px; }
+            .tip-card:nth-child(5) { grid-column: auto; width: auto; justify-self: stretch; }
         }
 
         /* ---------- Page « Allumer un feu facilement » ---------- */
@@ -709,17 +720,9 @@ nav_active: "partenaires"
                 <div>
                     <span class="tip-icon" aria-hidden="true">🔥</span>
                     <h3 class="tip-title">Allumer un feu facilement</h3>
-                    <p class="tip-text">La méthode du feu allumé par le haut : plus propre, plus de chaleur.</p>
+                    <p class="tip-text">La méthode du feu allumé par le haut, en texte et en vidéo : plus propre, plus de chaleur.</p>
                 </div>
                 <div class="tip-source"><span>Matthieu Artisan</span><span class="tip-go">Lire →</span></div>
-            </a>
-            <a class="tip-card" href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">
-                <div>
-                    <span class="tip-icon" aria-hidden="true">▶️</span>
-                    <h3 class="tip-title">Vidéo à regarder</h3>
-                    <p class="tip-text">Un conseil en vidéo, à voir directement sur YouTube.</p>
-                </div>
-                <div class="tip-source"><span>YouTube</span><span class="tip-go">Voir ↗</span></div>
             </a>
             <a class="tip-card" href="https://agirpourlatransition.ademe.fr/particuliers/amenager-maison/chauffer/chauffage-bois-moins-consommer-moins-polluer" target="_blank" rel="noopener noreferrer">
                 <div>
