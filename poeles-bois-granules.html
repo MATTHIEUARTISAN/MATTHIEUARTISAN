@@ -32,6 +32,10 @@
             --accent-turquoise: #48a1cb;   
             
             --bg-light: #E6D2B5;           /* RAL 1015 (ivoire clair) : fond de page et d'en-tête */
+            --card-bg: #FBF6EC;            /* Fond crème des cartes (prestations, Facebook) */
+            --card-border: #d9c3a0;        /* Bordure des cartes */
+            --card-accent: #999950;        /* RAL 1020 : liseré supérieur et coches */
+            --card-accent-dark: #7a7a3f;
             --ral-1020: #999950;           /* RAL 1020 (jaune olive) : fond du bandeau quand la vidéo ne tourne pas */
             --text-color: #334155;
         }
@@ -418,12 +422,14 @@
 
         .services-list > li {
             position: relative;
-            padding: 0.6rem 0.8rem 0.6rem 1.8rem;
+            padding: 0.9rem 1rem 0.8rem 2.2rem;
             font-weight: 600;
-            background: #ffffff;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            color: var(--primary-blue);
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            border-top: 4px solid var(--card-accent);
+            box-shadow: 0 3px 10px rgba(90, 70, 30, 0.15);
         }
 
         .services-list > li.service-wide {
@@ -432,12 +438,12 @@
 
         .services-list > li::before {
             content: "✓";
-            color: var(--accent-turquoise);
+            color: var(--card-accent-dark);
             font-weight: bold;
             font-size: 1.2rem;
             position: absolute;
-            left: 0.5rem;
-            top: 0.5rem;
+            left: 0.7rem;
+            top: 0.85rem;
         }
 
         .services-list ul {
@@ -457,7 +463,7 @@
 
         .services-list ul li::before {
             content: "•";
-            color: var(--accent-red);
+            color: var(--card-accent);
             font-weight: bold;
             font-size: 1.1rem;
             position: absolute;
@@ -592,12 +598,13 @@
         }
 
         .facebook-section {
-            background: white;
+            background: var(--card-bg);
             padding: 1rem;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 10px rgba(90, 70, 30, 0.15);
             text-align: center;
-            border-top: 3px solid var(--accent-red);
+            border: 1px solid var(--card-border);
+            border-top: 4px solid var(--card-accent);
             display: flex;
             flex-direction: column;
             height: auto;
@@ -628,8 +635,8 @@
         /* Publications Facebook affichées sous forme de cartes fixes (texte + photos) */
         .fb-card {
             text-align: left;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
+            background: #fffdf8;
+            border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 0.9rem 1rem;
             margin: 0 auto 0.9rem;
