@@ -1,0 +1,829 @@
+---
+layout: default
+title: "Bons conseils | Matthieu Artisan - Poêles à Bois & Fumisterie"
+description: "Nos bons conseils : allumer un feu facilement, bien utiliser son poêle, prévenir les incendies et comprendre le ramonage."
+nav_active: "bons-conseils"
+---
+<style>
+/* Palette de couleurs */
+        :root {
+            --primary-blue: #1a67b3;       /* Bleu principal */
+            --action-orange: #f97316;      /* Orange (Action) */
+            --orange-hover: #ea580c;       
+            
+            --accent-red: #fa4222;         
+            --accent-turquoise: #48a1cb;   
+            
+            --bg-light: #f8fafc;
+            --text-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.2rem 1.5rem; /* Padding réduit pour maintenir la hauteur globale */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* --- STYLES LOGO UNIQUE --- */
+        .logo {
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            display: block;
+            height: 80px;       /* Logo plus grand */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px;
+            border-left: 2px solid var(--accent-turquoise);
+            padding-left: 0.8rem;
+            line-height: 1.25;
+        }
+
+        .header-location-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            white-space: nowrap;
+            margin-bottom: 6px;
+        }
+
+        .header-phone-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--action-orange);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .header-phone-link:hover {
+            color: var(--orange-hover);
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active-link {
+            color: var(--accent-turquoise);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Hero / Bannière */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), #114b85);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Section Partenaires */
+        .partners-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .section-intro h2 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-intro h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-red);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .partner-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid var(--accent-turquoise);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Conteneur avec Fond Blanc Pur pour les images telles quelles */
+        .partner-logo-container {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            background-color: #ffffff;
+            border-radius: 6px;
+        }
+
+        .partner-logo {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .partner-header {
+            margin-bottom: 1rem;
+        }
+
+        .partner-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.4rem;
+        }
+
+        .partner-services {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .partner-details {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .partner-details li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .partner-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-partner {
+            flex: 1;
+            min-width: 140px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-phone {
+            background-color: var(--action-orange);
+            color: white;
+            border: 1px solid var(--action-orange);
+        }
+
+        .btn-phone:hover {
+            background-color: var(--orange-hover);
+        }
+
+        .btn-web {
+            background-color: var(--bg-light);
+            color: var(--primary-blue);
+            border: 1px solid #cbd5e1;
+        }
+
+        .btn-web:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        /* Modal (Zone de couverture) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 750px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-top: 5px solid var(--accent-red);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #64748b;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-red);
+        }
+
+        .modal-body {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .modal-body img {
+            width: 320px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+        }
+
+        /* Back To Top */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: transparent;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.visible {
+            display: flex !important;
+        }
+
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #000000;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent-turquoise);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-sector {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .footer-sector strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-seo-zones {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-seo-zones summary {
+            cursor: pointer;
+            color: #9cdbfb;
+            font-size: 0.8rem;
+            list-style: none;
+        }
+
+        .footer-seo-zones summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .footer-seo-zones summary::after {
+            content: " \25BE";
+        }
+
+        .footer-seo-zones[open] summary::after {
+            content: " \25B4";
+        }
+
+        .footer-seo-zones p {
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        footer a {
+            color: #9cdbfb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-turquoise);
+            text-decoration: underline;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 834px) {
+            .header-container {
+                position: relative;
+                padding: 0.2rem 1rem;
+                justify-content: space-between;
+            }
+
+            .brand-group {
+                gap: 0.5rem;
+                max-width: calc(100% - 40px);
+            }
+
+            .logo img {
+                height: 58px;
+            }
+
+            .header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
+
+            .header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
+
+            .header-phone-link {
+                font-size: 0.75rem;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 0.5rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                flex-direction: column-reverse;
+                text-align: left;
+            }
+
+            .modal-body img {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ---------- Page « Bons conseils » : carrés de liens ---------- */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.6rem;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .tip-card { grid-column: span 2; }
+
+        /* 5 carrés : la 2e ligne (2 carrés) est centrée */
+        .tip-card:nth-child(4) { grid-column: 2 / span 2; }
+        .tip-card:nth-child(5) { grid-column: 4 / span 2; }
+
+        .tip-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            aspect-ratio: 1 / 1;
+            padding: 1.6rem 1.4rem 1.3rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid var(--accent-turquoise);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .tip-card:hover,
+        .tip-card:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(26, 103, 179, 0.15);
+            border-top-color: var(--accent-red);
+        }
+
+        .tip-icon {
+            font-size: 2.4rem;
+            line-height: 1;
+        }
+
+        .tip-title {
+            color: var(--primary-blue);
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin: 0.6rem 0 0.4rem;
+        }
+
+        .tip-text {
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: #475569;
+        }
+
+        .tip-source {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            padding-top: 0.7rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .tip-go {
+            color: var(--action-orange);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 900px) {
+            .tips-grid { grid-template-columns: repeat(2, 1fr); }
+            .tip-card,
+            .tip-card:nth-child(4),
+            .tip-card:nth-child(5) { grid-column: auto; }
+            .tip-card:nth-child(5) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 0.8rem); }
+        }
+
+        @media (max-width: 560px) {
+            .tips-grid { grid-template-columns: 1fr; }
+            .tip-card { aspect-ratio: auto; min-height: 220px; }
+            .tip-card:nth-child(5) { grid-column: auto; width: auto; justify-self: stretch; }
+        }
+
+        /* ---------- Page « Allumer un feu facilement » ---------- */
+        html { scroll-behavior: smooth; }
+
+        #allumer-un-feu { scroll-margin-top: 110px; }
+
+        .article-container {
+            max-width: 820px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border-radius: 8px;
+            border-top: 3px solid var(--accent-turquoise);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 2rem 2.2rem;
+        }
+
+        .article-card h2,
+        .article-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.35rem;
+            margin: 1.6rem 0 0.7rem;
+            border-left: 4px solid var(--accent-red);
+            padding-left: 0.8rem;
+        }
+
+        .article-card h2:first-child,
+        .article-card h3:first-child { margin-top: 0; }
+
+        .article-card p { margin-bottom: 1rem; }
+
+        .article-card ol,
+        .article-card ul {
+            margin: 0 0 1rem 1.4rem;
+        }
+
+        .article-card li { margin-bottom: 0.5rem; }
+
+        .article-back {
+            display: inline-block;
+            margin-top: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .article-back:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .article-card { padding: 1.4rem 1.2rem; }
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin: 0.4rem 0 0.6rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #0f172a;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-link {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-link a {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+</style>
+
+    <!-- Bannière -->
+    <section class="hero">
+        <h1>Bons conseils</h1>
+        <p>Quelques lectures, une vidéo et des adresses de confiance pour bien utiliser votre poêle, chauffer proprement et en toute sécurité.</p>
+    </section>
+
+    <main class="partners-container">
+        <div class="tips-grid">
+            <a class="tip-card" href="#allumer-un-feu">
+                <div>
+                    <span class="tip-icon" aria-hidden="true">🔥</span>
+                    <h3 class="tip-title">Allumer un feu facilement</h3>
+                    <p class="tip-text">La méthode du feu allumé par le haut, en texte et en vidéo : plus propre, plus de chaleur.</p>
+                </div>
+                <div class="tip-source"><span>Matthieu Artisan</span><span class="tip-go">Lire ↓</span></div>
+            </a>
+            <a class="tip-card" href="https://agirpourlatransition.ademe.fr/particuliers/amenager-maison/chauffer/chauffage-bois-moins-consommer-moins-polluer" target="_blank" rel="noopener noreferrer">
+                <div>
+                    <span class="tip-icon" aria-hidden="true">🌿</span>
+                    <h3 class="tip-title">Se chauffer au bois : les bons gestes</h3>
+                    <p class="tip-text">8 conseils de l’ADEME pour consommer moins de bois et moins polluer : appareil bien dimensionné, bois de qualité et bien sec, bonne utilisation, entretien et ramonage.</p>
+                </div>
+                <div class="tip-source"><span>ADEME</span><span class="tip-go">Voir ↗</span></div>
+            </a>
+            <a class="tip-card" href="https://www.boisenergienord.fr/blog/blog-3/prevenir-les-incendies-le-triangle-et-le-tetraedre-du-feu-expliques-1202" target="_blank" rel="noopener noreferrer">
+                <div>
+                    <span class="tip-icon" aria-hidden="true">🧯</span>
+                    <h3 class="tip-title">Le triangle du feu expliqué</h3>
+                    <p class="tip-text">Combustible, oxygène, chaleur : comprendre comment naît un feu, comment l’arrêter et quels gestes de prévention adopter à la maison.</p>
+                </div>
+                <div class="tip-source"><span>Bois Énergie Nord</span><span class="tip-go">Voir ↗</span></div>
+            </a>
+            <a class="tip-card" href="https://axop.fr/roman.html" target="_blank" rel="noopener noreferrer">
+                <div>
+                    <span class="tip-icon" aria-hidden="true">🤝</span>
+                    <h3 class="tip-title">AXOP, notre partenaire fumisterie</h3>
+                    <p class="tip-text">Ramonage fumisterie, entretien des poêles à granulés, expertise et formation, à Lissieu (69). Son fondateur est aussi l’auteur du roman « Le ramoneur de Malesco ».</p>
+                </div>
+                <div class="tip-source"><span>Partenaire recommandé</span><span class="tip-go">Voir ↗</span></div>
+            </a>
+            <a class="tip-card" href="https://www.camilleleramoneur.fr/le-ramonage" target="_blank" rel="noopener noreferrer">
+                <div>
+                    <span class="tip-icon" aria-hidden="true">🧹</span>
+                    <h3 class="tip-title">Camille le Ramoneur, notre partenaire ramonage</h3>
+                    <p class="tip-text">Ramonage, entretien, dépannage et débistrage des appareils à bois, dans l’Ouest lyonnais et le Beaujolais.</p>
+                </div>
+                <div class="tip-source"><span>Partenaire recommandé</span><span class="tip-go">Voir ↗</span></div>
+            </a>
+        </div>
+    </main>
+
+    <!-- Allumer un feu facilement (texte + vidéo), directement sur la page -->
+    <section id="allumer-un-feu" class="article-container">
+        <div class="section-intro">
+            <h2>Allumer un feu facilement</h2>
+            <p>La méthode du feu allumé par le haut : plus propre, plus chaud, moins de fumée.</p>
+        </div>
+        <article class="article-card">
+            <h3>Pourquoi allumer par le haut ?</h3>
+            <p>Quand on allume un feu par le bas, le bois du dessus est surtout chauffé et « distillé » : il libère des gaz qui montent dans le conduit sans avoir brûlé. Résultat : beaucoup de fumée au démarrage, de la pollution et peu de chaleur.</p>
+            <p>En allumant par le haut, ces gaz traversent les flammes et y brûlent. Le feu est plus propre, il émet moins de particules fines et il chauffe mieux.</p>
+
+            <h3>La méthode, pas à pas</h3>
+            <ol>
+                <li>Placez les grosses bûches au fond du foyer, bien serrées.</li>
+                <li>Posez par-dessus des bûches plus petites, puis du petit bois sec (bûchettes fines).</li>
+                <li>Déposez tout en haut vos allume-feu et allumez-les.</li>
+                <li>Laissez la prise d'air ouverte : le feu descend tout seul, de haut en bas, et enflamme les bûches au fur et à mesure.</li>
+            </ol>
+
+            <h3>La méthode en vidéo</h3>
+            <div class="video-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/LPmUUMw8bSM?rel=0" title="Allumer un feu par le haut : la méthode en vidéo" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="video-link"><a href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">Voir la vidéo sur YouTube ↗</a></p>
+
+            <h3>À éviter</h3>
+            <ul>
+                <li>Le papier journal et le carton : ils dégagent beaucoup de fumée et encrassent le conduit.</li>
+                <li>Le bois humide : il chauffe peu, pollue et favorise le bistre dans le conduit.</li>
+            </ul>
+            <p>Pas besoin de produits spéciaux : des bûches sèches, du petit bois sec et des allume-feu ordinaires suffisent.</p>
+        </article>
+    </section>

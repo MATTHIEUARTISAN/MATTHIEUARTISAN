@@ -4,7 +4,7 @@ layout: null
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% comment %} expertise.html et nos-qualifications.html sont retirés tant que la partie Expertise est en construction (accès par mot de passe, noindex). Les remettre à la mise en ligne. {% endcomment %}
-{% assign pages = "index.html,poeles-bois-granules.html,qui-sommes-nous.html,galerie.html,partenaires.html,allumer-un-feu-facilement.html,mentions-legales.html" | split: "," %}
+{% assign pages = "index.html,poeles-bois-granules.html,qui-sommes-nous.html,realisations.html,bons-conseils.html,mentions-legales.html" | split: "," %}
 {% for p in pages %}  <url>
     <loc>{{ site.url }}{{ site.baseurl }}/{{ p }}</loc>
   </url>
