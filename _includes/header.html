@@ -1,3 +1,26 @@
+    <style>
+        /* Charte graphique de la partie « Installation » (identique à poeles-bois-granules.html) :
+           RAL 1015 (ivoire clair) pour le fond de page et l'en-tête, RAL 1020 (jaune olive) pour les bandeaux de titre.
+           À modifier ici pour changer les couleurs de toutes les pages concernées. */
+        :root {
+            --bg-light: #E6D2B5;
+            --ral-1015: #E6D2B5;
+            --ral-1020: #999950;
+        }
+
+        html body {
+            background-color: var(--ral-1015);
+        }
+
+        html body > header {
+            background-color: var(--ral-1015);
+        }
+
+        html body .hero,
+        html body .page-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--ral-1020);
+        }
+    </style>
     <header>
         <div class="header-container">
             <div class="brand-group">
