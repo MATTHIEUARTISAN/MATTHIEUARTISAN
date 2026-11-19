@@ -1124,6 +1124,13 @@
                 padding: 0.45rem 0.9rem;
                 font-size: 0.8rem;
             }
+            /* Les cartes de prestations : 2 par ligne en paysage */
+            .services-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            .services-list > li { padding: 0.7rem 0.8rem 0.6rem 2rem; }
+            .services-list > li::before { left: 0.55rem; top: 0.65rem; }
             .btn-call-title { font-size: 0.65rem; }
             .btn-call-number { font-size: 0.9rem; }
         }
