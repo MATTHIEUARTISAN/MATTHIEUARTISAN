@@ -14,6 +14,12 @@
             --card-shadow: 0 3px 10px rgba(90, 70, 30, 0.15);
         }
 
+        /* Empêche les navigateurs mobiles d'agrandir les textes en mode paysage */
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
         html body {
             background-color: var(--ral-1015);
         }
