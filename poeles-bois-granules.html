@@ -253,6 +253,20 @@
     white-space: nowrap;
 }
 
+/* Séparateur « • » entre les 3 thèmes du titre (ordinateur : sur la même ligne) */
+.hero h1 .h1-dot {
+    display: inline-block;
+    margin: 0 0.55em;
+    opacity: 0.85;
+}
+
+/* Tablette / mobile en portrait : un thème par ligne, avec le • sur sa propre ligne entre les thèmes
+   (le séparateur ne peut ainsi jamais se retrouver en fin de ligne) */
+@media (max-width: 1099px) and (min-height: 521px) {
+    .hero h1 .h1-part { display: block; }
+    .hero h1 .h1-dot { display: block; margin: 0.1em 0; line-height: 1; font-size: 0.8em; }
+}
+
 /* Écrans larges : le titre tient sur une seule ligne */
 @media (min-width: 1100px) {
     .hero .hero-content h1 {
@@ -383,7 +397,7 @@
             margin: 3rem auto;
             padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: 1fr 500px;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 500px);
             gap: 2.5rem;
             align-items: stretch;
         }
@@ -614,7 +628,7 @@
             top: 105px;
         }
 
-        @media (max-width: 834px) {
+        @media (max-width: 960px) {
             .facebook-section { position: static; }
         }
 
@@ -736,16 +750,26 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 2rem;
             border-radius: 8px;
             max-width: 750px;
             width: 100%;
             position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border-top: 5px solid var(--accent-red);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            border: 1px solid var(--card-border);
+            border-top: 4px solid var(--card-accent);
             max-height: 90vh;
             overflow-y: auto;
+        }
+
+        /* Encadré d'information dans les pop-ups : ton crème plus soutenu + filet olive */
+        .modal-note {
+            background: #f1e6d0;
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--card-accent);
+            padding: 0.8rem;
+            border-radius: 6px;
         }
 
         .close-btn {
@@ -964,7 +988,7 @@
 }
 
         /* Responsive Mobile */
-        @media (max-width: 834px) {
+        @media (max-width: 960px) {
             .header-container {
                 position: relative;
                 padding: 0.2rem 1rem;
@@ -1061,6 +1085,39 @@
            }
 
         }
+
+        /* Téléphone en mode panoramique (paysage) : textes et espacements réduits, titre sur une seule ligne */
+        @media (orientation: landscape) and (max-height: 520px) {
+            .hero {
+                min-height: 0;
+                padding: 1.5rem 1.5rem 1.8rem;
+            }
+            .hero .hero-content h1 {
+                font-size: clamp(1rem, 2.9vw, 1.25rem);
+                line-height: 1.2;
+                margin: 0 0 0.4rem;
+            }
+            .hero h1 .h1-dot { margin: 0 0.4em; }
+            .hero .location-tag {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            .hero .hero-text p {
+                font-size: 0.82rem;
+                line-height: 1.4;
+                margin-bottom: 0.45rem;
+            }
+            .hero-buttons { gap: 0.6rem; }
+            .btn-hero {
+                width: auto;
+                max-width: none;
+                min-width: 0;
+                padding: 0.45rem 0.9rem;
+                font-size: 0.8rem;
+            }
+            .btn-call-title { font-size: 0.65rem; }
+            .btn-call-number { font-size: 0.9rem; }
+        }
 </style>
 </head>
 <body>
@@ -1113,7 +1170,7 @@
 
     <!-- Contenu texte par-dessus -->
     <div class="hero-content">
-        <h1><span class="h1-part">Pose de poêles</span> - <span class="h1-part">Mise en conformité</span> - <span class="h1-part">Conseils &amp; Diagnostics</span></h1>
+        <h1><span class="h1-part">Pose de poêles</span><span class="h1-dot" aria-hidden="true">•</span><span class="h1-part">Mise en conformité</span><span class="h1-dot" aria-hidden="true">•</span><span class="h1-part">Conseils &amp; Diagnostics</span></h1>
         <p class="location-tag">Vallée d’Azergues & secteurs limitrophes</p>
         <div class="hero-text">
             <p>Installation complète de votre poêle, qu'il soit neuf ou déjà en votre possession.</p>
@@ -1368,7 +1425,7 @@
                         <li style="margin-bottom: 0.5rem;">• <strong>Les Pays de Tarare et l'Arbresle</strong></li>
                         <li style="margin-bottom: 0.5rem;">• <strong>Porte de Lyon</strong></li>
                     </ul>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; background: #f1f5f9; padding: 0.8rem; border-radius: 6px;">
+                    <p class="modal-note" style="margin-top: 1rem; font-size: 0.9rem;">
                         🔥 Pour les <strong>poêles de masse MELEZE</strong> et les <strong>missions d'expertise</strong> nous pouvons intervenir au-delà de ces secteurs.
                     </p>
                 </div>
@@ -1389,7 +1446,7 @@
             <span class="close-btn" onclick="closeRsdtModal()">&times;</span>
             <h2 style="color: var(--primary-blue);">Audit avant-vente immobilière</h2>
             <div class="modal-body" style="display: block;">
-                <p style="font-size: 0.9rem; background: #f1f5f9; padding: 1rem; border-radius: 6px; font-style: italic;">
+                <p class="modal-note" style="font-size: 0.9rem; padding: 1rem; font-style: italic;">
                     Extrait RSDT, Article 31 : « À l'entrée en jouissance de chaque locataire ou occupant, le propriétaire doit s'assurer du bon état des conduits, appareils de chauffage ou de production d'eau chaude desservant les locaux mis à leur disposition (...). L'examinateur qui procède à ces examens doit remettre à l'utilisateur un certificat établissant l'étanchéité du conduit dans des conditions normales d'utilisation, sa régularité et suffisance de section, sa vacuité, sa continuité et son ramonage. Le résultat d'un examen révélant des défauts rendant dangereuse l'utilisation du conduit doit être communiqué à l'utilisateur et au propriétaire. »
                 </p>
             </div>
