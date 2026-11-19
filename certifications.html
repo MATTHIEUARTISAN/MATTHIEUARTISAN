@@ -775,6 +775,14 @@
             }
         }
 </style>
+    <style>
+        /* Charte graphique de la partie « Installation » (identique à poeles-bois-granules.html) :
+           RAL 1015 pour le fond de page et l'en-tête, RAL 1020 pour le bandeau de titre. */
+        :root { --ral-1015: #E6D2B5; --ral-1020: #999950; }
+        html body { background-color: var(--ral-1015); }
+        html body > header { background-color: var(--ral-1015); }
+        html body .page-banner { background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), var(--ral-1020); }
+    </style>
 </head>
 <body>
 
@@ -782,7 +790,7 @@
     <header>
         <div class="header-container">
             <div class="brand-group">
-                <a href="index.html" class="logo">
+                <a href="poeles-bois-granules.html" class="logo">
                     <img src="matthieu-artisan.specialiste.png" alt="Matthieu Artisan - Plomberie & Chauffage" width="1150" height="502">
                 </a>
                 <div class="header-info-block">
@@ -804,7 +812,6 @@
                  nos-qualifications.html et a-propos-de-nous.html lui-même). -->
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="poeles-bois-granules.html">Poêles & Granulés</a></li>
                     <li><a href="qui-sommes-nous.html">Qui sommes nous</a></li>
                     <li><a href="realisations.html">Nos réalisations</a></li>
                     <li><a href="bons-conseils.html">Bons conseils</a></li>
