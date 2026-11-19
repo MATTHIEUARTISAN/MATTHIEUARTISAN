@@ -272,9 +272,12 @@
 /* Écrans larges : le titre tient sur une seule ligne */
 @media (min-width: 1100px) {
     .hero .hero-content h1 {
-        font-size: 2rem;
-        margin-left: -60px;
-        margin-right: -60px;
+        /* taille proportionnelle à la largeur de la fenêtre + jamais de retour à la ligne :
+           les 3 thèmes et leurs puces restent toujours sur une seule ligne, quelle que soit la police */
+        font-size: clamp(1.5rem, 2.3vw, 2rem);
+        white-space: nowrap;
+        margin-left: -150px;
+        margin-right: -150px;
     }
 }
 
@@ -1103,6 +1106,7 @@
             }
             .hero .hero-content h1 {
                 font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+                white-space: nowrap;
                 line-height: 1.2;
                 margin: 0 0 0.4rem;
             }
