@@ -715,7 +715,7 @@
         }
 
         @media (max-width: 960px) {
-            .fb-iframe { flex: none; height: 1500px; }
+            .fb-iframe { flex: none; height: 640px; }
         }
 
         /* Pop-up Modal */
@@ -1372,7 +1372,7 @@
     <div class="fb-feed" id="fb-feed">
         <iframe class="fb-iframe"
                 title="Publications Facebook de Matthieu Artisan"
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61594346696834&tabs=timeline&width=500&height=2000&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false"
+                id="fb-iframe"
                 style="border:none; border-radius:6px;"
                 scrolling="no"
                 frameborder="0"
@@ -1736,5 +1736,28 @@ startTimer();
             });
         })();
     </script>
+<script>
+/* Widget Facebook : la hauteur demandée à Facebook = la hauteur réelle du cadre.
+   Ainsi le fil défile à l'intérieur du cadre jusqu'au dernier post disponible. */
+(function () {
+  var f = document.getElementById('fb-iframe');
+  if (!f) return;
+  var base = 'https://www.facebook.com/plugins/page.php?href=' +
+    encodeURIComponent('https://www.facebook.com/profile.php?id=61594346696834') +
+    '&tabs=timeline&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false';
+  var lastW = 0, lastH = 0;
+  function load() {
+    var w = Math.min(500, Math.max(180, Math.round(f.clientWidth)));
+    var h = Math.min(2000, Math.max(300, Math.round(f.clientHeight)));
+    if (Math.abs(w - lastW) < 40 && Math.abs(h - lastH) < 40) return;
+    lastW = w; lastH = h;
+    f.src = base + '&width=' + w + '&height=' + h;
+  }
+  load();
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(load, 400); });
+  window.addEventListener('orientationchange', function () { setTimeout(load, 500); });
+})();
+</script>
 </body>
 </html>
