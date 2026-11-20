@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Bons conseils | Matthieu Artisan - Poêles à Bois & Fumisterie"
-description: "Nos bons conseils : allumer un feu facilement, bien utiliser son poêle, prévenir les incendies et comprendre le ramonage."
+description: "Nos bons conseils et adresses de confiance : conseils de l’ADEME, prévention incendie, vidéo d’allumage et partenaires ramonage et fumisterie."
 nav_active: "bons-conseils"
 ---
 <style>
@@ -576,38 +576,6 @@ nav_active: "bons-conseils"
         /* ---------- Page « Bons conseils » : sections en cards ---------- */
         html { scroll-behavior: smooth; }
 
-        /* Sommaire : liens vers les 3 sections */
-        .bc-nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.7rem;
-            margin: 0 auto 3rem;
-        }
-
-        .bc-nav a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.55rem 1.1rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 999px;
-            color: var(--primary-blue);
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-decoration: none;
-            box-shadow: var(--card-shadow);
-            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-        }
-
-        .bc-nav a:hover,
-        .bc-nav a:focus-visible {
-            background: var(--card-accent);
-            border-color: var(--card-accent);
-            color: #ffffff;
-        }
-
         .bc-section { margin-bottom: 4rem; scroll-margin-top: 120px; }
         .bc-section .section-intro { margin-bottom: 2rem; }
         .bc-section .section-intro p { color: #475569; }
@@ -618,7 +586,6 @@ nav_active: "bons-conseils"
             gap: 2rem;
         }
 
-        .bc-grid--gestes { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
         .bc-grid--duo { max-width: 800px; margin: 0 auto; }
 
         /* Adresse du lien, affichée dans la card */
@@ -663,77 +630,16 @@ nav_active: "bons-conseils"
         .bc-card li { margin-bottom: 0.5rem; }
         .bc-card .bc-actions { margin-top: auto; padding-top: 0.6rem; }
 
-        /* Cards des bons gestes */
-        .geste-card { padding: 1.4rem 1.4rem 1.5rem; }
-
-        .geste-num {
-            width: 34px;
-            height: 34px;
-            margin-bottom: 0.8rem;
-            border-radius: 50%;
-            background: var(--primary-blue);
-            color: #ffffff;
-            font-weight: 800;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .geste-card h3 { font-size: 1.05rem; }
-        .geste-card p { font-size: 0.9rem; }
-
-        .bc-source-note {
-            text-align: center;
-            font-size: 0.82rem;
-            color: #64748b;
-            margin: 1.2rem auto 2.5rem;
-        }
-
-        .sub-title {
-            text-align: center;
-            color: var(--primary-blue);
-            font-size: 1.3rem;
-            margin: 0 0 1.5rem;
-        }
-
         /* Partenaires : mêmes cards que l'ancienne page Partenaires */
         .partner-name { text-transform: uppercase; }
         .partner-card .btn-web { background-color: #ffffff; }
         .partner-card .btn-web:hover { background-color: var(--primary-blue); }
         .btn-solo { flex: 1 1 100%; }
 
-        /* Vidéo */
-        .video-frame {
-            position: relative;
-            width: 100%;
-            max-width: 760px;
-            aspect-ratio: 16 / 9;
-            margin: 0.4rem auto 0.6rem;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #0f172a;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .video-frame iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .video-link { font-size: 0.85rem; text-align: center; margin-bottom: 0 !important; }
-        .video-link a { color: var(--primary-blue); font-weight: 600; }
-
         @media (max-width: 640px) {
-            .bc-grid,
-            .bc-grid--gestes { grid-template-columns: 1fr; gap: 1.2rem; }
+            .bc-grid { grid-template-columns: 1fr; gap: 1.2rem; }
             .bc-card { padding: 1.4rem 1.2rem; }
             .bc-section { margin-bottom: 3rem; }
-            .bc-nav { gap: 0.5rem; margin-bottom: 2.2rem; }
-            .bc-nav a { padding: 0.5rem 0.9rem; font-size: 0.88rem; }
         }
 </style>
 
@@ -745,79 +651,13 @@ nav_active: "bons-conseils"
 
     <main class="partners-container">
 
-        <!-- Sommaire -->
-        <nav class="bc-nav" aria-label="Sommaire de la page">
-            <a href="#feu"><span aria-hidden="true">🔥</span> Allumer un feu</a>
-            <a href="#gestes"><span aria-hidden="true">🪵</span> Se chauffer au bois</a>
-            <a href="#partenaires"><span aria-hidden="true">🤝</span> Nos partenaires</a>
-        </nav>
-
-        <!-- ALLUMER UN FEU -->
-        <section class="bc-section" id="feu">
-            <div class="section-intro">
-                <h2>Allumer un feu facilement</h2>
-                <p>La méthode du feu allumé par le haut&nbsp;: plus propre, plus chaud, moins de fumée.</p>
-            </div>
-            <div class="bc-grid">
-                <article class="bc-card">
-                    <div class="bc-ico" aria-hidden="true">💡</div>
-                    <h3>Pourquoi allumer par le haut&nbsp;?</h3>
-                    <p>Quand on allume un feu par le bas, le bois du dessus est surtout chauffé et «&nbsp;distillé&nbsp;»&nbsp;: il libère des gaz qui montent dans le conduit sans avoir brûlé. Résultat&nbsp;: beaucoup de fumée au démarrage, de la pollution et peu de chaleur.</p>
-                    <p>En allumant par le haut, ces gaz traversent les flammes et y brûlent. Le feu est plus propre, il émet moins de particules fines et il chauffe mieux.</p>
-                </article>
-                <article class="bc-card">
-                    <div class="bc-ico" aria-hidden="true">🔥</div>
-                    <h3>La méthode, pas à pas</h3>
-                    <ol>
-                        <li>Placez les grosses bûches au fond du foyer, bien serrées.</li>
-                        <li>Posez par-dessus des bûches plus petites, puis du petit bois sec (bûchettes fines).</li>
-                        <li>Déposez tout en haut vos allume-feu et allumez-les.</li>
-                        <li>Laissez la prise d'air ouverte&nbsp;: le feu descend tout seul, de haut en bas, et enflamme les bûches au fur et à mesure.</li>
-                    </ol>
-                </article>
-                <article class="bc-card">
-                    <div class="bc-ico" aria-hidden="true">🚫</div>
-                    <h3>À éviter</h3>
-                    <ul>
-                        <li>Le papier journal et le carton&nbsp;: ils dégagent beaucoup de fumée et encrassent le conduit.</li>
-                        <li>Le bois humide&nbsp;: il chauffe peu, pollue et favorise le bistre dans le conduit.</li>
-                    </ul>
-                    <p>Pas besoin de produits spéciaux&nbsp;: des bûches sèches, du petit bois sec et des allume-feu ordinaires suffisent.</p>
-                </article>
-                <article class="bc-card bc-card--wide">
-                    <h3 style="text-align:center">La méthode en vidéo</h3>
-                    <div class="video-frame">
-                        <iframe src="https://www.youtube-nocookie.com/embed/LPmUUMw8bSM?rel=0" title="Allumer un feu par le haut : la méthode en vidéo" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <p class="video-link"><a href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">Voir la vidéo sur YouTube ↗</a></p>
-                </article>
-            </div>
-        </section>
-
-        <!-- SE CHAUFFER AU BOIS : LES BONS GESTES -->
-        <section class="bc-section" id="gestes">
-            <div class="section-intro">
-                <h2>Se chauffer au bois&nbsp;: les bons gestes</h2>
-                <p>8 conseils pour consommer moins de bois et réduire ses émissions de particules fines.</p>
-            </div>
-            <div class="bc-grid bc-grid--gestes">
-                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">1</span><h3>Éviter les cheminées ouvertes</h3><p>Un foyer ouvert chauffe très peu et pollue beaucoup&nbsp;: mieux vaut un appareil fermé (poêle ou insert).</p></article>
-                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">2</span><h3>Bannir les flambées «&nbsp;plaisir&nbsp;»</h3><p>Un feu d’ambiance consomme beaucoup de bois pour peu de chaleur et émet des particules fines.</p></article>
-                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">3</span><h3>Installer un appareil moderne plus efficace</h3><p>Un appareil récent consomme moins de bois et rejette moins de polluants qu’un ancien.</p></article>
-                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">4</span><h3>Choisir un appareil bien dimensionné</h3><p>Sa puissance doit correspondre aux besoins du logement&nbsp;: trop puissant, il fonctionne mal.</p></article>
-                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">5</span><h3>Apprendre à bien utiliser votre poêle ou insert</h3><p>L’allumage et la conduite du feu comptent autant que l’appareil lui-même.</p></article>
-                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">6</span><h3>Acheter du bois de qualité</h3><p>Un bois bien sec brûle mieux, chauffe plus et pollue moins.</p></article>
-                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">7</span><h3>Stocker le bois plusieurs mois avant de l’utiliser</h3><p>À l’abri et aéré, pour qu’il ait le temps de sécher.</p></article>
-                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">8</span><h3>Ne pas négliger l’entretien et le ramonage</h3><p>Un appareil et un conduit entretenus, ramonés par un professionnel, fonctionnent mieux et en sécurité.</p></article>
-            </div>
-            <p class="bc-source-note">Conseils résumés d’après l’ADEME.</p>
-
-            <h3 class="sub-title">Pour aller plus loin</h3>
+        <!-- LIENS UTILES -->
+        <section class="bc-section" id="liens">
             <div class="bc-grid">
                 <article class="bc-card">
                     <div class="bc-ico" aria-hidden="true">🪵</div>
-                    <h3>Se chauffer au bois&nbsp;: les bons gestes</h3>
-                    <p>Le guide de l’ADEME, l’agence publique de la transition écologique, pour consommer moins de bois et moins polluer. Vous y retrouverez en détail les conseils résumés ci-dessus.</p>
+                    <h3>Se chauffer au bois&nbsp;: les bons gestes (ADEME)</h3>
+                    <p>Le guide de l’ADEME, l’agence publique de la transition écologique, pour consommer moins de bois et moins polluer. Un site de référence pour bien utiliser son appareil de chauffage au bois.</p>
                     <div class="bc-actions">
                         <span class="bc-domain">🔗 agirpourlatransition.ademe.fr</span>
                         <div class="partner-actions"><a class="btn-partner btn-web btn-solo" href="https://agirpourlatransition.ademe.fr/particuliers/amenager-maison/chauffer/chauffage-bois-moins-consommer-moins-polluer" target="_blank" rel="noopener noreferrer">🌐 Accéder au site de l’ADEME ↗</a></div>
@@ -844,7 +684,7 @@ nav_active: "bons-conseils"
                 <article class="bc-card">
                     <div class="bc-ico" aria-hidden="true">🎬</div>
                     <h3>Allumer un feu par le haut, en vidéo</h3>
-                    <p>La méthode vue pas à pas en images, pour la reproduire facilement avec votre poêle ou votre insert. À regarder ci-dessus ou directement sur YouTube.</p>
+                    <p>La méthode d’allumage par le haut vue pas à pas en images, pour la reproduire facilement avec votre poêle ou votre insert. Moins de fumée, plus de chaleur.</p>
                     <div class="bc-actions">
                         <span class="bc-domain">🔗 youtube.com</span>
                         <div class="partner-actions"><a class="btn-partner btn-web btn-solo" href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">🌐 Voir la vidéo sur YouTube ↗</a></div>
