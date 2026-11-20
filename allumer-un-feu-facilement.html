@@ -576,6 +576,109 @@ nav_active: "bons-conseils"
         /* ---------- Page « Bons conseils » : sections en cards ---------- */
         html { scroll-behavior: smooth; }
 
+        .bc-cols { column-count: 2; column-gap: 2.5rem; }
+        .bc-cols > * { break-inside: avoid; }
+        .bc-cols p:last-child, .bc-cols ul:last-child { margin-bottom: 0; }
+
+        /* Organigramme : étapes reliées par des flèches */
+        .bc-card ol.flow,
+        .flow {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 2.4rem;
+            margin: 2.2rem 0 0.2rem;
+            padding: 0;
+        }
+
+        .flow-step {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 1.6rem 0.9rem 1rem;
+            background: #ffffff;
+            border: 2px solid var(--card-accent);
+            border-radius: 10px;
+            font-size: 0.92rem;
+            line-height: 1.4;
+            color: #475569;
+        }
+
+        .flow-step strong { color: var(--primary-blue); }
+        .flow-pic { display: block; width: 9.2rem; max-width: 100%; height: auto; flex-shrink: 0; }
+        .flow-txt { display: block; }
+
+        .flow-num {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 3px var(--card-bg);
+        }
+
+        /* Flèche vers l'étape suivante */
+        .flow-step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -1.9rem;
+            width: 1.4rem;
+            height: 1.4rem;
+            transform: translateY(-50%);
+            background: var(--card-accent-dark, #7a7a3f);
+            clip-path: polygon(0 28%, 55% 28%, 55% 0, 100% 50%, 55% 100%, 55% 72%, 0 72%);
+        }
+
+        /* Dernière case : arrondie comme la fin d'un organigramme */
+        .flow-end {
+            border-radius: 48px;
+            background: #eef3e2;
+            border-color: var(--card-accent-dark, #7a7a3f);
+            justify-content: center;
+            padding: 1.2rem 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            .bc-cols { column-count: 1; }
+        }
+
+        /* Écrans moyens et mobile en vue panoramique : l'organigramme reste horizontal, en plus compact */
+        @media (max-width: 1100px) {
+            .bc-card ol.flow { gap: 1.7rem; }
+            .flow-step { padding: 1.4rem 0.6rem 0.8rem; font-size: 0.8rem; line-height: 1.35; gap: 0.35rem; }
+            .flow-pic { width: 6rem; }
+            .flow-num { width: 26px; height: 26px; top: -13px; font-size: 0.85rem; }
+            .flow-step:not(:last-child)::after { right: -1.45rem; width: 1.15rem; height: 1.15rem; }
+            .flow-end { padding: 0.9rem 0.8rem; border-radius: 32px; }
+        }
+
+        /* Mobile en portrait : les étapes passent les unes sous les autres */
+        @media (max-width: 900px) and (orientation: portrait) {
+            .bc-card ol.flow { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; max-width: 460px; margin: 2rem auto 0.2rem; }
+            .flow-step { flex-direction: row; text-align: left; align-items: center; padding: 1.1rem 1rem 1.1rem 1.3rem; gap: 0.9rem; font-size: 0.92rem; line-height: 1.4; }
+            .flow-num { top: 50%; left: -15px; transform: translateY(-50%); width: 30px; height: 30px; font-size: 0.95rem; }
+            .flow-pic { width: 6.2rem; }
+            .flow-step:not(:last-child)::after {
+                top: auto; bottom: -1.8rem; right: auto; left: 50%; width: 1.4rem; height: 1.4rem;
+                transform: translateX(-50%) rotate(90deg);
+            }
+            .flow-end { border-radius: 40px; padding: 1.1rem 1rem 1.1rem 1.3rem; }
+        }
+
         .back-link { margin: 0 0 1.6rem; font-size: 0.95rem; font-weight: 600; }
         .back-link a { color: var(--primary-blue); text-decoration: none; }
         .back-link a:hover { text-decoration: underline; }
@@ -622,6 +725,16 @@ nav_active: "bons-conseils"
         .bc-card--wide { grid-column: 1 / -1; }
 
         .bc-ico { font-size: 2.3rem; line-height: 1; margin-bottom: 0.7rem; }
+
+        /* Carte compacte (« À éviter ») : icône + titre sur une ligne, deux points côte à côte */
+        .bc-card--compact { padding: 1rem 1.4rem 1.1rem; }
+        .bc-card--compact .bc-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+        .bc-card--compact .bc-head .bc-ico { font-size: 1.5rem; margin: 0; }
+        .bc-card--compact .bc-head h2 { margin: 0; font-size: 1.15rem; }
+        .bc-card.bc-card.bc-card--compact ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 2rem; font-size: 0.92rem; line-height: 1.45; }
+        .bc-card.bc-card.bc-card--compact li { margin: 0; padding-left: 1.3rem; position: relative; }
+        .bc-card--compact li::before { content: "🚫"; position: absolute; left: 0; top: 0; font-size: 0.85rem; }
+        @media (max-width: 700px) { .bc-card--compact ul { grid-template-columns: minmax(0, 1fr); } }
         .bc-ico svg { display: block; height: 3rem; width: auto; }
 
         .bc-card h2,
@@ -685,37 +798,74 @@ nav_active: "bons-conseils"
 
         <section class="bc-section" id="feu">
             <div class="bc-grid">
-                <article class="bc-card">
+                <article class="bc-card bc-card--wide">
                     <div class="bc-ico" aria-hidden="true">💡</div>
                     <h2>Pourquoi allumer par le haut&nbsp;?</h2>
-                    <p>Quand on allume un feu par le bas, le bois du dessus est surtout chauffé et «&nbsp;distillé&nbsp;»&nbsp;: il libère des gaz qui montent dans le conduit sans avoir brûlé. Résultat&nbsp;: beaucoup de fumée au démarrage, de la pollution et peu de chaleur.</p>
-                    <p>En allumant par le haut, ces gaz traversent les flammes et y brûlent. Le feu est plus propre, il émet moins de particules fines et il chauffe mieux.</p>
+                    <div class="bc-cols">
+                        <p>Quand on allume un feu par le bas, le bois du dessus est surtout chauffé et «&nbsp;distillé&nbsp;»&nbsp;: il libère des gaz qui montent dans le conduit sans avoir brûlé. Résultat&nbsp;: beaucoup de fumée au démarrage, de la pollution et peu de chaleur.</p>
+                        <p>En allumant par le haut, ces gaz traversent les flammes et y brûlent. Le feu est plus propre, il émet moins de particules fines et il chauffe mieux.</p>
+                    </div>
                 </article>
-                <article class="bc-card">
+
+                <article class="bc-card bc-card--wide">
                     <div class="bc-ico" aria-hidden="true">🔥</div>
                     <h2>La méthode, pas à pas</h2>
-                    <ol>
-                        <li>Placez les grosses bûches au fond du foyer, bien serrées.</li>
-                        <li>Posez par-dessus des bûches plus petites, puis du petit bois sec (bûchettes fines).</li>
-                        <li>Déposez tout en haut vos allume-feu et allumez-les.</li>
-                        <li>Laissez la prise d'air ouverte&nbsp;: le feu descend tout seul, de haut en bas, et enflamme les bûches au fur et à mesure.</li>
+                    <!-- Pictogrammes des étapes (vue 3/4) : le tas se construit couche par couche -->
+                    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+                        <defs>
+                            <g id="pic-base"><path d="M30.9 89.68 L52.9 70.68 L43.1 59.32 L21.1 78.32Z" fill="#9d6a35" stroke="#4a2f14" stroke-width="1.3" stroke-linejoin="round"/><circle cx="48" cy="65" r="7.5" fill="#9d6a35" stroke="#4a2f14" stroke-width="1.3"/><circle cx="26" cy="84" r="7.5" fill="#c08850" stroke="#4a2f14" stroke-width="1.5"/><circle cx="26" cy="84" r="4.65" fill="none" stroke="#8a5a2b" stroke-width="0.9"/><circle cx="26" cy="84" r="1.88" fill="#8a5a2b"/><path d="M45.9 89.68 L67.9 70.68 L58.1 59.32 L36.1 78.32Z" fill="#9d6a35" stroke="#4a2f14" stroke-width="1.3" stroke-linejoin="round"/><circle cx="63" cy="65" r="7.5" fill="#9d6a35" stroke="#4a2f14" stroke-width="1.3"/><circle cx="41" cy="84" r="7.5" fill="#c08850" stroke="#4a2f14" stroke-width="1.5"/><circle cx="41" cy="84" r="4.65" fill="none" stroke="#8a5a2b" stroke-width="0.9"/><circle cx="41" cy="84" r="1.88" fill="#8a5a2b"/><path d="M60.9 89.68 L82.9 70.68 L73.1 59.32 L51.1 78.32Z" fill="#9d6a35" stroke="#4a2f14" stroke-width="1.3" stroke-linejoin="round"/><circle cx="78" cy="65" r="7.5" fill="#9d6a35" stroke="#4a2f14" stroke-width="1.3"/><circle cx="56" cy="84" r="7.5" fill="#c08850" stroke="#4a2f14" stroke-width="1.5"/><circle cx="56" cy="84" r="4.65" fill="none" stroke="#8a5a2b" stroke-width="0.9"/><circle cx="56" cy="84" r="1.88" fill="#8a5a2b"/></g>
+                            <g id="pic-layer2"><rect x="35.7" y="47.35" width="46" height="13" rx="6.5" fill="#d3a15f" stroke="#4a2f14" stroke-width="1.3"/><ellipse cx="81.7" cy="53.85" rx="2.73" ry="6.5" fill="#e2b980" stroke="#4a2f14" stroke-width="1.3"/><ellipse cx="81.7" cy="53.85" rx="1.3" ry="3.25" fill="none" stroke="#8a5a2b" stroke-width="0.8"/><rect x="28" y="54" width="46" height="13" rx="6.5" fill="#d3a15f" stroke="#4a2f14" stroke-width="1.3"/><ellipse cx="74" cy="60.5" rx="2.73" ry="6.5" fill="#e2b980" stroke="#4a2f14" stroke-width="1.3"/><ellipse cx="74" cy="60.5" rx="1.3" ry="3.25" fill="none" stroke="#8a5a2b" stroke-width="0.8"/><rect x="20.3" y="60.65" width="46" height="13" rx="6.5" fill="#d3a15f" stroke="#4a2f14" stroke-width="1.3"/><ellipse cx="66.3" cy="67.15" rx="2.73" ry="6.5" fill="#e2b980" stroke="#4a2f14" stroke-width="1.3"/><ellipse cx="66.3" cy="67.15" rx="1.3" ry="3.25" fill="none" stroke="#8a5a2b" stroke-width="0.8"/></g>
+                            <g id="pic-kind1"><path d="M31.2 52.6 L41.2 44.1 L48.2 44.1 L38.2 52.6Z" fill="#f3deb2" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><path d="M38.2 52.6 L48.2 44.1 L48.2 51.1 L38.2 59.6Z" fill="#c9a468" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><rect x="31.2" y="52.6" width="7" height="7" fill="#e6c58c" stroke="#4a2f14" stroke-width="1.1"/><path d="M55.2 52.6 L65.2 44.1 L72.2 44.1 L62.2 52.6Z" fill="#f3deb2" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><path d="M62.2 52.6 L72.2 44.1 L72.2 51.1 L62.2 59.6Z" fill="#c9a468" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><rect x="55.2" y="52.6" width="7" height="7" fill="#e6c58c" stroke="#4a2f14" stroke-width="1.1"/></g>
+                            <g id="pic-starter"><path d="M44 54.6 L49 50.6 L54.4 50.6 L49.4 54.6Z" fill="#f8cd8e" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><path d="M49.4 54.6 L54.4 50.6 L54.4 55.6 L49.4 59.6Z" fill="#c98233" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><rect x="44" y="54.6" width="5.4" height="5" fill="#f0a94f" stroke="#4a2f14" stroke-width="1.1"/></g>
+                            <g id="pic-kind2"><path d="M35.2 42.15 L40.2 38.15 L73.2 38.15 L68.2 42.15Z" fill="#f7e4bc" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><path d="M68.2 42.15 L73.2 38.15 L73.2 44.35 L68.2 48.35Z" fill="#cdaa6c" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><rect x="35.2" y="42.15" width="33" height="6.2" fill="#efd3a0" stroke="#4a2f14" stroke-width="1.1"/></g>
+                            <g id="pic-flame"><g transform="translate(49.2 53.2) scale(.7) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g></g>
+                            <g id="pic-flame-big"><g transform="translate(49.2 54) scale(1.25) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(37.7 51.6) scale(0.55) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(61.7 51.6) scale(0.55) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g></g>
+                        </defs>
+                    </svg>
+                    <ol class="flow" aria-label="Les étapes pour allumer un feu par le haut">
+                        <li class="flow-step">
+                            <span class="flow-num" aria-hidden="true">1</span>
+                            <svg class="flow-pic" viewBox="5 26 93 68" role="img" aria-hidden="true" focusable="false"><use href="#pic-base"/><use href="#pic-layer2"/></svg>
+                            <span class="flow-txt"><strong>Les grosses bûches</strong> au fond du foyer, bien serrées.</span>
+                        </li>
+                        <li class="flow-step">
+                            <span class="flow-num" aria-hidden="true">2</span>
+                            <svg class="flow-pic" viewBox="5 26 93 68" role="img" aria-hidden="true" focusable="false"><use href="#pic-base"/><use href="#pic-layer2"/><use href="#pic-kind1"/><use href="#pic-kind2"/></svg>
+                            <span class="flow-txt"><strong>Les bûches plus petites</strong> par-dessus, puis du petit bois sec (bûchettes fines).</span>
+                        </li>
+                        <li class="flow-step">
+                            <span class="flow-num" aria-hidden="true">3</span>
+                            <svg class="flow-pic" viewBox="5 26 93 68" role="img" aria-hidden="true" focusable="false"><use href="#pic-base"/><use href="#pic-layer2"/><use href="#pic-kind1"/><use href="#pic-starter"/><use href="#pic-kind2"/><use href="#pic-flame"/></svg>
+                            <span class="flow-txt"><strong>Les allume-feu</strong> tout en haut&nbsp;: on les allume.</span>
+                        </li>
+                        <li class="flow-step">
+                            <span class="flow-num" aria-hidden="true">4</span>
+                            <svg class="flow-pic" viewBox="5 26 93 68" role="img" aria-hidden="true" focusable="false"><use href="#pic-base"/><use href="#pic-layer2"/><use href="#pic-kind1"/><use href="#pic-starter"/><use href="#pic-kind2"/><use href="#pic-flame-big"/><path d="M8 84h10M15 80l4 4-4 4" fill="none" stroke="#48a1cb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M92 40v22M88 58l4 4 4-4" fill="none" stroke="#fa4222" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span class="flow-txt"><strong>La prise d'air ouverte</strong>&nbsp;: le feu descend tout seul, de haut en bas, et enflamme les bûches au fur et à mesure.</span>
+                        </li>
+                        <li class="flow-step flow-end">
+                            <svg class="flow-pic" viewBox="5 26 93 68" role="img" aria-hidden="true" focusable="false"><use href="#pic-base"/><use href="#pic-layer2"/><use href="#pic-kind1"/><use href="#pic-starter"/><use href="#pic-kind2"/><use href="#pic-flame"/><circle cx="89" cy="34" r="7.5" fill="#16a34a"/><path d="M85.5 34l2.8 2.8 4.8-5.6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span class="flow-txt"><strong>Un feu plus propre</strong>, plus chaud, avec moins de fumée.</span>
+                        </li>
                     </ol>
                 </article>
-                <article class="bc-card">
-                    <div class="bc-ico" aria-hidden="true">🚫</div>
-                    <h2>À éviter</h2>
+
+                <article class="bc-card bc-card--wide bc-card--compact">
+                    <div class="bc-head">
+                        <div class="bc-ico" aria-hidden="true">⚠️</div>
+                        <h2>À éviter</h2>
+                    </div>
                     <ul>
-                        <li>Le papier journal et le carton&nbsp;: ils dégagent beaucoup de fumée et encrassent le conduit.</li>
-                        <li>Le bois humide&nbsp;: il chauffe peu, pollue et favorise le bistre dans le conduit.</li>
+                        <li><strong>Le papier-journal et le carton</strong>&nbsp;: à bannir, ils émettent beaucoup de fumée et encrassent le conduit.</li>
+                        <li><strong>L'allumage par le bas</strong>&nbsp;: on chauffe les bûches sans vraiment les consumer, d'où beaucoup de fumée.</li>
                     </ul>
-                    <p>Pas besoin de produits spéciaux&nbsp;: des bûches sèches, du petit bois sec et des allume-feu ordinaires suffisent.</p>
                 </article>
                 <article class="bc-card bc-card--wide">
                     <h2 style="text-align:center">La méthode en vidéo</h2>
                     <div class="video-frame">
-                        <iframe src="https://www.youtube-nocookie.com/embed/LPmUUMw8bSM?rel=0" title="Allumer un feu par le haut : la méthode en vidéo" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/5Fz5IkxRFEQ?start=105&amp;rel=0" title="Allumer un feu par le haut : la méthode en vidéo" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
-                    <p class="video-link"><a href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">Voir la vidéo sur YouTube ↗</a></p>
+                    <p class="video-link"><a href="https://www.youtube.com/watch?v=5Fz5IkxRFEQ&amp;t=105s" target="_blank" rel="noopener noreferrer">Voir la vidéo sur YouTube ↗</a></p>
                 </article>
             </div>
         </section>
