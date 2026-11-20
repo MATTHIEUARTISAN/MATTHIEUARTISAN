@@ -234,6 +234,51 @@
     background: rgba(0, 0, 0, 0.55);
 }
 
+/* Petit bouton discret (coin bas-droit du bandeau) pour désactiver / réactiver la vidéo de fond.
+   Visible seulement quand la vidéo joue, ou quand elle a été désactivée (pour pouvoir la relancer). */
+.video-toggle {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    z-index: 4;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, background-color 0.2s ease;
+}
+
+.hero.video-on .video-toggle,
+.hero.video-user-off .video-toggle {
+    opacity: 0.55;
+    pointer-events: auto;
+}
+
+.video-toggle:hover,
+.video-toggle:focus-visible {
+    opacity: 1 !important;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.video-toggle:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+.video-toggle svg { width: 14px; height: 14px; fill: currentColor; }
+.video-toggle .icon-play { display: none; }
+.hero.video-user-off .video-toggle .icon-pause { display: none; }
+.hero.video-user-off .video-toggle .icon-play { display: block; }
+
 /* Conteneur de texte pour le faire passer au-dessus de l'overlay et de la vidéo */
 .hero-content {
     position: relative;
@@ -1093,7 +1138,7 @@
 
         /* Téléphone en portrait : pas de vidéo, seulement le fond RAL 1020 */
         @media (max-width: 767px) and (orientation: portrait) {
-            .hero-video-wrapper { display: none; }
+            .hero-video-wrapper, .video-toggle { display: none; }
         }
 
         /* iPhone / Android en paysage : le navigateur agrandit automatiquement les textes ; on l'empêche */
@@ -1210,6 +1255,13 @@
 
     <!-- Overlay sombre pour rendre le texte lisible par-dessus la vidéo -->
     <div class="hero-overlay"></div>
+
+    <!-- Bouton discret : désactiver / réactiver la vidéo de fond -->
+    <button type="button" class="video-toggle" id="videoToggle" aria-pressed="false"
+            aria-label="Désactiver la vidéo de fond" title="Désactiver la vidéo de fond">
+        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    </button>
 
     <!-- Contenu texte par-dessus -->
     <div class="hero-content">
@@ -1581,12 +1633,28 @@ startTimer();
         const noVideo = window.matchMedia('(max-width: 767px) and (orientation: portrait)');
         let player = null;
         let apiRequested = false;
+        const toggleBtn = document.getElementById('videoToggle');
+
+        /* Vidéo désactivée par le visiteur (mémorisée pour la durée de la visite) */
+        let userOff = false;
+        try { userOff = sessionStorage.getItem('videoOff') === '1'; } catch (e) {}
+
+        /* Pas de vidéo : téléphone en portrait, ou désactivée par le visiteur */
+        function blocked() { return noVideo.matches || userOff; }
+
+        function reflectToggle() {
+            hero.classList.toggle('video-user-off', userOff);
+            toggleBtn.setAttribute('aria-pressed', userOff ? 'true' : 'false');
+            const label = userOff ? 'Activer la vidéo de fond' : 'Désactiver la vidéo de fond';
+            toggleBtn.setAttribute('aria-label', label);
+            toggleBtn.setAttribute('title', label);
+        }
 
         /* Affiche / masque la vidéo selon l'état réel du lecteur (on interroge le lecteur directement,
            car l'événement « lecture démarrée » peut être manqué si la vidéo démarre avant que le lecteur
            soit prêt — fréquent sur mobile). */
         function sync() {
-            if (noVideo.matches) {
+            if (blocked()) {
                 iframe.classList.remove('is-playing');
                 hero.classList.remove('video-on');
                 return;
@@ -1610,12 +1678,12 @@ startTimer();
                     onReady: function (event) {
                         event.target.setPlaybackRate(0.75);
                         event.target.mute();
-                        if (!noVideo.matches) event.target.playVideo();
+                        if (!blocked()) event.target.playVideo();
                         sync();
                     },
                     onStateChange: function (event) {
                         if (event.data === YT.PlayerState.PLAYING) {
-                            if (noVideo.matches) { event.target.pauseVideo(); }
+                            if (blocked()) { event.target.pauseVideo(); }
                             else { event.target.setPlaybackRate(0.75); }
                         }
                         sync();
@@ -1628,8 +1696,8 @@ startTimer();
         window.onYouTubeIframeAPIReady = startPlayer;
 
         function update() {
-            if (noVideo.matches) {
-                /* Portrait sur téléphone : pas de vidéo */
+            if (blocked()) {
+                /* Portrait sur téléphone, ou vidéo désactivée : pas de vidéo */
                 if (player && typeof player.pauseVideo === 'function') player.pauseVideo();
                 sync();
                 return;
@@ -1652,6 +1720,14 @@ startTimer();
 
         if (noVideo.addEventListener) noVideo.addEventListener('change', update);
         else if (noVideo.addListener) noVideo.addListener(update);
+        toggleBtn.addEventListener('click', function () {
+            userOff = !userOff;
+            try { sessionStorage.setItem('videoOff', userOff ? '1' : '0'); } catch (e) {}
+            reflectToggle();
+            update();
+        });
+
+        reflectToggle();
         update();
     })();
 </script>
