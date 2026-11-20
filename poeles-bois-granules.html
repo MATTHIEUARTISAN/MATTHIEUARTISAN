@@ -960,12 +960,46 @@
     color: var(--primary-blue);
 }
 
-/* Dots de navigation compacts */
+/* Navigation : flèches + dots compacts */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 0.5rem;
+}
+
+.carousel-arrow {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    background: #ffffff;
+    color: var(--card-accent-dark);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+    background: var(--card-accent);
+    border-color: var(--card-accent);
+    color: #ffffff;
+}
+
+.carousel-arrow:focus-visible {
+    outline: 2px solid var(--card-accent-dark);
+    outline-offset: 2px;
+}
+
 .carousel-dots {
     display: flex;
     justify-content: center;
     gap: 6px;
-    margin-top: 0.5rem;
 }
 
 .dot {
@@ -1327,13 +1361,21 @@
 
     </div>
 
-    <!-- Indicateurs de navigation -->
+    <!-- Navigation : flèches précédent / suivant + indicateurs -->
+    <div class="carousel-nav">
+    <button type="button" class="carousel-arrow" aria-label="Avis précédent" onclick="currentSlide(currentSlideIndex - 1)">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
     <div class="carousel-dots">
         <span class="dot active-dot" onclick="currentSlide(0)"></span>
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
         <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+    <button type="button" class="carousel-arrow" aria-label="Avis suivant" onclick="currentSlide(currentSlideIndex + 1)">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
     </div>
 </section>
 
