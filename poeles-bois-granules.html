@@ -628,6 +628,40 @@
             border: 0;
         }
 
+        /* Bouton "Réinitialiser la carte" : le bandeau de Google My Maps étant masqué,
+           son bouton de fermeture des fiches l'est aussi. Ce bouton recharge la carte.
+           Il n'apparaît qu'après un clic dans la carte (ex. sur un repère) et disparaît une fois utilisé. */
+        .zone-map-reset {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            z-index: 5;
+            padding: 5px 11px;
+            font: inherit;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--primary-blue);
+            border-radius: 16px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .zone-map-reset.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .zone-map-reset:hover,
+        .zone-map-reset:focus-visible {
+            color: #ffffff;
+            background: var(--primary-blue);
+        }
+
         .zone-map-fullscreen-link {
             font-size: 0.82rem;
             font-weight: 600;
@@ -1785,6 +1819,46 @@ startTimer();
         backToTopBtn.onclick = function() {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
+    </script>
+    <script>
+        /* Cartes Google My Maps : bouton « Réinitialiser la carte ».
+           La carte est un cadre Google : la page ne voit pas ce qui s'y passe. Seule chose détectable :
+           un clic dans la carte donne le focus au cadre. Le bouton apparaît donc après un clic dans la carte
+           (repère, mais aussi déplacement ou zoom) et se masque après usage. */
+        (function () {
+            document.querySelectorAll(".zone-map-wrap").forEach(function (wrap) {
+                var frame = wrap.querySelector("iframe");
+                if (!frame) return;
+                var btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "zone-map-reset";
+                btn.textContent = "\u21BA R\u00e9initialiser la carte";
+                btn.title = "Ferme la fiche ouverte et remet la carte \u00e0 son \u00e9tat de d\u00e9part";
+                btn.setAttribute("aria-label", "Fermer la fiche et r\u00e9initialiser la carte");
+                wrap.appendChild(btn);
+
+                function show() { btn.classList.add("is-visible"); }
+
+                /* Un clic dans le cadre : la fenêtre de la page perd le focus et le cadre devient l'élément actif */
+                window.addEventListener("blur", function () {
+                    setTimeout(function () {
+                        if (document.activeElement === frame) show();
+                    }, 0);
+                });
+                /* Filet de sécurité (certains navigateurs mobiles) */
+                var timer = setInterval(function () {
+                    if (document.activeElement === frame) { show(); }
+                }, 500);
+
+                btn.addEventListener("click", function () {
+                    btn.classList.remove("is-visible");
+                    frame.blur();
+                    var src = frame.src;
+                    frame.src = "about:blank";
+                    setTimeout(function () { frame.src = src; }, 30);
+                });
+            });
+        })();
     </script>
 </body>
 </html>
