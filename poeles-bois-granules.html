@@ -926,6 +926,7 @@
     max-width: 650px;               /* Largeur max réduite pour compacter */
     margin: 0 auto;
     overflow: hidden;
+    touch-action: pan-y;            /* le défilement vertical de la page reste possible */
     min-height: 110px;              /* Hauteur min diminuée */
 }
 
@@ -1548,6 +1549,32 @@ function resetTimer() {
 
 // Lancement automatique au chargement
 startTimer();
+
+// Glissement du doigt (mobile / tablette) : gauche = avis suivant, droite = avis précédent
+(function () {
+    const zone = document.querySelector('.testimonial-carousel');
+    if (!zone) return;
+    let x0 = 0, y0 = 0, suivi = false;
+
+    zone.addEventListener('touchstart', function (e) {
+        if (e.touches.length !== 1) { suivi = false; return; }
+        x0 = e.touches[0].clientX;
+        y0 = e.touches[0].clientY;
+        suivi = true;
+    }, { passive: true });
+
+    zone.addEventListener('touchend', function (e) {
+        if (!suivi) return;
+        suivi = false;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - x0;
+        const dy = t.clientY - y0;
+        // Geste surtout horizontal et assez long ; sinon c'est un défilement de page
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+            currentSlide(currentSlideIndex + (dx < 0 ? 1 : -1));
+        }
+    }, { passive: true });
+})();
     </script>
 
 <script>
