@@ -913,6 +913,7 @@
     margin-top: 1.5rem;             /* Espace au-dessus réduit */
     border-top: 4px solid var(--card-accent);
     text-align: center;
+    min-width: 0;
 }
 
 .reviews-section h2 {
@@ -927,18 +928,23 @@
     margin: 0 auto;
     overflow: hidden;
     touch-action: pan-y;            /* le défilement vertical de la page reste possible */
+    transition: height 0.3s ease;
     min-height: 110px;              /* Hauteur min diminuée */
 }
 
-.testimonial-slide {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+/* Piste horizontale : tous les avis sont côte à côte et la piste glisse */
+.testimonial-track {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    transition: transform 0.4s ease;
+    will-change: transform;
 }
 
-.testimonial-slide.active {
-    display: block;
-    opacity: 1;
+.testimonial-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .stars {
@@ -1083,7 +1089,7 @@
             }
 
             .main-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
 
             .services-list {
@@ -1324,6 +1330,7 @@
 <section class="reviews-section">
     <h2>Ce que disent nos clients</h2>
     <div class="testimonial-carousel">
+      <div class="testimonial-track">
         
         <!-- Avis 1 -->
         <div class="testimonial-slide active">
@@ -1360,6 +1367,7 @@
             <div class="testimonial-author">— Jean Pierre Chiaffredo</div>
         </div>
 
+      </div>
     </div>
 
     <!-- Navigation : flèches précédent / suivant + indicateurs -->
@@ -1511,22 +1519,30 @@
 
         
 
-        /* Carrousel d'Avis */
+        /* Carrousel d'Avis : les avis défilent horizontalement (au doigt, aux flèches, aux points, automatiquement) */
 let currentSlideIndex = 0;
+const carousel = document.querySelector('.testimonial-carousel');
+const track = document.querySelector('.testimonial-track');
 const slides = document.querySelectorAll('.testimonial-slide');
 const dots = document.querySelectorAll('.dot');
 let autoSlideInterval;
 
+function ajusterHauteur() {
+    // La carte prend la hauteur de l'avis affiché
+    const h = slides[currentSlideIndex].getBoundingClientRect().height;
+    if (h) carousel.style.height = Math.ceil(h) + 'px';
+}
+
 function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        dots[i].classList.remove('active-dot');
-    });
-    
     currentSlideIndex = (index + slides.length) % slides.length;
-    
-    slides[currentSlideIndex].classList.add('active');
-    dots[currentSlideIndex].classList.add('active-dot');
+    track.style.transition = '';
+    track.style.transform = 'translateX(' + (-currentSlideIndex * 100) + '%)';
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlideIndex);
+        slide.setAttribute('aria-hidden', i === currentSlideIndex ? 'false' : 'true');
+        dots[i].classList.toggle('active-dot', i === currentSlideIndex);
+    });
+    ajusterHauteur();
 }
 
 function nextSlide() {
@@ -1547,33 +1563,67 @@ function resetTimer() {
     startTimer();
 }
 
+showSlide(0);
+window.addEventListener('resize', ajusterHauteur);
+window.addEventListener('load', ajusterHauteur);
+if (window.ResizeObserver) {
+    const ro = new ResizeObserver(ajusterHauteur);
+    slides.forEach(s => ro.observe(s));
+}
+
 // Lancement automatique au chargement
 startTimer();
 
-// Glissement du doigt (mobile / tablette) : gauche = avis suivant, droite = avis précédent
+// Glissement du doigt (mobile / tablette) : l'avis suit le doigt, puis se cale sur l'avis voisin
 (function () {
-    const zone = document.querySelector('.testimonial-carousel');
-    if (!zone) return;
-    let x0 = 0, y0 = 0, suivi = false;
+    let x0 = 0, y0 = 0, suivi = false, horizontal = false, dx = 0;
 
-    zone.addEventListener('touchstart', function (e) {
+    function largeur() { return carousel.getBoundingClientRect().width || 1; }
+
+    carousel.addEventListener('touchstart', function (e) {
         if (e.touches.length !== 1) { suivi = false; return; }
         x0 = e.touches[0].clientX;
         y0 = e.touches[0].clientY;
-        suivi = true;
+        suivi = true; horizontal = false; dx = 0;
     }, { passive: true });
 
-    zone.addEventListener('touchend', function (e) {
+    carousel.addEventListener('touchmove', function (e) {
+        if (!suivi) return;
+        const t = e.touches[0];
+        const mx = t.clientX - x0, my = t.clientY - y0;
+        if (!horizontal) {
+            if (Math.abs(mx) < 8 && Math.abs(my) < 8) return;
+            if (Math.abs(my) > Math.abs(mx)) { suivi = false; return; } // défilement vertical de la page
+            horizontal = true;
+            clearInterval(autoSlideInterval);
+            track.style.transition = 'none';
+            // Pendant le glissement, la carte est assez haute pour l'avis voisin aussi
+            let hmax = 0;
+            [currentSlideIndex - 1, currentSlideIndex, currentSlideIndex + 1].forEach(function (k) {
+                if (slides[k]) hmax = Math.max(hmax, slides[k].getBoundingClientRect().height);
+            });
+            if (hmax) carousel.style.height = Math.ceil(hmax) + 'px';
+        }
+        dx = mx;
+        // Aux extrémités : résistance (on ne tourne pas en boucle au doigt)
+        const bord = (currentSlideIndex === 0 && dx > 0) || (currentSlideIndex === slides.length - 1 && dx < 0);
+        const d = bord ? dx / 3 : dx;
+        track.style.transform = 'translateX(calc(' + (-currentSlideIndex * 100) + '% + ' + d + 'px))';
+    }, { passive: true });
+
+    function fin() {
         if (!suivi) return;
         suivi = false;
-        const t = e.changedTouches[0];
-        const dx = t.clientX - x0;
-        const dy = t.clientY - y0;
-        // Geste surtout horizontal et assez long ; sinon c'est un défilement de page
-        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-            currentSlide(currentSlideIndex + (dx < 0 ? 1 : -1));
-        }
-    }, { passive: true });
+        if (!horizontal) return;
+        const seuil = Math.min(60, largeur() * 0.2);
+        let cible = currentSlideIndex;
+        if (dx < -seuil && currentSlideIndex < slides.length - 1) cible++;
+        else if (dx > seuil && currentSlideIndex > 0) cible--;
+        showSlide(cible);   // anime jusqu'à l'avis choisi (ou revient en place)
+        resetTimer();
+    }
+    carousel.addEventListener('touchend', fin, { passive: true });
+    carousel.addEventListener('touchcancel', fin, { passive: true });
 })();
     </script>
 
