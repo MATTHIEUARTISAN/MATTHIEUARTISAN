@@ -718,6 +718,32 @@
             .fb-iframe { flex: none; height: 640px; }
         }
 
+        /* Flux Facebook « en cache » : posts enregistrés chaque jour (affichés dans tous les navigateurs) */
+        .fb-cache {
+            flex: 1 1 0;
+            min-height: 500px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            text-align: left;
+            padding: 0.2rem 0.3rem 0.2rem 0;
+        }
+        .fbc-post {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.8rem 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        .fbc-date { font-size: 0.78rem; color: #64748b; margin: 0 0 0.4rem; }
+        .fbc-text { font-size: 0.9rem; line-height: 1.5; color: #334155; margin: 0 0 0.6rem; white-space: pre-line; overflow-wrap: anywhere; }
+        .fbc-img { display: block; width: 100%; height: auto; border-radius: 6px; margin: 0 0 0.6rem; }
+        .fbc-link { font-size: 0.85rem; font-weight: 600; color: #1877f2; text-decoration: none; }
+        .fbc-link:hover { text-decoration: underline; }
+        .fbc-updated { font-size: 0.72rem; color: #94a3b8; margin: 0.2rem 0 0; text-align: center; }
+        @media (max-width: 960px) {
+            .fb-cache { flex: none; height: 640px; }
+        }
+
         /* Pop-up Modal */
         .audit-link {
             cursor: pointer;
@@ -1179,6 +1205,7 @@
             .main-content .facebook-section { position: static; align-self: stretch; }
             .main-content .facebook-section .fb-feed + * { margin-top: auto; }
             .main-content .facebook-section .fb-iframe { flex: 1; height: auto; min-height: 500px; }
+            .main-content .facebook-section .fb-cache { flex: 1 1 0; height: auto; min-height: 500px; }
             .zone-container { gap: 0.8rem; }
 
             /* Les cartes de prestations : 2 par ligne en paysage */
@@ -1421,6 +1448,7 @@
     <!-- Widget Facebook (plugin « Page » officiel, comme dans l'ancienne version).
          Le fil se met à jour tout seul. Le cadre remplit la hauteur de la carte. -->
     <div class="fb-feed" id="fb-feed">
+        <div class="fb-cache" id="fb-cache" hidden aria-label="Dernières publications Facebook"></div>
         <iframe class="fb-iframe"
                 title="Publications Facebook de Matthieu Artisan"
                 id="fb-iframe"
@@ -1856,26 +1884,75 @@ startTimer();
         })();
     </script>
 <script>
-/* Widget Facebook : la hauteur demandée à Facebook = la hauteur réelle du cadre.
-   Ainsi le fil défile à l'intérieur du cadre jusqu'au dernier post disponible. */
+/* Flux Facebook.
+   1) Les derniers posts sont enregistrés chaque jour sur le site (dossier fb-cache, voir le workflow GitHub) :
+      s'ils sont disponibles, ils s'affichent directement, dans tous les navigateurs (Firefox, bloqueurs…).
+   2) Sinon, on retombe sur le plugin officiel Facebook (la hauteur demandée = la hauteur réelle du cadre). */
 (function () {
   var f = document.getElementById('fb-iframe');
+  var box = document.getElementById('fb-cache');
   if (!f) return;
-  var base = 'https://www.facebook.com/plugins/page.php?href=' +
-    encodeURIComponent('https://www.facebook.com/profile.php?id=61594346696834') +
-    '&tabs=timeline&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false';
-  var lastW = 0, lastH = 0;
-  function load() {
-    var w = Math.min(500, Math.max(180, Math.round(f.clientWidth)));
-    var h = Math.min(2000, Math.max(300, Math.round(f.clientHeight)));
-    if (Math.abs(w - lastW) < 40 && Math.abs(h - lastH) < 40) return;
-    lastW = w; lastH = h;
-    f.src = base + '&width=' + w + '&height=' + h;
+
+  function startLive() {
+    var base = 'https://www.facebook.com/plugins/page.php?href=' +
+      encodeURIComponent('https://www.facebook.com/profile.php?id=61594346696834') +
+      '&tabs=timeline&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false';
+    var lastW = 0, lastH = 0;
+    function load() {
+      var w = Math.min(500, Math.max(180, Math.round(f.clientWidth)));
+      var h = Math.min(2000, Math.max(300, Math.round(f.clientHeight)));
+      if (Math.abs(w - lastW) < 40 && Math.abs(h - lastH) < 40) return;
+      lastW = w; lastH = h;
+      f.src = base + '&width=' + w + '&height=' + h;
+    }
+    load();
+    var t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(load, 400); });
+    window.addEventListener('orientationchange', function () { setTimeout(load, 500); });
   }
-  load();
-  var t;
-  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(load, 400); });
-  window.addEventListener('orientationchange', function () { setTimeout(load, 500); });
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+
+  function showCache(feed) {
+    var months = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+    function fmt(iso) {
+      var d = new Date(iso);
+      return isNaN(d) ? '' : d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+    }
+    feed.posts.forEach(function (p) {
+      var post = el('article', 'fbc-post');
+      var d = fmt(p.date);
+      if (d) post.appendChild(el('p', 'fbc-date', d));
+      var txt = (p.message || '').trim();
+      if (txt.length > 400) txt = txt.slice(0, 400).replace(/\s+\S*$/, '') + '…';
+      if (txt) post.appendChild(el('p', 'fbc-text', txt));
+      if (p.image) {
+        var img = el('img', 'fbc-img');
+        img.src = p.image; img.alt = ''; img.loading = 'lazy';
+        post.appendChild(img);
+      }
+      var a = el('a', 'fbc-link', 'Voir sur Facebook ↗');
+      a.href = p.url || feed.page_url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      post.appendChild(a);
+      box.appendChild(post);
+    });
+    var u = fmt(feed.updated);
+    if (u) box.appendChild(el('p', 'fbc-updated', 'Mis à jour le ' + u));
+    box.hidden = false;
+    f.style.display = 'none';
+  }
+
+  fetch('fb-cache/feed.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error('no cache'); return r.json(); })
+    .then(function (feed) {
+      if (feed && feed.posts && feed.posts.length) showCache(feed); else startLive();
+    })
+    .catch(startLive);
 })();
 </script>
 </body>
