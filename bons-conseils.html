@@ -573,246 +573,143 @@ nav_active: "bons-conseils"
             }
         }
 
-        /* ---------- Page « Bons conseils » : onglets, carrés de liens, article ---------- */
+        /* ---------- Page « Bons conseils » : sections en cards ---------- */
         html { scroll-behavior: smooth; }
 
-        /* Onglets façon navigateur : languettes arrondies, l'onglet actif se prolonge dans le panneau */
-        .tabs-container {
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            gap: 4px;
-            margin: 0;
-            padding: 0;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .tab-btn {
-            position: relative;
-            margin-bottom: -1px;
-            padding: 0.7rem 1.5rem 0.6rem;
-            font: inherit;
-            font-weight: 600;
-            font-size: 0.98rem;
-            line-height: 1.3;
-            color: #4a5568;
-            background: #d8c19c;
-            border: 1px solid var(--card-border);
-            border-bottom: 1px solid var(--card-border);
-            border-radius: 10px 10px 0 0;
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .tab-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; }
-
-        .tab-btn:hover { background: #e0cba9; color: var(--primary-blue); }
-
-        .tab-btn:focus-visible {
-            outline: 3px solid var(--accent-turquoise);
-            outline-offset: -3px;
-        }
-
-        .tab-btn[aria-selected="true"] {
-            z-index: 1;
-            padding-top: 0.85rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            background: var(--card-bg);
-            border-top: 4px solid var(--card-accent);
-            border-bottom-color: var(--card-bg);
-            box-shadow: 0 -2px 6px rgba(90, 70, 30, 0.10);
-        }
-
-        /* Sans JavaScript, tous les onglets restent visibles l'un sous l'autre */
-        .js .tab-panel { display: none; }
-        .js .tab-panel.active { display: block; }
-        .js .tab-panel {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-top: 0;
-            border-radius: 0 0 10px 10px;
-            padding: 2.2rem 1.5rem 2rem;
-            box-shadow: 0 3px 10px rgba(90, 70, 30, 0.15);
-        }
-        .tab-panel + .tab-panel { margin-top: 3rem; }
-        .js .tab-panel + .tab-panel { margin-top: 0; }
-        .js .tabs-container { display: flex; }
-        .tabs-container { display: none; }
-
-        .tab-panel .section-intro { margin-bottom: 1.8rem; }
-        .tab-panel .section-intro p { color: #475569; }
-
-        .tips-grid {
+        /* Sommaire : liens vers les 3 sections */
+        .bc-nav {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.6rem;
-            max-width: 980px;
-            margin: 0 auto;
+            gap: 0.7rem;
+            margin: 0 auto 3rem;
         }
 
-        .tip-card {
-            flex: 0 0 calc((100% - 3.2rem) / 3);
+        .bc-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1.1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 999px;
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            box-shadow: var(--card-shadow);
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .bc-nav a:hover,
+        .bc-nav a:focus-visible {
+            background: var(--card-accent);
+            border-color: var(--card-accent);
+            color: #ffffff;
+        }
+
+        .bc-section { margin-bottom: 4rem; scroll-margin-top: 120px; }
+        .bc-section .section-intro { margin-bottom: 2rem; }
+        .bc-section .section-intro p { color: #475569; }
+
+        .bc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .bc-grid--gestes { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .bc-grid--duo { max-width: 800px; margin: 0 auto; }
+
+        /* Adresse du lien, affichée dans la card */
+        .bc-domain {
+            display: block;
+            margin: 0 0 0.7rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+            word-break: break-all;
+        }
+
+        .bc-card {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            aspect-ratio: 1 / 1;
-            padding: 1.6rem 1.4rem 1.3rem;
+            padding: 1.8rem;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-top: 4px solid var(--card-accent);
             border-radius: 10px;
             box-shadow: var(--card-shadow);
-            text-decoration: none;
             color: var(--text-color);
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .tip-card:hover,
-        .tip-card:focus-visible {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 22px rgba(26, 103, 179, 0.15);
-            border-top-color: var(--accent-red);
-        }
+        .bc-card--wide { grid-column: 1 / -1; }
 
-        .tip-icon { font-size: 2.4rem; line-height: 1; }
-        .tip-icon-svg { display: block; height: 3rem; width: auto; }
+        .bc-ico { font-size: 2.3rem; line-height: 1; margin-bottom: 0.7rem; }
+        .bc-ico svg { display: block; height: 3rem; width: auto; }
 
-        .tip-logo {
-            display: flex;
-            align-items: center;
-            height: 3.4rem;
-            font-size: 2.4rem;
-            line-height: 1;
-        }
-
-        .tip-logo img {
-            display: block;
-            max-width: 75%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-
-
-        .tip-title {
+        .bc-card h3 {
             color: var(--primary-blue);
-            font-size: 1.12rem;
-            font-weight: 700;
+            font-size: 1.25rem;
             line-height: 1.25;
-            margin: 0.6rem 0 0.4rem;
+            margin: 0 0 0.7rem;
         }
 
-        .tip-text { font-size: 0.9rem; line-height: 1.45; color: #475569; }
+        .bc-card p { font-size: 0.95rem; line-height: 1.55; color: #475569; margin: 0 0 0.9rem; }
+        .bc-card p:last-child { margin-bottom: 0; }
+        .bc-card ol,
+        .bc-card ul { margin: 0 0 0.9rem 1.2rem; font-size: 0.95rem; line-height: 1.5; color: #475569; }
+        .bc-card li { margin-bottom: 0.5rem; }
+        .bc-card .bc-actions { margin-top: auto; padding-top: 0.6rem; }
 
-        .tip-source {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
-            padding-top: 0.7rem;
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #64748b;
-        }
-
-        .tip-go { color: var(--action-orange); font-weight: 700; white-space: nowrap; }
-
-        /* Les 8 bons gestes */
-        .gestes-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            max-width: 820px;
-            margin: 0 auto 2.4rem;
-        }
-
-        .geste {
-            display: flex;
-            gap: 0.9rem;
-            align-items: flex-start;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-left: 4px solid var(--card-accent);
-            border-radius: 8px;
-            padding: 0.9rem 1rem;
-            box-shadow: var(--card-shadow);
-        }
+        /* Cards des bons gestes */
+        .geste-card { padding: 1.4rem 1.4rem 1.5rem; }
 
         .geste-num {
-            flex-shrink: 0;
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0.8rem;
             border-radius: 50%;
             background: var(--primary-blue);
             color: #ffffff;
             font-weight: 800;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .geste h3 {
-            font-size: 1rem;
-            color: var(--primary-blue);
-            margin: 0 0 0.25rem;
-            line-height: 1.3;
-        }
+        .geste-card h3 { font-size: 1.05rem; }
+        .geste-card p { font-size: 0.9rem; }
 
-        .geste p { font-size: 0.88rem; line-height: 1.45; color: #475569; margin: 0; }
+        .bc-source-note {
+            text-align: center;
+            font-size: 0.82rem;
+            color: #64748b;
+            margin: 1.2rem auto 2.5rem;
+        }
 
         .sub-title {
             text-align: center;
             color: var(--primary-blue);
-            font-size: 1.15rem;
-            margin: 0 0 1.2rem;
+            font-size: 1.3rem;
+            margin: 0 0 1.5rem;
         }
 
-        .tab-source-note {
-            text-align: center;
-            font-size: 0.82rem;
-            color: #64748b;
-            margin: -1.4rem auto 2.4rem;
-        }
+        /* Partenaires : mêmes cards que l'ancienne page Partenaires */
+        .partner-name { text-transform: uppercase; }
+        .partner-card .btn-web { background-color: #ffffff; }
+        .partner-card .btn-web:hover { background-color: var(--primary-blue); }
+        .btn-solo { flex: 1 1 100%; }
 
-        /* Article « Allumer un feu » */
-        .article-container {
-            max-width: 820px;
-            margin: 0 auto;
-        }
-
-        /* Pas de carte : le texte est posé directement sur le panneau de l'onglet */
-        .article-card {
-            padding: 0 0.5rem;
-        }
-
-        .article-card h3 {
-            color: var(--primary-blue);
-            font-size: 1.35rem;
-            margin: 1.6rem 0 0.7rem;
-            border-left: 4px solid var(--accent-red);
-            padding-left: 0.8rem;
-        }
-
-        .article-card h3:first-child { margin-top: 0; }
-
-        .article-card p { margin-bottom: 1rem; }
-
-        .article-card ol,
-        .article-card ul { margin: 0 0 1rem 1.4rem; }
-
-        .article-card li { margin-bottom: 0.5rem; }
-
+        /* Vidéo */
         .video-frame {
             position: relative;
             width: 100%;
+            max-width: 760px;
             aspect-ratio: 16 / 9;
-            margin: 0.4rem 0 0.6rem;
+            margin: 0.4rem auto 0.6rem;
             border-radius: 8px;
             overflow: hidden;
             background: #0f172a;
@@ -827,41 +724,16 @@ nav_active: "bons-conseils"
             border: 0;
         }
 
-        .video-link {
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        .video-link a {
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        @media (max-width: 900px) {
-            .tip-card { flex-basis: calc((100% - 1.6rem) / 2); }
-        }
+        .video-link { font-size: 0.85rem; text-align: center; margin-bottom: 0 !important; }
+        .video-link a { color: var(--primary-blue); font-weight: 600; }
 
         @media (max-width: 640px) {
-            .gestes-grid { grid-template-columns: 1fr; }
-            .tabs-container { padding: 0; gap: 3px; align-items: stretch; }
-            .tab-btn {
-                flex: 1 1 0;
-                min-width: 0;
-                flex-direction: column;   /* pictogramme au-dessus du texte : les 3 onglets ont la même hauteur */
-                justify-content: flex-start;
-                gap: 0.15rem;
-                padding: 0.55rem 0.25rem 0.5rem;
-                font-size: 0.8rem;
-                line-height: 1.2;
-                text-align: center;
-            }
-            .tab-btn .tab-ico { font-size: 1.15rem; line-height: 1; }
-            .tab-btn[aria-selected="true"] { padding-top: 0.55rem; }
-            .js .tab-panel { padding: 1.5rem 0.9rem 1.5rem; }
-        }
-
-        @media (max-width: 560px) {
-            .tip-card { flex-basis: 100%; aspect-ratio: auto; min-height: 220px; }
+            .bc-grid,
+            .bc-grid--gestes { grid-template-columns: 1fr; gap: 1.2rem; }
+            .bc-card { padding: 1.4rem 1.2rem; }
+            .bc-section { margin-bottom: 3rem; }
+            .bc-nav { gap: 0.5rem; margin-bottom: 2.2rem; }
+            .bc-nav a { padding: 0.5rem 0.9rem; font-size: 0.88rem; }
         }
 </style>
 
@@ -873,183 +745,149 @@ nav_active: "bons-conseils"
 
     <main class="partners-container">
 
-        <!-- Onglets (affichés uniquement si JavaScript est actif ; sinon les 3 parties se suivent) -->
-        <div class="tabs-container" role="tablist" aria-label="Bons conseils">
-            <button class="tab-btn" role="tab" id="tabbtn-feu" aria-controls="tab-feu" aria-selected="true" data-tab="feu"><span class="tab-ico" aria-hidden="true">🔥</span><span class="tab-txt">Allumer un feu</span></button>
-            <button class="tab-btn" role="tab" id="tabbtn-gestes" aria-controls="tab-gestes" aria-selected="false" data-tab="gestes" tabindex="-1"><span class="tab-ico" aria-hidden="true">🪵</span><span class="tab-txt">Se chauffer au bois</span></button>
-            <button class="tab-btn" role="tab" id="tabbtn-partenaires" aria-controls="tab-partenaires" aria-selected="false" data-tab="partenaires" tabindex="-1"><span class="tab-ico" aria-hidden="true">🤝</span><span class="tab-txt">Nos partenaires</span></button>
-        </div>
+        <!-- Sommaire -->
+        <nav class="bc-nav" aria-label="Sommaire de la page">
+            <a href="#feu"><span aria-hidden="true">🔥</span> Allumer un feu</a>
+            <a href="#gestes"><span aria-hidden="true">🪵</span> Se chauffer au bois</a>
+            <a href="#partenaires"><span aria-hidden="true">🤝</span> Nos partenaires</a>
+        </nav>
 
-        <!-- ONGLET 1 : ALLUMER UN FEU -->
-        <section class="tab-panel active" id="tab-feu" role="tabpanel" aria-labelledby="tabbtn-feu">
+        <!-- ALLUMER UN FEU -->
+        <section class="bc-section" id="feu">
             <div class="section-intro">
                 <h2>Allumer un feu facilement</h2>
                 <p>La méthode du feu allumé par le haut&nbsp;: plus propre, plus chaud, moins de fumée.</p>
             </div>
-            <div class="article-container">
-        <article class="article-card">
-            <h3>Pourquoi allumer par le haut&nbsp;?</h3>
-            <p>Quand on allume un feu par le bas, le bois du dessus est surtout chauffé et «&nbsp;distillé&nbsp;»&nbsp;: il libère des gaz qui montent dans le conduit sans avoir brûlé. Résultat&nbsp;: beaucoup de fumée au démarrage, de la pollution et peu de chaleur.</p>
-            <p>En allumant par le haut, ces gaz traversent les flammes et y brûlent. Le feu est plus propre, il émet moins de particules fines et il chauffe mieux.</p>
-
-            <h3>La méthode, pas à pas</h3>
-            <ol>
-                <li>Placez les grosses bûches au fond du foyer, bien serrées.</li>
-                <li>Posez par-dessus des bûches plus petites, puis du petit bois sec (bûchettes fines).</li>
-                <li>Déposez tout en haut vos allume-feu et allumez-les.</li>
-                <li>Laissez la prise d'air ouverte&nbsp;: le feu descend tout seul, de haut en bas, et enflamme les bûches au fur et à mesure.</li>
-            </ol>
-
-            <h3>La méthode en vidéo</h3>
-            <div class="video-frame">
-                <iframe src="https://www.youtube-nocookie.com/embed/LPmUUMw8bSM?rel=0" title="Allumer un feu par le haut : la méthode en vidéo" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <p class="video-link"><a href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">Voir la vidéo sur YouTube ↗</a></p>
-
-            <h3>À éviter</h3>
-            <ul>
-                <li>Le papier journal et le carton&nbsp;: ils dégagent beaucoup de fumée et encrassent le conduit.</li>
-                <li>Le bois humide&nbsp;: il chauffe peu, pollue et favorise le bistre dans le conduit.</li>
-            </ul>
-            <p>Pas besoin de produits spéciaux&nbsp;: des bûches sèches, du petit bois sec et des allume-feu ordinaires suffisent.</p>
-        </article>
+            <div class="bc-grid">
+                <article class="bc-card">
+                    <div class="bc-ico" aria-hidden="true">💡</div>
+                    <h3>Pourquoi allumer par le haut&nbsp;?</h3>
+                    <p>Quand on allume un feu par le bas, le bois du dessus est surtout chauffé et «&nbsp;distillé&nbsp;»&nbsp;: il libère des gaz qui montent dans le conduit sans avoir brûlé. Résultat&nbsp;: beaucoup de fumée au démarrage, de la pollution et peu de chaleur.</p>
+                    <p>En allumant par le haut, ces gaz traversent les flammes et y brûlent. Le feu est plus propre, il émet moins de particules fines et il chauffe mieux.</p>
+                </article>
+                <article class="bc-card">
+                    <div class="bc-ico" aria-hidden="true">🔥</div>
+                    <h3>La méthode, pas à pas</h3>
+                    <ol>
+                        <li>Placez les grosses bûches au fond du foyer, bien serrées.</li>
+                        <li>Posez par-dessus des bûches plus petites, puis du petit bois sec (bûchettes fines).</li>
+                        <li>Déposez tout en haut vos allume-feu et allumez-les.</li>
+                        <li>Laissez la prise d'air ouverte&nbsp;: le feu descend tout seul, de haut en bas, et enflamme les bûches au fur et à mesure.</li>
+                    </ol>
+                </article>
+                <article class="bc-card">
+                    <div class="bc-ico" aria-hidden="true">🚫</div>
+                    <h3>À éviter</h3>
+                    <ul>
+                        <li>Le papier journal et le carton&nbsp;: ils dégagent beaucoup de fumée et encrassent le conduit.</li>
+                        <li>Le bois humide&nbsp;: il chauffe peu, pollue et favorise le bistre dans le conduit.</li>
+                    </ul>
+                    <p>Pas besoin de produits spéciaux&nbsp;: des bûches sèches, du petit bois sec et des allume-feu ordinaires suffisent.</p>
+                </article>
+                <article class="bc-card bc-card--wide">
+                    <h3 style="text-align:center">La méthode en vidéo</h3>
+                    <div class="video-frame">
+                        <iframe src="https://www.youtube-nocookie.com/embed/LPmUUMw8bSM?rel=0" title="Allumer un feu par le haut : la méthode en vidéo" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <p class="video-link"><a href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">Voir la vidéo sur YouTube ↗</a></p>
+                </article>
             </div>
         </section>
 
-        <!-- ONGLET 2 : BONS GESTES POUR SE CHAUFFER AU BOIS -->
-        <section class="tab-panel" id="tab-gestes" role="tabpanel" aria-labelledby="tabbtn-gestes">
+        <!-- SE CHAUFFER AU BOIS : LES BONS GESTES -->
+        <section class="bc-section" id="gestes">
             <div class="section-intro">
                 <h2>Se chauffer au bois&nbsp;: les bons gestes</h2>
                 <p>8 conseils pour consommer moins de bois et réduire ses émissions de particules fines.</p>
             </div>
-            <div class="gestes-grid">
-                <div class="geste">
-                    <span class="geste-num" aria-hidden="true">1</span>
-                    <div><h3>Éviter les cheminées ouvertes</h3><p>Un foyer ouvert chauffe très peu et pollue beaucoup&nbsp;: mieux vaut un appareil fermé (poêle ou insert).</p></div>
-                </div>
-                <div class="geste">
-                    <span class="geste-num" aria-hidden="true">2</span>
-                    <div><h3>Bannir les flambées «&nbsp;plaisir&nbsp;»</h3><p>Un feu d’ambiance consomme beaucoup de bois pour peu de chaleur et émet des particules fines.</p></div>
-                </div>
-                <div class="geste">
-                    <span class="geste-num" aria-hidden="true">3</span>
-                    <div><h3>Installer un appareil moderne plus efficace</h3><p>Un appareil récent consomme moins de bois et rejette moins de polluants qu’un ancien.</p></div>
-                </div>
-                <div class="geste">
-                    <span class="geste-num" aria-hidden="true">4</span>
-                    <div><h3>Choisir un appareil bien dimensionné</h3><p>Sa puissance doit correspondre aux besoins du logement&nbsp;: trop puissant, il fonctionne mal.</p></div>
-                </div>
-                <div class="geste">
-                    <span class="geste-num" aria-hidden="true">5</span>
-                    <div><h3>Apprendre à bien utiliser votre poêle ou insert</h3><p>L’allumage et la conduite du feu comptent autant que l’appareil lui-même.</p></div>
-                </div>
-                <div class="geste">
-                    <span class="geste-num" aria-hidden="true">6</span>
-                    <div><h3>Acheter du bois de qualité</h3><p>Un bois bien sec brûle mieux, chauffe plus et pollue moins.</p></div>
-                </div>
-                <div class="geste">
-                    <span class="geste-num" aria-hidden="true">7</span>
-                    <div><h3>Stocker le bois plusieurs mois avant de l’utiliser</h3><p>À l’abri et aéré, pour qu’il ait le temps de sécher.</p></div>
-                </div>
-                <div class="geste">
-                    <span class="geste-num" aria-hidden="true">8</span>
-                    <div><h3>Ne pas négliger l’entretien et le ramonage</h3><p>Un appareil et un conduit entretenus, ramonés par un professionnel, fonctionnent mieux et en sécurité.</p></div>
-                </div>
+            <div class="bc-grid bc-grid--gestes">
+                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">1</span><h3>Éviter les cheminées ouvertes</h3><p>Un foyer ouvert chauffe très peu et pollue beaucoup&nbsp;: mieux vaut un appareil fermé (poêle ou insert).</p></article>
+                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">2</span><h3>Bannir les flambées «&nbsp;plaisir&nbsp;»</h3><p>Un feu d’ambiance consomme beaucoup de bois pour peu de chaleur et émet des particules fines.</p></article>
+                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">3</span><h3>Installer un appareil moderne plus efficace</h3><p>Un appareil récent consomme moins de bois et rejette moins de polluants qu’un ancien.</p></article>
+                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">4</span><h3>Choisir un appareil bien dimensionné</h3><p>Sa puissance doit correspondre aux besoins du logement&nbsp;: trop puissant, il fonctionne mal.</p></article>
+                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">5</span><h3>Apprendre à bien utiliser votre poêle ou insert</h3><p>L’allumage et la conduite du feu comptent autant que l’appareil lui-même.</p></article>
+                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">6</span><h3>Acheter du bois de qualité</h3><p>Un bois bien sec brûle mieux, chauffe plus et pollue moins.</p></article>
+                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">7</span><h3>Stocker le bois plusieurs mois avant de l’utiliser</h3><p>À l’abri et aéré, pour qu’il ait le temps de sécher.</p></article>
+                <article class="bc-card geste-card"><span class="geste-num" aria-hidden="true">8</span><h3>Ne pas négliger l’entretien et le ramonage</h3><p>Un appareil et un conduit entretenus, ramonés par un professionnel, fonctionnent mieux et en sécurité.</p></article>
             </div>
-            <p class="tab-source-note">Conseils résumés d’après l’ADEME.</p>
+            <p class="bc-source-note">Conseils résumés d’après l’ADEME.</p>
+
             <h3 class="sub-title">Pour aller plus loin</h3>
-            <div class="tips-grid">
-                <a class="tip-card" href="https://agirpourlatransition.ademe.fr/particuliers/amenager-maison/chauffer/chauffage-bois-moins-consommer-moins-polluer" target="_blank" rel="noopener noreferrer">
-                    <div>
-                        <span class="tip-icon" aria-hidden="true">🪵</span>
-                        <h3 class="tip-title">Se chauffer au bois&nbsp;: les bons gestes</h3>
-                        <p class="tip-text">Les conseils complets de l’ADEME pour consommer moins de bois et moins polluer.</p>
+            <div class="bc-grid">
+                <article class="bc-card">
+                    <div class="bc-ico" aria-hidden="true">🪵</div>
+                    <h3>Se chauffer au bois&nbsp;: les bons gestes</h3>
+                    <p>Le guide de l’ADEME, l’agence publique de la transition écologique, pour consommer moins de bois et moins polluer. Vous y retrouverez en détail les conseils résumés ci-dessus.</p>
+                    <div class="bc-actions">
+                        <span class="bc-domain">🔗 agirpourlatransition.ademe.fr</span>
+                        <div class="partner-actions"><a class="btn-partner btn-web btn-solo" href="https://agirpourlatransition.ademe.fr/particuliers/amenager-maison/chauffer/chauffage-bois-moins-consommer-moins-polluer" target="_blank" rel="noopener noreferrer">🌐 Accéder au site de l’ADEME ↗</a></div>
                     </div>
-                    <div class="tip-source"><span>ADEME</span><span class="tip-go">Voir ↗</span></div>
-                </a>
-                <a class="tip-card" href="https://www.boisenergienord.fr/blog/blog-3/prevenir-les-incendies-le-triangle-et-le-tetraedre-du-feu-expliques-1202" target="_blank" rel="noopener noreferrer">
-                    <div>
-                        <span class="tip-icon" aria-hidden="true"><svg class="tip-icon-svg" viewBox="0 0 64 58" width="56" height="51" role="img" aria-hidden="true" focusable="false">
-                            <polygon points="32,10 9,48 55,48" fill="#fbf6ec" stroke="#7a7a3f" stroke-width="3" stroke-linejoin="round"/>
-                            <circle cx="32" cy="10" r="9" fill="#fa4222"/>
-                            <path d="M32 3.5c.8 2.6 3.6 3.9 3.6 7.1a3.6 3.6 0 0 1-7.2 0c0-1.2.5-2 1.2-2.8.2 1 .7 1.6 1.4 1.8-.3-2.3-.4-4.3 1-6.1z" fill="#ffffff"/>
-                            <circle cx="9" cy="48" r="9" fill="#8a5a2b"/>
-                            <rect x="3" y="44.5" width="12" height="3.2" rx="1.6" fill="#f3dfb8"/>
-                            <rect x="3" y="48.6" width="12" height="3.2" rx="1.6" fill="#f3dfb8"/>
-                            <circle cx="55" cy="48" r="9" fill="#1a67b3"/>
-                            <text x="55" y="51.2" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="700" fill="#ffffff">O₂</text>
-                        </svg></span>
-                        <h3 class="tip-title">Le triangle du feu expliqué</h3>
-                        <p class="tip-text">Combustible, oxygène, chaleur&nbsp;: comprendre comment naît un feu, comment l’arrêter et quels gestes de prévention adopter à la maison.</p>
+                </article>
+                <article class="bc-card">
+                    <div class="bc-ico" aria-hidden="true"><svg class="tip-icon-svg" viewBox="0 0 64 58" width="56" height="51" role="img" aria-hidden="true" focusable="false">
+                        <polygon points="32,10 9,48 55,48" fill="#fbf6ec" stroke="#7a7a3f" stroke-width="3" stroke-linejoin="round"/>
+                        <circle cx="32" cy="10" r="9" fill="#fa4222"/>
+                        <path d="M32 3.5c.8 2.6 3.6 3.9 3.6 7.1a3.6 3.6 0 0 1-7.2 0c0-1.2.5-2 1.2-2.8.2 1 .7 1.6 1.4 1.8-.3-2.3-.4-4.3 1-6.1z" fill="#ffffff"/>
+                        <circle cx="9" cy="48" r="9" fill="#8a5a2b"/>
+                        <rect x="3" y="44.5" width="12" height="3.2" rx="1.6" fill="#f3dfb8"/>
+                        <rect x="3" y="48.6" width="12" height="3.2" rx="1.6" fill="#f3dfb8"/>
+                        <circle cx="55" cy="48" r="9" fill="#1a67b3"/>
+                        <text x="55" y="51.2" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="700" fill="#ffffff">O₂</text>
+                    </svg></div>
+                    <h3>Le triangle du feu expliqué</h3>
+                    <p>Combustible, oxygène, chaleur&nbsp;: comprendre comment naît un feu, comment l’arrêter et quels gestes de prévention adopter à la maison.</p>
+                    <div class="bc-actions">
+                        <span class="bc-domain">🔗 boisenergienord.fr</span>
+                        <div class="partner-actions"><a class="btn-partner btn-web btn-solo" href="https://www.boisenergienord.fr/blog/blog-3/prevenir-les-incendies-le-triangle-et-le-tetraedre-du-feu-expliques-1202" target="_blank" rel="noopener noreferrer">🌐 Lire l’article de Bois Énergie Nord ↗</a></div>
                     </div>
-                    <div class="tip-source"><span>Bois Énergie Nord</span><span class="tip-go">Voir ↗</span></div>
-                </a>
+                </article>
+                <article class="bc-card">
+                    <div class="bc-ico" aria-hidden="true">🎬</div>
+                    <h3>Allumer un feu par le haut, en vidéo</h3>
+                    <p>La méthode vue pas à pas en images, pour la reproduire facilement avec votre poêle ou votre insert. À regarder ci-dessus ou directement sur YouTube.</p>
+                    <div class="bc-actions">
+                        <span class="bc-domain">🔗 youtube.com</span>
+                        <div class="partner-actions"><a class="btn-partner btn-web btn-solo" href="https://www.youtube.com/watch?v=LPmUUMw8bSM" target="_blank" rel="noopener noreferrer">🌐 Voir la vidéo sur YouTube ↗</a></div>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- ONGLET 3 : PARTENAIRES -->
-        <section class="tab-panel" id="tab-partenaires" role="tabpanel" aria-labelledby="tabbtn-partenaires">
+        <!-- PARTENAIRES -->
+        <section class="bc-section" id="partenaires">
             <div class="section-intro">
                 <h2>Nos partenaires</h2>
                 <p>Des professionnels de confiance que nous recommandons.</p>
             </div>
-            <div class="tips-grid">
-                <a class="tip-card" href="https://axop.fr/roman.html" target="_blank" rel="noopener noreferrer">
+            <div class="partners-grid bc-grid--duo">
+                <article class="partner-card">
                     <div>
-                        <span class="tip-logo"><img src="https://axop.fr/images/nicepage-images/axop102.jpg" alt="Logo AXOP" loading="lazy" onerror="this.parentNode.textContent='🤝'"></span>
-                        <h3 class="tip-title">AXOP, notre partenaire fumisterie</h3>
-                        <p class="tip-text">Ramonage fumisterie, entretien des poêles à granulés, expertise et formation, à Lissieu (69). Son fondateur est aussi l’auteur du roman «&nbsp;Le ramoneur de Malesco&nbsp;».</p>
+                        <div class="partner-logo-container"><img class="partner-logo" src="https://axop.fr/images/nicepage-images/axop102.jpg" alt="Logo AXOP" loading="lazy" onerror="this.parentNode.textContent='🤝'"></div>
+                        <div class="partner-header">
+                            <h3 class="partner-name">AXOP, notre partenaire fumisterie</h3>
+                        </div>
+                        <p class="partner-services">Ramonage fumisterie, entretien des poêles à granulés, expertise et formation. Son fondateur est aussi l’auteur du roman «&nbsp;Le ramoneur de Malesco&nbsp;».</p>
+                        <ul class="partner-details"><li>📍 69380 LISSIEU</li><li>🔗 axop.fr</li></ul>
                     </div>
-                    <div class="tip-source"><span>Partenaire recommandé</span><span class="tip-go">Voir ↗</span></div>
-                </a>
-                <a class="tip-card" href="https://www.camilleleramoneur.fr/le-ramonage" target="_blank" rel="noopener noreferrer">
+                    <div class="partner-actions">
+                        <a class="btn-partner btn-phone" href="tel:0750486817">📞 07 50 48 68 17</a>
+                        <a class="btn-partner btn-web" href="https://axop.fr/roman.html" target="_blank" rel="noopener noreferrer">🌐 Site Web</a>
+                    </div>
+                </article>
+                <article class="partner-card">
                     <div>
-                        <span class="tip-logo"><img src="https://www.camilleleramoneur.fr/templates/clr/images/Logo-CLR.png" alt="Logo Camille le Ramoneur" loading="lazy" onerror="this.parentNode.textContent='🧹'"></span>
-                        <h3 class="tip-title">Camille le Ramoneur, notre partenaire ramonage</h3>
-                        <p class="tip-text">Ramonage, entretien, dépannage et débistrage des appareils à bois, dans l’Ouest lyonnais et le Beaujolais.</p>
+                        <div class="partner-logo-container"><img class="partner-logo" src="https://www.camilleleramoneur.fr/templates/clr/images/Logo-CLR.png" alt="Logo Camille le Ramoneur" loading="lazy" onerror="this.parentNode.textContent='🧹'"></div>
+                        <div class="partner-header">
+                            <h3 class="partner-name">Camille le Ramoneur, notre partenaire ramonage</h3>
+                        </div>
+                        <p class="partner-services">Ramonage, entretien, dépannage et débistrage des appareils à bois. Un partenaire que nous recommandons pour l’entretien de votre installation.</p>
+                        <ul class="partner-details"><li>📍 Ouest lyonnais et Beaujolais</li><li>🔗 camilleleramoneur.fr</li></ul>
                     </div>
-                    <div class="tip-source"><span>Partenaire recommandé</span><span class="tip-go">Voir ↗</span></div>
-                </a>
+                    <div class="partner-actions">
+                        <a class="btn-partner btn-phone" href="tel:0781857157">📞 07 81 85 71 57</a>
+                        <a class="btn-partner btn-web" href="https://www.camilleleramoneur.fr/le-ramonage" target="_blank" rel="noopener noreferrer">🌐 Site Web</a>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
-
-    <script>
-        /* Onglets : bascule sans recharger la page, clavier (flèches) et lien direct (#feu, #gestes, #partenaires) */
-        (function () {
-            var root = document.documentElement;
-            root.classList.add("js");
-            var btns = Array.prototype.slice.call(document.querySelectorAll(".tab-btn"));
-            var panels = Array.prototype.slice.call(document.querySelectorAll(".tab-panel"));
-
-            function show(name, focus) {
-                var found = false;
-                btns.forEach(function (b) {
-                    var on = b.getAttribute("data-tab") === name;
-                    if (on) found = true;
-                    b.setAttribute("aria-selected", on ? "true" : "false");
-                    b.tabIndex = on ? 0 : -1;
-                    if (on && focus) b.focus();
-                });
-                if (!found) return show("feu", focus);
-                panels.forEach(function (p) {
-                    p.classList.toggle("active", p.id === "tab-" + name);
-                });
-                if (history.replaceState) history.replaceState(null, "", "#" + name);
-            }
-
-            btns.forEach(function (b, i) {
-                b.addEventListener("click", function () { show(b.getAttribute("data-tab")); });
-                b.addEventListener("keydown", function (e) {
-                    var n = null;
-                    if (e.key === "ArrowRight") n = (i + 1) % btns.length;
-                    if (e.key === "ArrowLeft") n = (i - 1 + btns.length) % btns.length;
-                    if (n !== null) { e.preventDefault(); show(btns[n].getAttribute("data-tab"), true); }
-                });
-            });
-
-            var h = (location.hash || "").replace("#", "");
-            if (h === "allumer-un-feu") h = "feu";
-            show(h || "feu");
-        })();
-    </script>
