@@ -258,6 +258,7 @@
 }
 
 .hero.video-on .video-toggle,
+.hero.video-ended .video-toggle,
 .hero.video-user-off .video-toggle {
     opacity: 0.55;
     pointer-events: auto;
@@ -275,8 +276,14 @@
 }
 
 .video-toggle svg { width: 14px; height: 14px; fill: currentColor; }
-.video-toggle .icon-play { display: none; }
-.hero.video-user-off .video-toggle .icon-pause { display: none; }
+.video-toggle .icon-play,
+.video-toggle .icon-replay { display: none; }
+/* vidéo terminée : icône « relancer » */
+.hero.video-ended .video-toggle .icon-pause { display: none; }
+.hero.video-ended .video-toggle .icon-replay { display: block; }
+/* vidéo désactivée par le visiteur : icône « lecture » (prioritaire) */
+.hero.video-user-off .video-toggle .icon-pause,
+.hero.video-user-off .video-toggle .icon-replay { display: none; }
 .hero.video-user-off .video-toggle .icon-play { display: block; }
 
 /* Conteneur de texte pour le faire passer au-dessus de l'overlay et de la vidéo */
@@ -1261,6 +1268,7 @@
             aria-label="Désactiver la vidéo de fond" title="Désactiver la vidéo de fond">
         <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
         <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
     </button>
 
     <!-- Contenu texte par-dessus -->
@@ -1645,7 +1653,8 @@ startTimer();
         function reflectToggle() {
             hero.classList.toggle('video-user-off', userOff);
             toggleBtn.setAttribute('aria-pressed', userOff ? 'true' : 'false');
-            const label = userOff ? 'Activer la vidéo de fond' : 'Désactiver la vidéo de fond';
+            const label = userOff ? 'Activer la vidéo de fond'
+                : (hero.classList.contains('video-ended') ? 'Relancer la vidéo de fond' : 'Désactiver la vidéo de fond');
             toggleBtn.setAttribute('aria-label', label);
             toggleBtn.setAttribute('title', label);
         }
@@ -1664,10 +1673,14 @@ startTimer();
             if (state === YT.PlayerState.PLAYING) {
                 iframe.classList.add('is-playing');
                 hero.classList.add('video-on');
+                hero.classList.remove('video-ended');
             } else if (state === YT.PlayerState.ENDED || state === YT.PlayerState.PAUSED) {
                 iframe.classList.remove('is-playing');
                 hero.classList.remove('video-on');
+                /* Fin de lecture : le bouton reste affiché (icône « relancer ») */
+                hero.classList.toggle('video-ended', state === YT.PlayerState.ENDED);
             }
+            reflectToggle();
             /* BUFFERING / UNSTARTED : on ne touche à rien pour éviter les clignotements */
         }
 
@@ -1720,11 +1733,26 @@ startTimer();
 
         if (noVideo.addEventListener) noVideo.addEventListener('change', update);
         else if (noVideo.addListener) noVideo.addListener(update);
+        function isEnded() {
+            return player && typeof player.getPlayerState === 'function' &&
+                   player.getPlayerState() === YT.PlayerState.ENDED;
+        }
+
+        function restart() {
+            hero.classList.remove('video-ended');
+            player.seekTo(0, true);
+            player.playVideo();
+        }
+
         toggleBtn.addEventListener('click', function () {
+            /* Vidéo terminée : un clic la relance depuis le début */
+            if (!userOff && isEnded()) { restart(); reflectToggle(); return; }
+            const wasOff = userOff;
             userOff = !userOff;
             try { sessionStorage.setItem('videoOff', userOff ? '1' : '0'); } catch (e) {}
             reflectToggle();
             update();
+            if (wasOff && isEnded()) restart(); /* réactivée alors qu'elle était terminée : on repart du début */
         });
 
         reflectToggle();
