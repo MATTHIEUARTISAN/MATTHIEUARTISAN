@@ -727,6 +727,10 @@ nav_active: "bons-conseils"
         .bc-ico { font-size: 2.3rem; line-height: 1; margin-bottom: 0.7rem; }
 
         /* Carte compacte (« À éviter ») : icône + titre sur une ligne, deux points côte à côte */
+        .bc-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+        .bc-head .bc-ico { font-size: 1.5rem; margin: 0; }
+        .bc-head h2 { margin: 0; font-size: 1.15rem; }
+        .bc-card p.bc-why { font-size: 0.92rem; line-height: 1.5; margin: 0 0 0.3rem; }
         .bc-card--compact { padding: 1rem 1.4rem 1.1rem; }
         .bc-card--compact .bc-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
         .bc-card--compact .bc-head .bc-ico { font-size: 1.5rem; margin: 0; }
@@ -799,17 +803,11 @@ nav_active: "bons-conseils"
         <section class="bc-section" id="feu">
             <div class="bc-grid">
                 <article class="bc-card bc-card--wide">
-                    <div class="bc-ico" aria-hidden="true">💡</div>
-                    <h2>Pourquoi allumer par le haut&nbsp;?</h2>
-                    <div class="bc-cols">
-                        <p>Quand on allume un feu par le bas, le bois du dessus est surtout chauffé et «&nbsp;distillé&nbsp;»&nbsp;: il libère des gaz qui montent dans le conduit sans avoir brûlé. Résultat&nbsp;: beaucoup de fumée au démarrage, de la pollution et peu de chaleur.</p>
-                        <p>En allumant par le haut, ces gaz traversent les flammes et y brûlent. Le feu est plus propre, il émet moins de particules fines et il chauffe mieux.</p>
+                    <div class="bc-head">
+                        <div class="bc-ico" aria-hidden="true">🔥</div>
+                        <h2>La méthode, pas à pas</h2>
                     </div>
-                </article>
-
-                <article class="bc-card bc-card--wide">
-                    <div class="bc-ico" aria-hidden="true">🔥</div>
-                    <h2>La méthode, pas à pas</h2>
+                    <p class="bc-why"><strong>Pourquoi allumer par le haut&nbsp;?</strong> Par le bas, le bois du dessus est «&nbsp;distillé&nbsp;»&nbsp;: il libère des gaz qui montent dans le conduit sans brûler (fumée, pollution, peu de chaleur). Par le haut, ces gaz traversent les flammes et y brûlent&nbsp;: le feu est plus propre, émet moins de particules fines et chauffe mieux.</p>
                     <!-- Pictogrammes des étapes (vue 3/4) : le tas se construit couche par couche -->
                     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
                         <defs>
@@ -820,6 +818,7 @@ nav_active: "bons-conseils"
                             <g id="pic-kind2"><path d="M35.2 42.15 L40.2 38.15 L73.2 38.15 L68.2 42.15Z" fill="#f7e4bc" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><path d="M68.2 42.15 L73.2 38.15 L73.2 44.35 L68.2 48.35Z" fill="#cdaa6c" stroke="#4a2f14" stroke-width="1.1" stroke-linejoin="round"/><rect x="35.2" y="42.15" width="33" height="6.2" fill="#efd3a0" stroke="#4a2f14" stroke-width="1.1"/></g>
                             <g id="pic-flame"><g transform="translate(49.2 53.2) scale(.7) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g></g>
                             <g id="pic-flame-big"><g transform="translate(49.2 54) scale(1.25) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(37.7 51.6) scale(0.55) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(61.7 51.6) scale(0.55) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g></g>
+                            <g id="pic-flame-final"><g transform="translate(49.2 54) scale(1.15) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(37.7 51.6) scale(0.8) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(61.7 51.6) scale(0.8) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(26 61.5) scale(0.75) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(40 57.5) scale(0.65) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(63 56.5) scale(0.7) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g><g transform="translate(74 49.5) scale(0.75) translate(-40 -19.5)"><path d="M40 2c3 5 7.5 7.5 6.5 12.5C45.7 18 43 19.5 40 19.5S34.3 18 34.5 14.5C34.7 11.5 37 10.5 37.5 7c1 1.5 1.5 1 2.5-5z" fill="#f97316"/><path d="M40 9.5c2 3 3.5 4.5 2.5 7C42 18 41 18.7 40 18.7S38 18 37.5 16.5C37 14.5 39 13.5 40 9.5z" fill="#fbbf24"/></g></g>
                         </defs>
                     </svg>
                     <ol class="flow" aria-label="Les étapes pour allumer un feu par le haut">
@@ -844,7 +843,7 @@ nav_active: "bons-conseils"
                             <span class="flow-txt"><strong>La prise d'air ouverte</strong>&nbsp;: le feu descend tout seul, de haut en bas, et enflamme les bûches au fur et à mesure.</span>
                         </li>
                         <li class="flow-step flow-end">
-                            <svg class="flow-pic" viewBox="5 26 93 68" role="img" aria-hidden="true" focusable="false"><use href="#pic-base"/><use href="#pic-layer2"/><use href="#pic-kind1"/><use href="#pic-starter"/><use href="#pic-kind2"/><use href="#pic-flame"/><circle cx="89" cy="34" r="7.5" fill="#16a34a"/><path d="M85.5 34l2.8 2.8 4.8-5.6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg class="flow-pic" viewBox="5 26 93 68" role="img" aria-hidden="true" focusable="false"><use href="#pic-base"/><use href="#pic-layer2"/><use href="#pic-kind1"/><use href="#pic-starter"/><use href="#pic-kind2"/><use href="#pic-flame-final"/><circle cx="89" cy="34" r="7.5" fill="#16a34a"/><path d="M85.5 34l2.8 2.8 4.8-5.6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             <span class="flow-txt"><strong>Un feu plus propre</strong>, plus chaud, avec moins de fumée.</span>
                         </li>
                     </ol>
