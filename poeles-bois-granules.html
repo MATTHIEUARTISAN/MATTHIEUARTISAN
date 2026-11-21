@@ -338,6 +338,21 @@
 
 /* Interrupteur de test du texte (haut à droite de la zone de texte) */
 .hero .lbl-short { display: none; }
+
+/* Mots-clés avec coche, sous la phrase d'accueil (version 2) */
+.hero .hero-ticks {
+    list-style: none;
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.4rem 1.4rem;
+    margin: 0.2rem auto 0; padding: 0; max-width: 760px;
+    font-size: 1.02rem; font-weight: 600; line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.hero .hero-ticks li { margin: 0; white-space: nowrap; }
+.hero .hero-ticks li::before {
+    content: "✓";
+    color: #bbf7d0; font-weight: 800; margin-right: 0.4em;
+}
 .hero .lbl-long { margin-left: 0.4em; }
 
 /* Ordinateur / tablette : texte « version 2 » plus aéré en hauteur */
@@ -362,6 +377,7 @@
 .hero .text-switch-btn.is-on { background: #ffffff; color: #1a5fb4; border-color: #ffffff; }
 .hero .text-switch-btn:focus-visible { outline: 2px solid #9cdbfb; outline-offset: 2px; }
 
+.hero .hero-text:has(.hero-ticks) { margin-bottom: 1.3rem; }
 .hero .hero-text p.hero-lead {
     font-size: 1.3rem;
     font-weight: 700;
@@ -445,7 +461,7 @@
         .btn-call-title {
             font-weight: normal;
             font-size: 0.85rem; /* Taille légèrement affinée pour mieux proportionner l'empilement */
-            margin-bottom: 2px; /* Contrôle précis de l'espace sous "Appeler nous" */
+            margin-bottom: 2px; /* Contrôle précis de l'espace sous "Appelez-nous" */
         }
 
         .btn-call:hover {
@@ -1189,7 +1205,7 @@
             /* Boutons : « Appeler » et « E-mail » côte à côte, « Zone de couverture » en dessous */
             .hero .hero-buttons {
                 display: grid;
-                grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 0.7rem;
                 max-width: 360px;
                 margin: 0 auto;
@@ -1208,8 +1224,9 @@
             }
             .hero .hero-buttons .btn-hero:last-child { grid-column: 1 / -1; font-size: 0.95rem; }
             .hero .hero-buttons .btn-call { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-            .hero .hero-buttons .btn-call-title { font-size: 0.72rem; }
-            .hero .hero-buttons .btn-call-number { font-size: 0.88rem; gap: 3px; white-space: nowrap; }
+            .hero .hero-buttons .btn-call-title { font-size: 0.7rem; }
+            .hero .hero-ticks { font-size: 0.92rem; gap: 0.3rem 1rem; max-width: 340px; }
+            .hero .hero-buttons .btn-call-number { font-size: 0.84rem; gap: 3px; white-space: nowrap; }
             .hero .hero-buttons .btn-call-number svg { width: 14px; height: 14px; }
             .hero .lbl-long { display: none; }
             .hero .lbl-short { display: inline; margin-left: 0.25em; }
@@ -1245,6 +1262,7 @@
                 margin-bottom: 0.5rem;
             }
             .hero .hero-text p.hero-lead { font-size: 1.15rem; }
+            .hero .hero-ticks { font-size: 0.85rem; gap: 0.3rem 1.1rem; margin-top: 0.1rem; }
             .hero-buttons { gap: 0.8rem; margin-top: 0.6rem; }
             .btn-hero {
                 width: auto;
@@ -1355,6 +1373,13 @@
         <div class="hero-text" id="heroTextShort">
             <p class="hero-lead">Un projet d'installation ou un poêle déjà en votre possession&nbsp;?</p>
             <p>On vous aide, quelle que soit l'étape où vous en êtes.</p>
+            <ul class="hero-ticks">
+                <li>Installation</li>
+                <li>Tubages</li>
+                <li>Mise en conformité</li>
+                <li>Diagnostic</li>
+                <li>Expertise</li>
+            </ul>
         </div>
         <div class="hero-text" id="heroTextOrig" hidden>
             <p>Installation complète de votre poêle, qu'il soit neuf ou déjà en votre possession.</p>
@@ -1364,7 +1389,7 @@
         </div>
         <div class="hero-buttons">
             <a href="tel:0478470662" class="btn-hero btn-call">
-                <span class="btn-call-title">Appeler nous au</span>
+                <span class="btn-call-title">Appelez-nous au</span>
                 <span class="btn-call-number">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
