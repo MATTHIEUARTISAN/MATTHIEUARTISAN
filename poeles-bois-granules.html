@@ -334,6 +334,14 @@
     margin-bottom: 0.9rem;
 }
 
+.hero .hero-text[hidden] { display: none; }
+
+.hero .hero-text p.hero-lead {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
 .hero .hero-subtitle {
     font-size: 1.1rem;
     font-weight: 600;
@@ -1182,6 +1190,7 @@
                 line-height: 1.35;
                 margin-bottom: 0.35rem;
             }
+            .hero .hero-text p.hero-lead { font-size: 0.95rem; }
             .hero-buttons { gap: 0.6rem; }
             .btn-hero {
                 width: auto;
@@ -1280,7 +1289,13 @@
     <div class="hero-content">
         <h1><span class="h1-part">Pose de poêles</span><span class="h1-dot" aria-hidden="true">•</span><span class="h1-part">Mise en conformité</span><span class="h1-dot" aria-hidden="true">•</span><span class="h1-part">Conseils &amp; Diagnostics</span></h1>
         <p class="location-tag">Vallée d’Azergues & secteurs limitrophes</p>
-        <div class="hero-text">
+        <!-- Deux versions du texte d'accueil : « court » (affichée par défaut) et « original ».
+             Le bouton de test en bas à gauche de la page permet de passer de l'une à l'autre. -->
+        <div class="hero-text" id="heroTextShort">
+            <p class="hero-lead">Un projet d'installation ou un poêle déjà en votre possession&nbsp;?</p>
+            <p>On vous aide, quelle que soit l'étape où vous en êtes.</p>
+        </div>
+        <div class="hero-text" id="heroTextOrig" hidden>
             <p>Installation complète de votre poêle, qu'il soit neuf ou déjà en votre possession.</p>
             <p>Votre ramoneur est passé et vous a remis un certificat non conforme&nbsp;? Nous pouvons réaliser la mise en conformité de votre installation.</p>
             <p>Vous avez réalisé vous-même votre installation et vous souhaitez un contrôle de conformité&nbsp;? Nous proposons des visites de diagnostics pour vérifier le bon respect des règles de l'art.</p>
@@ -1953,6 +1968,34 @@ startTimer();
       if (feed && feed.posts && feed.posts.length) showCache(feed); else startLive();
     })
     .catch(startLive);
+})();
+</script>
+
+<!-- ===== BOUTON DE TEST du texte d'accueil : à supprimer une fois le texte choisi
+     (retirer ce bloc ainsi que la version du texte non retenue : heroTextShort ou heroTextOrig) ===== -->
+<button type="button" id="textTestBtn" class="text-test-btn" aria-live="polite">🔁 Test : voir le texte original</button>
+<style>
+    .text-test-btn {
+        position: fixed; left: 12px; bottom: 12px; z-index: 9999;
+        max-width: calc(100vw - 90px);
+        padding: 0.5rem 0.8rem; border: 2px dashed #7a7a3f; border-radius: 999px;
+        background: #ffffff; color: #1a5fb4; font-weight: 600; font-size: 0.8rem; line-height: 1.2; font-family: inherit;
+        cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    }
+    .text-test-btn:hover { background: #f4f1e6; }
+</style>
+<script>
+(function () {
+  var btn = document.getElementById('textTestBtn');
+  var shortT = document.getElementById('heroTextShort');
+  var origT = document.getElementById('heroTextOrig');
+  if (!btn || !shortT || !origT) return;
+  btn.addEventListener('click', function () {
+    var showOrig = origT.hidden;           // on affiche l'autre version
+    origT.hidden = !showOrig;
+    shortT.hidden = showOrig;
+    btn.textContent = showOrig ? '🔁 Test : voir le texte court' : '🔁 Test : voir le texte original';
+  });
 })();
 </script>
 </body>
