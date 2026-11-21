@@ -337,6 +337,16 @@
 .hero .hero-text[hidden] { display: none; }
 
 /* Interrupteur de test du texte (haut à droite de la zone de texte) */
+.hero .lbl-short { display: none; }
+.hero .lbl-long { margin-left: 0.4em; }
+
+/* Ordinateur / tablette : texte « version 2 » plus aéré en hauteur */
+@media (min-width: 768px) and (min-height: 521px) {
+    .hero #heroTextShort { margin-top: 2rem; margin-bottom: 2.2rem; }
+    .hero #heroTextShort p.hero-lead { margin-bottom: 1.3rem; }
+    .hero .location-tag { margin-bottom: 0.4rem; }
+}
+
 .hero .text-switch {
     position: absolute; top: 0.7rem; right: 0.9rem; z-index: 6;
     display: flex; align-items: center; gap: 0.25rem;
@@ -1179,7 +1189,7 @@
             /* Boutons : « Appeler » et « E-mail » côte à côte, « Zone de couverture » en dessous */
             .hero .hero-buttons {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
                 gap: 0.7rem;
                 max-width: 360px;
                 margin: 0 auto;
@@ -1188,14 +1198,21 @@
                 width: 100%;
                 min-width: 0;
                 max-width: none;
-                padding: 0.6rem 0.4rem;
-                font-size: 0.92rem;
+                padding: 0.6rem 0.35rem;
+                font-size: 0.9rem;
                 line-height: 1.2;
                 text-align: center;
+                white-space: nowrap;
+                hyphens: none;
+                -webkit-hyphens: none;
             }
-            .hero .hero-buttons .btn-hero:last-child { grid-column: 1 / -1; }
+            .hero .hero-buttons .btn-hero:last-child { grid-column: 1 / -1; font-size: 0.95rem; }
             .hero .hero-buttons .btn-call { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-            .hero .hero-buttons .btn-call-number { font-size: 1rem; gap: 4px; }
+            .hero .hero-buttons .btn-call-title { font-size: 0.72rem; }
+            .hero .hero-buttons .btn-call-number { font-size: 0.88rem; gap: 3px; white-space: nowrap; }
+            .hero .hero-buttons .btn-call-number svg { width: 14px; height: 14px; }
+            .hero .lbl-long { display: none; }
+            .hero .lbl-short { display: inline; margin-left: 0.25em; }
         }
 
         /* iPhone / Android en paysage : le navigateur agrandit automatiquement les textes ; on l'empêche */
@@ -1355,7 +1372,7 @@
                     04 78 470 662
                 </span>
             </a>
-            <a href="mailto:contact@matthieu-artisan.fr" class="btn-hero btn-zone">✉️ Envoyer un e-mail</a>
+            <a href="mailto:contact@matthieu-artisan.fr" class="btn-hero btn-zone">✉️ <span class="lbl-long">Envoyer un e-mail</span><span class="lbl-short">E-mail</span></a>
             <button class="btn-hero btn-zone" onclick="openModal()">📍 Zone de couverture</button>
         </div>
     </div>
