@@ -1202,6 +1202,11 @@
         @media (max-width: 767px) and (orientation: portrait) {
             .hero-video-wrapper, .video-toggle { display: none; }
 
+            /* Titre : un thème par ligne, sans les « • » entre les termes, pour gagner de la place */
+            .hero h1 .h1-dot { display: none; }
+            .hero h1 .h1-part { display: block; margin-bottom: 0.15em; }
+            .hero h1 .h1-part:last-of-type { margin-bottom: 0; }
+
             /* Boutons : « Appeler » et « E-mail » côte à côte, « Zone de couverture » en dessous */
             .hero .hero-buttons {
                 display: grid;
@@ -1246,12 +1251,12 @@
                 padding: 2.8rem 1.5rem 2.6rem;
             }
             .hero .hero-content h1 {
-                font-size: clamp(1.1rem, 3.1vw, 1.5rem);
+                font-size: clamp(0.8rem, 2.2vw, 1.25rem);   /* assez petit pour tenir même avec une police large (iPhone) */
                 white-space: nowrap;
                 line-height: 1.2;
                 margin: 0 0 0.6rem;
             }
-            .hero h1 .h1-dot { margin: 0 0.8em; }
+            .hero h1 .h1-dot { margin: 0 0.55em; }
             .hero .location-tag {
                 font-size: 1rem;
                 margin-bottom: 0.8rem;
