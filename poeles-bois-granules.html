@@ -336,6 +336,21 @@
 
 .hero .hero-text[hidden] { display: none; }
 
+/* Interrupteur de test du texte (haut à droite de la zone de texte) */
+.hero .text-switch {
+    display: flex; justify-content: flex-end; align-items: center; gap: 0.25rem;
+    margin: 0 0 0.5rem; font-size: 0.75rem;
+    text-shadow: none;
+}
+.hero .text-switch-label { color: #ffffff; opacity: 0.85; margin-right: 0.3rem; font-weight: 600; }
+.hero .text-switch-btn {
+    padding: 0.25rem 0.65rem; border: 1px solid rgba(255,255,255,0.7); border-radius: 999px;
+    background: rgba(0,0,0,0.25); color: #ffffff; font-family: inherit; font-size: 0.75rem; font-weight: 600;
+    cursor: pointer; line-height: 1.2;
+}
+.hero .text-switch-btn.is-on { background: #ffffff; color: #1a5fb4; border-color: #ffffff; }
+.hero .text-switch-btn:focus-visible { outline: 2px solid #9cdbfb; outline-offset: 2px; }
+
 .hero .hero-text p.hero-lead {
     font-size: 1.3rem;
     font-weight: 700;
@@ -1289,8 +1304,15 @@
     <div class="hero-content">
         <h1><span class="h1-part">Pose de poêles</span><span class="h1-dot" aria-hidden="true">•</span><span class="h1-part">Mise en conformité</span><span class="h1-dot" aria-hidden="true">•</span><span class="h1-part">Conseils &amp; Diagnostics</span></h1>
         <p class="location-tag">Vallée d’Azergues & secteurs limitrophes</p>
-        <!-- Deux versions du texte d'accueil : « court » (affichée par défaut) et « original ».
-             Le bouton de test en bas à gauche de la page permet de passer de l'une à l'autre. -->
+        <!-- Deux versions du texte d'accueil : version 1 = texte original, version 2 = texte court (affichée par défaut).
+             L'interrupteur « Texte » (haut à droite) permet de passer de l'une à l'autre.
+             À supprimer une fois le texte choisi : l'interrupteur (bloc « text-switch »), son script en bas de page
+             et la version non retenue. -->
+        <div class="text-switch" role="group" aria-label="Choix de la version du texte">
+            <span class="text-switch-label">Texte</span>
+            <button type="button" class="text-switch-btn" id="txtV1" aria-pressed="false">Version 1</button>
+            <button type="button" class="text-switch-btn is-on" id="txtV2" aria-pressed="true">Version 2</button>
+        </div>
         <div class="hero-text" id="heroTextShort">
             <p class="hero-lead">Un projet d'installation ou un poêle déjà en votre possession&nbsp;?</p>
             <p>On vous aide, quelle que soit l'étape où vous en êtes.</p>
@@ -1971,31 +1993,20 @@ startTimer();
 })();
 </script>
 
-<!-- ===== BOUTON DE TEST du texte d'accueil : à supprimer une fois le texte choisi
-     (retirer ce bloc ainsi que la version du texte non retenue : heroTextShort ou heroTextOrig) ===== -->
-<button type="button" id="textTestBtn" class="text-test-btn" aria-live="polite">🔁 Test : voir le texte original</button>
-<style>
-    .text-test-btn {
-        position: fixed; left: 12px; bottom: 12px; z-index: 9999;
-        max-width: calc(100vw - 90px);
-        padding: 0.5rem 0.8rem; border: 2px dashed #7a7a3f; border-radius: 999px;
-        background: #ffffff; color: #1a5fb4; font-weight: 600; font-size: 0.8rem; line-height: 1.2; font-family: inherit;
-        cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.25);
-    }
-    .text-test-btn:hover { background: #f4f1e6; }
-</style>
 <script>
+/* Interrupteur de test : version 1 = texte original, version 2 = texte court. */
 (function () {
-  var btn = document.getElementById('textTestBtn');
-  var shortT = document.getElementById('heroTextShort');
-  var origT = document.getElementById('heroTextOrig');
-  if (!btn || !shortT || !origT) return;
-  btn.addEventListener('click', function () {
-    var showOrig = origT.hidden;           // on affiche l'autre version
-    origT.hidden = !showOrig;
-    shortT.hidden = showOrig;
-    btn.textContent = showOrig ? '🔁 Test : voir le texte court' : '🔁 Test : voir le texte original';
-  });
+  var b1 = document.getElementById('txtV1'), b2 = document.getElementById('txtV2');
+  var orig = document.getElementById('heroTextOrig'), short = document.getElementById('heroTextShort');
+  if (!b1 || !b2 || !orig || !short) return;
+  function set(v) {
+    var one = (v === 1);
+    orig.hidden = !one; short.hidden = one;
+    b1.classList.toggle('is-on', one); b2.classList.toggle('is-on', !one);
+    b1.setAttribute('aria-pressed', one); b2.setAttribute('aria-pressed', !one);
+  }
+  b1.addEventListener('click', function () { set(1); });
+  b2.addEventListener('click', function () { set(2); });
 })();
 </script>
 </body>
