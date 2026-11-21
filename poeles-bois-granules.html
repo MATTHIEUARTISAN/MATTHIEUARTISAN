@@ -338,8 +338,9 @@
 
 /* Interrupteur de test du texte (haut à droite de la zone de texte) */
 .hero .text-switch {
-    display: flex; justify-content: flex-end; align-items: center; gap: 0.25rem;
-    margin: 0 0 0.5rem; font-size: 0.75rem;
+    position: absolute; top: 0.7rem; right: 0.9rem; z-index: 6;
+    display: flex; align-items: center; gap: 0.25rem;
+    margin: 0; font-size: 0.75rem;
     text-shadow: none;
 }
 .hero .text-switch-label { color: #ffffff; opacity: 0.85; margin-right: 0.3rem; font-weight: 600; }
@@ -1174,6 +1175,27 @@
         /* Téléphone en portrait : pas de vidéo, seulement le fond RAL 1020 */
         @media (max-width: 767px) and (orientation: portrait) {
             .hero-video-wrapper, .video-toggle { display: none; }
+
+            /* Boutons : « Appeler » et « E-mail » côte à côte, « Zone de couverture » en dessous */
+            .hero .hero-buttons {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.7rem;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+            .hero .hero-buttons .btn-hero {
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+                padding: 0.6rem 0.4rem;
+                font-size: 0.92rem;
+                line-height: 1.2;
+                text-align: center;
+            }
+            .hero .hero-buttons .btn-hero:last-child { grid-column: 1 / -1; }
+            .hero .hero-buttons .btn-call { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+            .hero .hero-buttons .btn-call-number { font-size: 1rem; gap: 4px; }
         }
 
         /* iPhone / Android en paysage : le navigateur agrandit automatiquement les textes ; on l'empêche */
@@ -1187,32 +1209,32 @@
         @media (orientation: landscape) and (max-height: 520px) {
             .hero {
                 min-height: 0;
-                padding: 1.5rem 1.5rem 1.8rem;
+                padding: 2.8rem 1.5rem 2.6rem;
             }
             .hero .hero-content h1 {
-                font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+                font-size: clamp(1.1rem, 3.1vw, 1.5rem);
                 white-space: nowrap;
                 line-height: 1.2;
-                margin: 0 0 0.4rem;
+                margin: 0 0 0.6rem;
             }
             .hero h1 .h1-dot { margin: 0 0.8em; }
             .hero .location-tag {
-                font-size: 0.82rem;
-                margin-bottom: 0.4rem;
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
             }
             .hero .hero-text p {
-                font-size: 0.76rem;
-                line-height: 1.35;
-                margin-bottom: 0.35rem;
+                font-size: 0.92rem;
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
             }
-            .hero .hero-text p.hero-lead { font-size: 0.95rem; }
-            .hero-buttons { gap: 0.6rem; }
+            .hero .hero-text p.hero-lead { font-size: 1.15rem; }
+            .hero-buttons { gap: 0.8rem; margin-top: 0.6rem; }
             .btn-hero {
                 width: auto;
                 max-width: none;
                 min-width: 0;
-                padding: 0.45rem 0.9rem;
-                font-size: 0.8rem;
+                padding: 0.6rem 1.1rem;
+                font-size: 0.9rem;
             }
             /* Mise en page paysage : « Secteurs d'intervention » et « Facebook » côte à côte,
                le texte d'accueil, les prestations et les avis restant sur toute la largeur */
@@ -1300,19 +1322,19 @@
         <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
     </button>
 
+    <!-- Interrupteur de test du texte d'accueil (coin haut-droit du bandeau) : version 1 = texte original, version 2 = texte court.
+         À supprimer une fois le texte choisi : ce bloc, son script en bas de page et la version non retenue. -->
+    <div class="text-switch" role="group" aria-label="Choix de la version du texte">
+        <span class="text-switch-label">Texte</span>
+        <button type="button" class="text-switch-btn" id="txtV1" aria-pressed="false">Version 1</button>
+        <button type="button" class="text-switch-btn is-on" id="txtV2" aria-pressed="true">Version 2</button>
+    </div>
+
     <!-- Contenu texte par-dessus -->
     <div class="hero-content">
         <h1><span class="h1-part">Pose de poêles</span><span class="h1-dot" aria-hidden="true">•</span><span class="h1-part">Mise en conformité</span><span class="h1-dot" aria-hidden="true">•</span><span class="h1-part">Conseils &amp; Diagnostics</span></h1>
         <p class="location-tag">Vallée d’Azergues & secteurs limitrophes</p>
-        <!-- Deux versions du texte d'accueil : version 1 = texte original, version 2 = texte court (affichée par défaut).
-             L'interrupteur « Texte » (haut à droite) permet de passer de l'une à l'autre.
-             À supprimer une fois le texte choisi : l'interrupteur (bloc « text-switch »), son script en bas de page
-             et la version non retenue. -->
-        <div class="text-switch" role="group" aria-label="Choix de la version du texte">
-            <span class="text-switch-label">Texte</span>
-            <button type="button" class="text-switch-btn" id="txtV1" aria-pressed="false">Version 1</button>
-            <button type="button" class="text-switch-btn is-on" id="txtV2" aria-pressed="true">Version 2</button>
-        </div>
+        <!-- Deux versions du texte d'accueil : version 1 = texte original, version 2 = texte court (affichée par défaut). -->
         <div class="hero-text" id="heroTextShort">
             <p class="hero-lead">Un projet d'installation ou un poêle déjà en votre possession&nbsp;?</p>
             <p>On vous aide, quelle que soit l'étape où vous en êtes.</p>
