@@ -1246,6 +1246,13 @@
 
         /* Téléphone en mode panoramique (paysage) : textes et espacements réduits, titre sur une seule ligne */
         @media (orientation: landscape) and (max-height: 520px) {
+            /* Bannière entièrement visible : l'en-tête défile avec la page (plus collé en haut) et la page
+               « s'accroche » au début de la bannière dès qu'on descend un peu. Ainsi, le premier petit défilement
+               (qui fait disparaître la barre d'adresse de Safari) amène la bannière en plein écran,
+               sans avoir à remonter. */
+            html { scroll-snap-type: y proximity; }
+            header { position: static; scroll-snap-align: start; }
+            .hero { scroll-snap-align: start; }
             .hero {
                 min-height: 0;
                 padding: 2.8rem 1.5rem 2.6rem;
